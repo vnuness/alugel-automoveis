@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <title>Locadora de Automóveis</title>
+
+        <link href="plugins/switchery/switchery.min.css" rel="stylesheet" />
+        <link href="plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
+
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+
+        <script src="assets/js/modernizr.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+
+    </head>
+
+
+    <body class="fixed-left">
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <div class="topbar">
+
+                <!-- LOGO -->
+                <div class="topbar-left">
+                    <div class="text-center">
+                        <a href="index.html" class="logo"><i class="mdi mdi-radar"></i> <span>Locadora</span></a>
+                    </div>
+                </div>
+
+                <!-- Button mobile view to collapse sidebar menu -->
+                <nav class="navbar-custom">
+
+                    <ul class="list-inline float-right mb-0">
+
+                        <li class="list-inline-item notification-list hide-phone">
+                            <a class="nav-link waves-light waves-effect" href="#" id="btn-fullscreen">
+                                <i class="mdi mdi-crop-free noti-icon"></i>
+                            </a>
+                        </li>
+
+                        <li class="list-inline-item notification-list">
+
+                        </li>
+
+                    </ul>
+
+                    <ul class="list-inline menu-left mb-0">
+                        <li class="float-left">
+                            <button class="button-menu-mobile open-left waves-light waves-effect">
+                                <i class="mdi mdi-menu"></i>
+                            </button>
+                        </li>
+                    </ul>
+
+                </nav>
+
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+
+            <div class="left side-menu">
+                <div class="sidebar-inner slimscrollleft">
+                    <!--- Divider -->
+                    <div id="sidebar-menu">
+                        <ul>
+                            <li class="menu-title">Main</li>
+
+                            <li>
+                                <a href="index.html" class="waves-effect waves-primary"><i
+                                        class="ti-home"></i><span> Dashboard </span></a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="ti-paint-bucket"></i> <span> UI Kit </span>
+                                    <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="ui-buttons.html">Buttons</a></li>
+                                    <li><a href="ui-cards.html">Cards</a></li>
+                                    <li><a href="ui-portlets.html">Portlets</a></li>
+                                    <li><a href="ui-checkbox-radio.html">Checkboxs-Radios</a></li>
+                                    <li><a href="ui-tabs.html">Tabs & Accordions</a></li>
+                                    <li><a href="ui-modals.html">Modals</a></li>
+                                    <li><a href="ui-progressbars.html">Progress Bars</a></li>
+                                    <li><a href="ui-notification.html">Notification</a></li>
+                                    <li><a href="ui-bootstrap.html">BS Elements</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="typography.html" class="waves-effect waves-primary"><i
+                                        class="ti-infinite"></i><span> Typography </span><span
+                                        class="badge badge-pink pull-right">1</span></a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect waves-primary"><i
+                                        class="ti-light-bulb"></i><span> Components </span> <span class="menu-arrow"></span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="components-grid.html">Grid</a></li>
+                                    <li><a href="components-carousel.html">Carousel</a></li>
+                                    <li><a href="components-widgets.html">Widgets</a></li>
+                                    <li><a href="components-nestable-list.html">Nesteble</a></li>
+                                    <li><a href="components-range-sliders.html">Range Sliders </a></li>
+                                    <li><a href="components-sweet-alert.html">Sweet Alerts </a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="ti-spray"></i>
+                                    <span> Icons </span> <span class="menu-arrow"></span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="icons-materialdesign.html">Material Design</a></li>
+                                    <li><a href="icons-themifyicon.html">Themify Icons</a></li>
+                                    <li><a href="icons-ionicons.html">Ion Icons</a></li>
+                                    <li><a href="icons-fontawesome.html">Font awesome</a></li>
+                                    <li><a href="icons-weather.html">Weather Icons</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="ti-pencil-alt"></i><span> Forms </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="form-elements.html">General Elements</a></li>
+                                    <li><a href="form-advanced.html">Advanced Form</a></li>
+                                    <li><a href="form-validation.html">Form Validation</a></li>
+                                    <li><a href="form-wizard.html">Form Wizard</a></li>
+                                    <li><a href="form-wysiwig.html">WYSIWYG Editor</a></li>
+                                    <li><a href="form-summernote.html">Summernote</a></li>
+                                    <li><a href="form-uploads.html">Multiple File Upload</a></li>
+                                    <li><a href="form-xeditable.html">X-editable</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="menu-title">More</li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="ti-menu-alt"></i><span> Tables </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="tables-basic.html">Basic Tables</a></li>
+                                    <li><a href="tables-datatable.html">Data Table</a></li>
+                                    <li><a href="tables-editable.html">Editable Table</a></li>
+                                    <li><a href="tables-responsive.html">Responsive Table</a></li>
+                                    <li><a href="tables-tablesaw.html">Tablesaw Table</a></li>
+                                    <li><a href="tables-foo-tables.html">Foo Table</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect waves-primary"><i
+                                        class="ti-stats-up"></i><span> Charts </span> <span
+                                        class="badge badge-primary pull-right">8</span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="chart-flot.html">Flot Chart</a></li>
+                                    <li><a href="chart-morris.html">Morris Chart</a></li>
+                                    <li><a href="chart-chartist.html">Chartist chart</a></li>
+                                    <li><a href="chart-nvd3.html">Nvd3 charts</a></li>
+                                    <li><a href="chart-chartjs.html">Chartjs charts</a></li>
+                                    <li><a href="chart-peity.html">Peity Charts</a></li>
+                                    <li><a href="chart-sparkline.html">Sparkline Charts</a></li>
+                                    <li><a href="chart-other.html">Other Chart</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect waves-primary"><i
+                                        class="ti-map"></i><span> Maps </span><span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="map-google.html"> Google Map</a></li>
+                                    <li><a href="map-vector.html"> Vector Map</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect waves-primary"><i
+                                        class="ti-email"></i><span> Mail </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="mail-inbox.html">Inbox</a></li>
+                                    <li><a href="mail-compose.html">Compose Mail</a></li>
+                                    <li><a href="mail-read.html">View Mail</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="menu-title">Extras</li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect waves-primary"><i
+                                        class="ti-files"></i><span> Pages </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="pages-blank.html">Blank Page</a></li>
+                                    <li><a href="pages-login.html">Login</a></li>
+                                    <li><a href="pages-register.html">Register</a></li>
+                                    <li><a href="pages-recoverpw.html">Recover Password</a></li>
+                                    <li><a href="pages-lock-screen.html">Lock Screen</a></li>
+                                    <li><a href="pages-confirmmail.html">Confirm Mail</a></li>
+                                    <li><a href="pages-404.html">404 Error</a></li>
+                                    <li><a href="pages-500.html">500 Error</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect waves-primary"><i
+                                        class="ti-gift"></i><span> Extras </span> <span
+                                        class="badge badge-success pull-right">12</span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="extras-profile.html">Profile</a></li>
+                                    <li><a href="extras-team.html">Team Members</a></li>
+                                    <li><a href="extras-timeline.html">Timeline</a></li>
+                                    <li><a href="extras-invoice.html">Invoice</a></li>
+                                    <li><a href="extras-calendar.html">Calendar</a></li>
+                                    <li><a href="extras-email-template.html">Email template</a></li>
+                                    <li><a href="extras-maintenance.html">Maintenance</a></li>
+                                    <li><a href="extras-coming-soon.html">Coming-soon</a></li>
+                                    <li><a href="extras-gallery.html">Gallery</a></li>
+                                    <li><a href="extras-pricing.html">Pricing</a></li>
+                                    <li><a href="extras-faq.html">FAQ</a></li>
+                                    <li><a href="extras-treeview.html">Treeview</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="ti-share"></i><span>Multi Level </span> <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li class="has_sub">
+                                        <a href="javascript:void(0);" class="waves-effect"><span>Menu Level 1.1</span>  <span class="menu-arrow"></span></a>
+                                        <ul>
+                                            <li><a href="javascript:void(0);"><span>Menu Level 2.1</span></a></li>
+                                            <li><a href="javascript:void(0);"><span>Menu Level 2.2</span></a></li>
+                                            <li><a href="javascript:void(0);"><span>Menu Level 2.3</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"><span>Menu Level 1.2</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->                      
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+
+                        <!-- Page-Title -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title">Bem-Vindo !</h4>
+                                    <ol class="breadcrumb float-right">
+                                        <li class="breadcrumb-item"><a href="#">Minton</a></li>
+                                        <li class="breadcrumb-item active">Dashboard</li>
+                                    </ol>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="bar" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card-box">
+                                    <div id="pie" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-box">
+                                    <h4 class="header-title m-t-0">Últimas locações</h4>
+                                    <p class="text-muted m-b-25 font-13">
+                                        Top 5 das últimas locações realizadas
+                                    </p>
+
+                                    <div class="table-responsive">
+                                        <table class="table mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Nome do Cliente</th>
+                                                    <th>Data início</th>
+                                                    <th>Data Devolução</th>
+                                                    <th>Avaliação</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Gabriel Moreira</td>
+                                                    <td>01/01/2017</td>
+                                                    <td>26/04/2017</td>
+                                                    <td><span class="badge badge-success">Muito Satisfeito</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Raphael Maggiore</td>
+                                                    <td>01/01/2017</td>
+                                                    <td>26/04/2017</td>
+                                                    <td><span class="badge badge-success">Muito Satisfeito</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Michelle Sinibaldi</td>
+                                                    <td>01/05/2017</td>
+                                                    <td>10/05/2017</td>
+                                                    <td><span class="badge badge-pink">Insatisfeito</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>Victor Nunes</td>
+                                                    <td>01/01/2017</td>
+                                                    <td>31/05/2017</td>
+                                                    <td><span class="badge badge-warning">Satisfeito</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>Pedro Cruz</td>
+                                                    <td>01/01/2017</td>
+                                                    <td>31/05/2017</td>
+                                                    <td><span class="badge badge-warning">Satisfeito</span></td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <!-- end col -8 -->
+
+
+                        </div>
+                        <!-- end row -->
+
+
+                    </div>
+                    <!-- end container -->
+                </div>
+                <!-- end content -->
+
+                <footer class="footer">
+                    2016 - 2018 © Minton <span class="hide-phone">- Coderthemes.com</span>
+                </footer>
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- Plugins  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script><!-- Popper for Bootstrap -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/detect.js"></script>
+        <script src="assets/js/fastclick.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/jquery.blockUI.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/jquery.nicescroll.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+        <script src="plugins/switchery/switchery.min.js"></script>
+
+        <!-- Counter Up  -->
+        <script src="plugins/waypoints/lib/jquery.waypoints.min.js"></script>
+        <script src="plugins/counterup/jquery.counterup.min.js"></script>
+
+        <!-- circliful Chart -->
+        <script src="plugins/jquery-circliful/js/jquery.circliful.min.js"></script>
+        <script src="plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+        <!-- skycons -->
+        <script src="plugins/skyicons/skycons.min.js" type="text/javascript"></script>
+
+        <!-- Page js  -->
+        <script src="assets/pages/jquery.dashboard.js"></script>
+
+        <!-- Custom main Js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+
+
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $('.counter').counterUp({
+                    delay: 100,
+                    time: 1200
+                });
+                $('.circliful-chart').circliful();
+                $('.highcharts-button-symbol').hide();
+                $('.highcharts-button-box').hide();
+
+
+
+// Create the chart
+
+                Highcharts.chart('bar', {
+                    chart: {
+                        type: 'column',
+                        backgroundColor: {
+                            linearGradient: {x1: 0, y1: 0, x2: 1, y2: 1},
+                            stops: [
+                                [0, '#2a2a2b'],
+                                [1, '#3e3e40']
+                            ]
+                        },
+                    },
+                    title: {
+                        text: 'Total de Locações por dia',
+                        style: {
+                            color: '#E0E0E3',
+                            textTransform: 'uppercase',
+                            fontSize: '20px'
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '13px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Locações'
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    tooltip: {
+                        pointFormat: 'Total no dia: <b>{point.y:1f}</b>'
+                    },
+                    series: [{
+                            name: 'Locações',
+                            data: [
+                                ['01', 50],
+                                ['02', 70],
+                                ['03', 20],
+                                ['04', 30],
+                                ['05', 25],
+                                ['06', 25],
+                                ['07', 20],
+                                ['08', 15],
+                                ['09', 18],
+                                ['10', 97],
+                                ['11', 25],
+                                ['12', 18],
+                                ['13', 18],
+                                ['14', 30],
+                                ['15', 36],
+                                ['16', 12],
+                                ['17', 22],
+                                ['18', 42],
+                                ['19', 42],
+                                ['20', 29],
+                                ['21', 16],
+                                ['22', 14],
+                                ['23', 37],
+                                ['24', 14],
+                                ['25', 33],
+                                ['26', 15],
+                                ['27', 19],
+                                ['28', 17],
+                                ['29', 24],
+                                ['30', 21],
+                                ['31', 13]
+                            ],
+                            dataLabels: {
+                                enabled: true,
+                                rotation: -90,
+                                color: '#FFFFFF',
+                                align: 'right',
+                                format: '{point.y:.f}', // one decimal
+                                y: 10, // 10 pixels down from the top
+                                style: {
+                                    fontSize: '13px',
+                                    fontFamily: 'Verdana, sans-serif'
+                                }
+                            }
+                        }]
+                });
+
+                Highcharts.chart('pie', {
+                    chart: {
+                        backgroundColor: {
+                            linearGradient: {x1: 0, y1: 0, x2: 1, y2: 1},
+                            stops: [
+                                [0, '#2a2a2b'],
+                                [1, '#3e3e40']
+                            ]
+                        },
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        style: {
+                            color: '#E0E0E3',
+                            textTransform: 'uppercase',
+                            fontSize: '20px'
+                        },
+                        text: 'Total de Locação por categoria'
+                    },
+                    subtitle: {
+                        style: {
+                            color: '#E0E0E3',
+                            textTransform: 'uppercase'
+                        }
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    scrollbar: {
+                        barBackgroundColor: '#808083',
+                        barBorderColor: '#808083',
+                        buttonArrowColor: '#CCC',
+                        buttonBackgroundColor: '#606063',
+                        buttonBorderColor: '#606063',
+                        rifleColor: '#FFF',
+                        trackBackgroundColor: '#404043',
+                        trackBorderColor: '#404043'
+                    },
+                    legend: {
+                        itemStyle: {
+                            color: '#E0E0E3'
+                        },
+                        itemHoverStyle: {
+                            color: '#FFF'
+                        },
+                        itemHiddenStyle: {
+                            color: '#606063'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            color: '#707073'
+                        }
+                    },
+                    legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    background2: '#505053',
+                    dataLabelsColor: '#B0B0B3',
+                    textColor: '#C0C0C0',
+                    contrastTextColor: '#F0F0F3',
+                    maskColor: 'rgba(255,255,255,0.3)',
+                    series: [{
+                            name: 'Abrange',
+                            colorByPoint: true,
+                            data: [{
+                                    name: 'Pessoa Física',
+                                    y: 61.41
+                                }, {
+                                    name: 'Pessoa Jurídica',
+                                    y: 11.84
+                                }, {
+                                    name: 'Motoristas de aplicativo',
+                                    y: 10.85
+                                }]
+                        }]
+                });
+
+                $('.highcharts-button-symbol').hide();
+                $('.highcharts-button-box').hide();
+            });
+
+            // BEGIN SVG WEATHER ICON
+            if (typeof Skycons !== 'undefined') {
+                var icons = new Skycons(
+                        {"color": "#3bafda"},
+                {"resizeClear": true}
+                ),
+                        list = [
+                            "clear-day", "clear-night", "partly-cloudy-day",
+                            "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+                            "fog"
+                        ],
+                        i;
+
+                for (i = list.length; i--; )
+                    icons.set(list[i], list[i]);
+                icons.play();
+            }
+            ;
+
+        </script>
+
+
+    </body>
+</html>
