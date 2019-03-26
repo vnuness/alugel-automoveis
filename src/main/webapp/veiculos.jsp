@@ -99,8 +99,8 @@
                                 <div class="page-title-box">
                                     <h4 class="page-title">Bem-Vindo !</h4>
                                     <ol class="breadcrumb float-right">
-                                        <li class="breadcrumb-item"><a href="#">Minton</a></li>
-                                        <li class="breadcrumb-item active">Dashboard</li>
+                                        <li class="breadcrumb-item"><a href="#">Locadora</a></li>
+                                        <li class="breadcrumb-item active">Cadastro Veículos</li>
                                     </ol>
                                     <div class="clearfix">
 
@@ -217,9 +217,7 @@
                 </div>
                 <!-- end content -->
 
-                <footer class="footer">
-                    2016 - 2018 Â© Minton <span class="hide-phone">- Coderthemes.com</span>
-                </footer>
+                <jsp:include page="footer.jsp"/>
 
             </div>
 
