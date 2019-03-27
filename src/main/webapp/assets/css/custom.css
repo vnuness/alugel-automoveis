@@ -3,3 +3,27 @@
     font-weight: bold;
     color: #3bafda;
 }
+
+.modal-content {
+    border-color: #ffffff !important;
+    background-color: #434f5c !important;
+}
+
+#cad-veiculos input {
+    border: 1px solid #ffffff
+}
+
+#enviar #cancelar {
+    right: 50% !important;
+}
+
+.datepicker table tr td span:hover, .datepicker thead tr:first-child th:hover, .datepicker tfoot tr th:hover {
+    color:#555 !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    line-height: 36px !important;
+    padding-left: 12px !important;
+    color: #eeeeee !important;
+    border-color: #ffffff !important;
+}
