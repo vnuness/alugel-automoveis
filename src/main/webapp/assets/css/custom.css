@@ -27,3 +27,7 @@
     color: #eeeeee !important;
     border-color: #ffffff !important;
 }
+
+.required {
+    color: red !important;
+}

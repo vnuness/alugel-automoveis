@@ -20,7 +20,7 @@
                 <li class="menu-title">Veículos</li>
 
                 <li>
-                    <a href="index.html" class="waves-effect waves-primary"><i
+                    <a href="veiculos.jsp" class="waves-effect waves-primary"><i
                             class="ti-car"></i><span> Gerenciamento </span></a>
                 </li>
 

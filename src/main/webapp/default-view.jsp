@@ -12,19 +12,8 @@
 
         <title>Locadora de Automóveis</title>
 
-        <link href="plugins/switchery/switchery.min.css" rel="stylesheet" />
-        <link href="plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
-
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
-        <link href="assets/css/style_dark.css" rel="stylesheet" type="text/css">
-
-        <script src="assets/js/modernizr.min.js"></script>
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/modules/exporting.js"></script>
-        <script src="https://code.highcharts.com/modules/export-data.js"></script>
-
-
+        <jsp:include page="imports.jsp"/>
+        
     </head>
 
 
@@ -93,36 +82,6 @@
         </script>
 
         <!-- Plugins  -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/popper.min.js"></script><!-- Popper for Bootstrap -->
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/detect.js"></script>
-        <script src="assets/js/fastclick.js"></script>
-        <script src="assets/js/jquery.slimscroll.js"></script>
-        <script src="assets/js/jquery.blockUI.js"></script>
-        <script src="assets/js/waves.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/jquery.nicescroll.js"></script>
-        <script src="assets/js/jquery.scrollTo.min.js"></script>
-        <script src="plugins/switchery/switchery.min.js"></script>
-
-        <!-- Counter Up  -->
-        <script src="plugins/waypoints/lib/jquery.waypoints.min.js"></script>
-        <script src="plugins/counterup/jquery.counterup.min.js"></script>
-
-        <!-- circliful Chart -->
-        <script src="plugins/jquery-circliful/js/jquery.circliful.min.js"></script>
-        <script src="plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
-
-        <!-- skycons -->
-        <script src="plugins/skyicons/skycons.min.js" type="text/javascript"></script>
-
-        <!-- Page js  -->
-        <script src="assets/pages/jquery.dashboard.js"></script>
-
-        <!-- Custom main Js -->
-        <script src="assets/js/jquery.core.js"></script>
-        <script src="assets/js/jquery.app.js"></script>
 
     </body>
 </html>
