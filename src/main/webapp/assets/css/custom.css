@@ -9,8 +9,8 @@
     background-color: #434f5c !important;
 }
 
-#cad-veiculos input {
-    border: 1px solid #ffffff
+#cad-veiculos input, textarea{
+    border: 1px solid #ffffff !important;
 }
 
 #enviar #cancelar {
@@ -21,11 +21,15 @@
     color:#555 !important;
 }
 
+.select2-container .select2-selection--single {
+    border: 1px solid #ffffff !important;
+}
+
 .select2-container .select2-selection--single .select2-selection__rendered {
     line-height: 36px !important;
     padding-left: 12px !important;
     color: #eeeeee !important;
-    border-color: #ffffff !important;
+    //border-color: #ffffff !important;
 }
 
 .required {
