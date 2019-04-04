@@ -6,6 +6,10 @@ package DAO;
  */
 import Models.CategoriaCNH;
 import Models.CategoriaCliente;
+import Models.CambioVeiculo;
+import Models.CombustivelVeiculo;
+import Models.ListaVeiculos;
+import Models.StatusVeiculo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -95,7 +99,7 @@ public class ClienteDAO {
 
         return retorno;
     }
-    
+   
     //implementar metodo inativar - recebe ID e realizar UPDATE no registro
     public static boolean Inativar(int id) {
         boolean retorno = false;
@@ -163,6 +167,18 @@ public class ClienteDAO {
             Update.setString(15, c.getEstado());
             Update.setString(16, c.getCelular());
             Update.setInt(17, c.getId());
+
+    }
+
+    public static boolean Excluir(int id) {
+        boolean retorno = false;
+        try {
+            System.out.println(id);
+            Connection Conexao = obterConexao();
+
+            PreparedStatement Update = Conexao.prepareStatement(
+                    "DELETE FROM veiculo WHERE ID = " + id);
+
             int linhasAfetadas = Update.executeUpdate();
 
             if (linhasAfetadas > 0) {
@@ -185,6 +201,13 @@ public class ClienteDAO {
 
         String query = "SELECT * FROM STATUS_CLIENTE_USUARIO;";
 
+    }
+    
+    public static ArrayList<StatusVeiculo> getStatus() {
+        ArrayList<StatusVeiculo> listaStatus = new ArrayList<StatusVeiculo>();
+        
+        String query = "SELECT * FROM STATUS_VEICULO;";
+        
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
@@ -239,6 +262,10 @@ public class ClienteDAO {
                 categoriaCnh.setId(rs.getInt("id"));
                 categoriaCnh.setCategoria(rs.getString("Categoria"));
                 listaCategoriaCNH.add(categoriaCnh);
+                CombustivelVeiculo combustivel = new CombustivelVeiculo();
+                combustivel.setId(rs.getInt("id"));
+                combustivel.setCombustivel(rs.getString("combustivel"));
+                listaCombustivel.add(combustivel);
             }
 
         } catch (SQLException ex) {
@@ -254,6 +281,14 @@ public class ClienteDAO {
 
         String query = "SELECT * FROM CATEGORIA_CLIENTE;";
 
+        return listaCombustivel;
+    }
+    
+    public static ArrayList<CambioVeiculo> getCambio() {
+        ArrayList<CambioVeiculo> listaCambio = new ArrayList<CambioVeiculo>();
+        
+        String query = "SELECT * FROM CAMBIO;";
+        
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
@@ -262,6 +297,10 @@ public class ClienteDAO {
                 categoria_cliente.setId(rs.getInt("id"));
                 categoria_cliente.setCategoria(rs.getString("Categoria"));
                 ListaCategoriaCliente.add(categoria_cliente);
+                CambioVeiculo cambio = new CambioVeiculo();
+                cambio.setId(rs.getInt("id"));
+                cambio.setCambio(rs.getString("cambio"));
+                listaCambio.add(cambio);
             }
 
         } catch (SQLException ex) {
@@ -302,6 +341,26 @@ public class ClienteDAO {
                     //???
                     + "	cambio.cambio,\n"
                     + "	`status_Cliente_Usuario`.status,\n"
+        return listaCambio;
+    }
+
+    public static ArrayList<ListaVeiculos> getVeiculos(int id) {
+        ArrayList<ListaVeiculos> listaVeiculos = new ArrayList<ListaVeiculos>();
+
+        String query = "";
+        if (id != 0) {
+            query = "SELECT * FROM veiculo where id = " + id;
+        } else {
+            query = "SELECT \n"
+                    + "	veiculo.id, \n"
+                    + "	veiculo.modelo, \n"
+                    + "	veiculo.montadora, \n"
+                    + "	veiculo.ano, \n"
+                    + "	veiculo.placa, \n"
+                    + "	veiculo.renavam,\n"
+                    + "	combustivel.combustivel,\n"
+                    + "	cambio.cambio,\n"
+                    + "	`status_veiculo`.status,\n"
                     + "	veiculo.acessorios FROM veiculo\n"
                     + "	INNER JOIN `combustivel` ON `combustivel`.id = `veiculo`.id_combustivel\n"
                     + "	INNER JOIN `status_veiculo` ON `status_veiculo`.id = `veiculo`.id_status\n"
@@ -331,6 +390,25 @@ public class ClienteDAO {
 //                lista.setAcessorio(rs.getString("acessorios"));
                 //System.out.println(p.getData_cadastro());  
                 listaClientes.add(lista);
+                ListaVeiculos lista = new ListaVeiculos();
+                lista.setId(rs.getInt("id"));
+                lista.setModelo(rs.getString("modelo"));
+                lista.setMontadora(rs.getString("montadora"));
+                lista.setAno(rs.getInt("ano"));
+                lista.setPlaca(rs.getString("placa"));
+                lista.setRenavam(rs.getString("renavam"));
+                if (id != 0) {
+                    lista.setCombustivel(rs.getString("id_combustivel"));
+                    lista.setCambio(rs.getString("id_cambio"));
+                    lista.setStatus(rs.getString("id_status"));
+                } else {
+                    lista.setCombustivel(rs.getString("combustivel"));
+                    lista.setCambio(rs.getString("cambio"));
+                    lista.setStatus(rs.getString("status"));
+                }
+                lista.setAcessorio(rs.getString("acessorios"));
+                //System.out.println(p.getData_cadastro());  
+                listaVeiculos.add(lista);
             }
 
         } catch (SQLException ex) {
