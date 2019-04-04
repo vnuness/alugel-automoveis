@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,10 +9,10 @@ package Models;
  *
  * @author rapha
  */
-public class Sexo {
+public class StatusClienteUsuario {
     
-    private int id;
-    private String sexo;
+   private int id;
+   private String status;
 
     public int getId() {
         return id;
@@ -23,14 +22,14 @@ public class Sexo {
         this.id = id;
     }
 
-    public String getSexo() {
-        return sexo;
+    public String getStatus() {
+        return status;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setStatus(String status) {
+        this.status = status;
     }
-    
-    
+   
+   
     
 }

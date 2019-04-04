@@ -1,13 +1,18 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Models;
 
 import java.util.Date;
 
 /**
  *
- * @author RaphaelOrlandi
+ * @author vsilva
  */
-public class Cliente {
-
+public class ListaCliente {
+    
     private int id;
     private String nome;
     private String cpf_cnpj;
@@ -26,53 +31,10 @@ public class Cliente {
     private String estado;
     private String celular;
 
-    public Cliente() {
-
-    }
-    final String DATA_NASCIMENTO = "teste";
-
-    public Cliente(int cId, String cNome, String cCpf_Cnpj, int cId_sexo, String cCnh, int cId_categoria_cnh,
-            String cRg, String cEmail, String cNacionalidade, Date cData_nascimento, String cEndereco,
-            String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular) {
-        this.id = cId;
-        this.nome = cNome;
-        this.cpf_cnpj = cCpf_Cnpj;
-        this.id_sexo = cId_sexo;
-        this.cnh = cCnh;
-        this.id_categoria_cnh = cId_categoria_cnh;
-        this.rg = cRg;
-        this.email = cEmail;
-        this.nacionalidade = cNacionalidade;
-        this.data_nascimento = cData_nascimento;
-        this.endereco = cEndereco;
-        this.cep = cCep;
-        this.bairro = cBairro;
-        this.complemento = cComplemento;
-        this.cidade = cCidade;
-        this.estado = cEstado;
-        this.celular = cCelular;
-    }
-
-    public Cliente(String cNome, String cCpf_Cnpj, int cId_sexo, String cCnh, int cId_categoria_cnh,
-            String cRg, String cEmail, String cNacionalidade, Date cData_nascimento, String cEndereco,
-            String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular) {
-        this.nome = cNome;
-        this.cpf_cnpj = cCpf_Cnpj;
-        this.id_sexo = cId_sexo;
-        this.cnh = cCnh;
-        this.id_categoria_cnh = cId_categoria_cnh;
-        this.rg = cRg;
-        this.email = cEmail;
-        this.nacionalidade = cNacionalidade;
-        this.data_nascimento = cData_nascimento;
-        this.endereco = cEndereco;
-        this.cep = cCep;
-        this.bairro = cBairro;
-        this.complemento = cComplemento;
-        this.cidade = cCidade;
-        this.estado = cEstado;
-        this.celular = cCelular;
-
+    
+    
+    public ListaCliente() {
+        
     }
 
     public int getId() {
@@ -211,5 +173,6 @@ public class Cliente {
         this.celular = celular;
     }
     
+
     
 }
