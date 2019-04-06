@@ -2,7 +2,7 @@ package DAO;
 
 /**
  *
- * @author vsilva
+ * @author Raphael Orlandi
  */
 import Models.CategoriaCNH;
 import Models.CategoriaCliente;
@@ -302,7 +302,6 @@ public class ClienteDAO {
                     + " status_cliente_usuario.status,\n"
                     + " sexo.sexo, \n"
                     + " categoria_cliente.categoria, \n"
-                    
                     + "	INNER JOIN `categoria_cnh` ON `clientes`.id_categoria_cnh = `categoria_cnh`.id \n"
                     + "	INNER JOIN `Status_cliente_usuario` ON `clientes`.status = `status_cliente_usuario`.id \n"
                     + "	INNER JOIN `sexo` ON `clientes`.id_sexo = `sexo`.id \n"
@@ -318,43 +317,29 @@ public class ClienteDAO {
                 lista.setId(rs.getInt("id"));
                 lista.setNome(rs.getString("nome"));
                 lista.setCpfcnpj(rs.getString("CPF/CNPJ"));
-                lista.setIdsexo(rs.getInt("Sexo"));
-//                lista.setModelo(rs.getString("modelo"));
-//                lista.setMontadora(rs.getString("montadora"));
-//                lista.setAno(rs.getInt("ano"));
-//                lista.setPlaca(rs.getString("placa"));
-//                lista.setRenavam(rs.getString("renavam"));
-//                if (id != 0) {
-//                    lista.setCombustivel(rs.getString("id_combustivel"));
-//                    lista.setCambio(rs.getString("id_cambio"));
-//                    lista.setStatus(rs.getString("id_status"));
-//                } else {
-//                    lista.setCombustivel(rs.getString("combustivel"));
-//                    lista.setCambio(rs.getString("cambio"));
-//                    lista.setStatus(rs.getString("status"));
-//                }
-//                lista.setAcessorio(rs.getString("acessorios"));
-                //System.out.println(p.getData_cadastro());  
-                listaClientes.add(lista);
-                ListaVeiculos lista = new ListaVeiculos();
-                lista.setId(rs.getInt("id"));
-                lista.setModelo(rs.getString("modelo"));
-                lista.setMontadora(rs.getString("montadora"));
-                lista.setAno(rs.getInt("ano"));
-                lista.setPlaca(rs.getString("placa"));
-                lista.setRenavam(rs.getString("renavam"));
+                lista.setCnh(rs.getString("CNH"));
+                lista.setRg(rs.getString("RG"));
+                lista.setEmail(rs.getString("Email"));
+                lista.setNacionalidade(rs.getString("Nacionalidade"));
+                lista.setDatanascimento(rs.getDate("Data de Nascimento"));
+                lista.setEndereco(rs.getString("Endereço"));
+                lista.setCep(rs.getString("CEP"));
+                lista.setBairro(rs.getString("Bairro"));
+                lista.setComplemento(rs.getString("Complemento"));
+                lista.setCidade(rs.getString("Cidade"));
+                lista.setEstado(rs.getString("Estado"));
+                lista.setCelular(rs.getString("Celular"));
+                lista.setStatus(rs.getString("Status"));
                 if (id != 0) {
-                    lista.setCombustivel(rs.getString("id_combustivel"));
-                    lista.setCambio(rs.getString("id_cambio"));
-                    lista.setStatus(rs.getString("id_status"));
+                    lista.setIdsexo(rs.getInt("id_Sexo"));
+                    lista.setIdcategoriacnh(rs.getInt("id_Categoria_CNH"));
+                    lista.setIdCategoriaCliente(rs.getInt("id_Categoria "));
                 } else {
-                    lista.setCombustivel(rs.getString("combustivel"));
-                    lista.setCambio(rs.getString("cambio"));
-                    lista.setStatus(rs.getString("status"));
+                    lista.setIdsexo(rs.getInt("Sexo"));
+                    lista.setIdcategoriacnh(rs.getInt("Categoria_CNH"));
+                    lista.setIdCategoriaCliente(rs.getInt("Categoria "));
                 }
-                lista.setAcessorio(rs.getString("acessorios"));
-                //System.out.println(p.getData_cadastro());  
-                listaVeiculos.add(lista);
+                listaClientes.add(lista);
             }
 
         } catch (SQLException ex) {
@@ -365,5 +350,5 @@ public class ClienteDAO {
 
         return listaClientes;
     }
-   
+
 }

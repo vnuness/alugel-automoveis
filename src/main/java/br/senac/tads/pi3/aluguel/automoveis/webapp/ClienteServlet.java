@@ -5,7 +5,7 @@
  */
 package br.senac.tads.pi3.aluguel.automoveis.webapp;
 
-import DAO.VeiculoDAO;
+
 import DAO.ClienteDAO;
 import Models.Cliente;
 import com.google.gson.Gson;
@@ -36,10 +36,10 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException, ParseException {
         // RECUPERA INFORMACOES DA REQUISICAO
         if (metodoHttp.equals("POST")) { // Aqui verifico se o que veio na requisição é POST
-            if (request.getParameter("inativar") != null) { // Aqui verifico se o parametro EXCLUIR veio na requisição. Caso sim, o usuário está tentando excluir o veiculo.
+            if (request.getParameter("inativar") != null) { // Aqui verifico se o parametro INATIVAR veio na requisição. Caso sim, o usuário está tentando inativar um Cliente.
                 response.setContentType("application/json"); //aqui defino que o tipo de retorno deve ser JSON, para conseguirmos capturar a mensagem na view
                 int id = Integer.parseInt(request.getParameter("id")); //Aqui defino o ID com o que veio na requisição
-                if (ClienteDAO.Inativar(id)) { // Aqui chamo o metodo excluir da DAO, passando o ID por parametro
+                if (ClienteDAO.Inativar(id)) { // Aqui chamo o metodo inativar da DAO, passando o ID por parametro
                     String resposta = "{\"return\" : \"success\"}"; //Aqui defino o que será retornado para a view em caso de sucesso
                     try (PrintWriter out = response.getWriter()) {
                         out.println(resposta);
@@ -73,7 +73,7 @@ public class ClienteServlet extends HttpServlet {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
             Date dataNascimento = formatter.parse(dataNascimentoString);
             //Nas linhas acima defini as variaveis com os parametros que vieram na requisicao
-            if (request.getParameter("id") == null) { // aqui pergunto se veio ID na requisição. Caso não tenha vindo (igual a null) o usuário está tentando cadastrar um veiculo
+            if (request.getParameter("id") == null) { // aqui pergunto se veio ID na requisição. Caso não tenha vindo (igual a null) o usuário está tentando cadastrar um Cliente
                 Cliente c = new Cliente(nome, cpfCnpj, id_sexo, cnh, idCategoriaCnh, rg, email, nacionalidade, dataNascimento, endereco,
                 cep, bairro, complemento, cidade, estado, celular, status, categoria); // Então instancio um objeto da model para cadastrar (sem id)
                 if (ClienteDAO.Salvar(c)) {
