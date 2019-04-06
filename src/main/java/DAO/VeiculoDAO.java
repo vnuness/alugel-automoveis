@@ -88,28 +88,30 @@ public class VeiculoDAO {
     
 
     public static boolean Atualizar(Veiculo v) {
-        //MICHELLE, REALIZAR ATUALIZACAO DO REGISTRO
 
         boolean retorno = false;
         try {
             Connection Conexao = obterConexao();
 
             PreparedStatement Update = Conexao.prepareStatement(
-                    "UPDATE PRODUTOBD.PRODUTO SET "
-                    + "NOME = ?, "
-                    + "DESCRICAO = ?, "
-                    + "PRECO_COMPRA = ?, "
-                    + "PRECO_VENDA = ?,"
-                    + "QUANTIDADE = ?,"
-                    + "DISPONIVEL = ? "
+                    "UPDATE VEICULO SET MODELO = ? , "
+                            + "MONTADORA = ? , "
+                            + "ANO = ? , "
+                            + "PLACA = ? , "
+                            + "RENAVAM = ? , "
+                            + "ID_COMBUSTIVEL = ? ," 
+                            + "ID_CAMBIO = ? , "
+                            + "ID_STATUS = ? , "
+                            + "ACESSORIOS = ?"
                     + "WHERE ID = " + v.getId());
 
-            /*Update.setString(1, p.getNome());
-             Update.setString(2, p.getDescricao());
-             Update.setDouble(3, p.getPrecoCompra());
-             Update.setDouble(4, p.getPrecoVenda());
-             Update.setInt(5, p.getQuantidade());
-             Update.setInt(6, p.isDisponivel());*/
+             Update.setString(1, v.getModelo());
+             Update.setString(2, v.getMontadora());
+             Update.setInt(3, v.getAno());
+             Update.setString(4, v.getRenavam());
+             Update.setInt(5, v.getIdCombustivel());
+             Update.setInt(6, v.getIdStatus());
+             Update.setString(7, v.getAcessorio());
             int linhasAfetadas = Update.executeUpdate();
 
             if (linhasAfetadas > 0) {
