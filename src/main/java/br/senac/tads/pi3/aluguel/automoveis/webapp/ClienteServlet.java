@@ -67,13 +67,15 @@ public class ClienteServlet extends HttpServlet {
             String cidade = request.getParameter("Cidade");
             String estado = request.getParameter("Estado");
             String celular = request.getParameter("Celular");
+            String status = request.getParameter("Status");
+            String categoria = request.getParameter("Categoria");
             response.setContentType("application/json");
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
             Date dataNascimento = formatter.parse(dataNascimentoString);
             //Nas linhas acima defini as variaveis com os parametros que vieram na requisicao
             if (request.getParameter("id") == null) { // aqui pergunto se veio ID na requisição. Caso não tenha vindo (igual a null) o usuário está tentando cadastrar um veiculo
                 Cliente c = new Cliente(nome, cpfCnpj, id_sexo, cnh, idCategoriaCnh, rg, email, nacionalidade, dataNascimento, endereco,
-                cep, bairro, complemento, cidade, estado, celular); // Então instancio um objeto da model para cadastrar (sem id)
+                cep, bairro, complemento, cidade, estado, celular, status, categoria); // Então instancio um objeto da model para cadastrar (sem id)
                 if (ClienteDAO.Salvar(c)) {
                     String resposta = "{\"return\" : \"success\"}";
                     try (PrintWriter out = response.getWriter()) {
@@ -88,7 +90,7 @@ public class ClienteServlet extends HttpServlet {
             } else { // Caso caia no ELSE, significa que o usuario está tentando EDITAR. Ou sejam veio ID na requisição
                 int id = Integer.parseInt(request.getParameter("Id"));
                 Cliente c = new Cliente(id, nome, cpfCnpj, id_sexo, cnh, idCategoriaCnh, rg, email, nacionalidade, dataNascimento, endereco,
-                        cep, bairro, complemento, cidade, estado, celular);
+                        cep, bairro, complemento, cidade, estado, celular, status, categoria);
                 if (ClienteDAO.Atualizar(c)) {
                     String resposta = "{\"return\" : \"success\"}";
                     try (PrintWriter out = response.getWriter()) {
@@ -105,7 +107,7 @@ public class ClienteServlet extends HttpServlet {
         } else { // ESSE ELSE diz que o tipo de requisição foi GET. A requisição GET foi utilizada maioritariamente para buscar registros no banco de dados
             response.setContentType("application/json");
             if (request.getParameter("getStatus_Usuario_Cliente") != null) { //se Veio status na requisição, significa que estou pedindo os registros da tabela status no banco de DAdos, ou seja, estou querendo preencher meus combobox na view. O mesmo serve para os IFs abaixo*
-                String json = new Gson().toJson(ClienteDAO.getStatus_Cliente_Usuarios()); // AQUI uso uma API do Google que converte um ArrayList em JSON. Faço isso por que é melhor para tratar os dados no javascript/jquery
+                String json = new Gson().toJson(ClienteDAO.getStatusClienteUsuarios()); // AQUI uso uma API do Google que converte um ArrayList em JSON. Faço isso por que é melhor para tratar os dados no javascript/jquery
                 try (PrintWriter out = response.getWriter()) {
                     out.println(json);
                 }
@@ -115,12 +117,12 @@ public class ClienteServlet extends HttpServlet {
                     out.println(json);
                 }
             } else if(request.getParameter("getCategoria_CNH") != null) {
-                String json = new Gson().toJson(ClienteDAO.getCategoria_CNH());
+                String json = new Gson().toJson(ClienteDAO.getCategoriaCNH());
                 try (PrintWriter out = response.getWriter()) {
                     out.println(json);
                 }
             } else if(request.getParameter("getCategoria_Cliente") != null) {
-                String json = new Gson().toJson(ClienteDAO.getCategoria_Cliente());
+                String json = new Gson().toJson(ClienteDAO.getCategoriaCliente());
                 try (PrintWriter out = response.getWriter()) {
                     out.println(json);
                 }

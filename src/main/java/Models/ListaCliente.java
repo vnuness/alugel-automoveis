@@ -15,14 +15,14 @@ public class ListaCliente {
     
     private int id;
     private String nome;
-    private String cpf_cnpj;
-    private int id_sexo;
+    private String cpfcnpj;
+    private int idsexo;
     private String cnh;
-    private int id_categoria_cnh;
+    private int idcategoriacnh;
     private String rg;
     private String email;
     private String nacionalidade;
-    private Date data_nascimento;
+    private Date datanascimento;
     private String endereco;
     private String cep;
     private String bairro;
@@ -30,8 +30,24 @@ public class ListaCliente {
     private String cidade;
     private String estado;
     private String celular;
+    private String status;
+    private int idCategoriaCliente;
 
-    
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getIdCategoriaCliente() {
+        return idCategoriaCliente;
+    }
+
+    public void setIdCategoriaCliente(int idCategoriaCliente) {
+        this.idCategoriaCliente = idCategoriaCliente;
+    }
     
     public ListaCliente() {
         
@@ -53,20 +69,20 @@ public class ListaCliente {
         this.nome = nome;
     }
 
-    public String getCpf_cnpj() {
-        return cpf_cnpj;
+    public String getCpfcnpj() {
+        return cpfcnpj;
     }
 
-    public void setCpf_cnpj(String cpf_cnpj) {
-        this.cpf_cnpj = cpf_cnpj;
+    public void setCpfcnpj(String cpfcnpj) {
+        this.cpfcnpj = cpfcnpj;
     }
 
-    public int getId_sexo() {
-        return id_sexo;
+    public int getIdsexo() {
+        return idsexo;
     }
 
-    public void setId_sexo(int id_sexo) {
-        this.id_sexo = id_sexo;
+    public void setIdsexo(int id_sexo) {
+        this.idsexo = idsexo;
     }
 
     public String getCnh() {
@@ -77,12 +93,12 @@ public class ListaCliente {
         this.cnh = cnh;
     }
 
-    public int getId_categoria_cnh() {
-        return id_categoria_cnh;
+    public int getIdcategoriacnh() {
+        return idcategoriacnh;
     }
 
-    public void setId_categoria_cnh(int id_categoria_cnh) {
-        this.id_categoria_cnh = id_categoria_cnh;
+    public void setIdcategoriacnh(int idcategoriacnh) {
+        this.idcategoriacnh = idcategoriacnh;
     }
 
     public String getRg() {
@@ -109,12 +125,12 @@ public class ListaCliente {
         this.nacionalidade = nacionalidade;
     }
 
-    public Date getData_nascimento() {
-        return data_nascimento;
+    public Date getDatanascimento() {
+        return datanascimento;
     }
 
-    public void setData_nascimento(Date data_nascimento) {
-        this.data_nascimento = data_nascimento;
+    public void setDatanascimento(Date datanascimento) {
+        this.datanascimento = datanascimento;
     }
 
     public String getEndereco() {
