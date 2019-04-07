@@ -17,7 +17,7 @@
                             class="ti-user"></i><span> Gerenciamento </span></a>
                 </li>
 
-                <li class="menu-title">Veículos</li>
+                <li class="menu-title">VeÃ­culos</li>
 
                 <li>
                     <a href="veiculos.jsp" class="waves-effect waves-primary"><i
@@ -29,11 +29,11 @@
                             class="ti-back-left"></i><span> Devolutivas </span></a>
                 </li>
                 
-                <li class="menu-title">Ações</li>
+                <li class="menu-title">AÃ§Ãµes</li>
                 
                 <li>
                     <a href="index.html" class="waves-effect waves-primary"><i
-                            class="ti-money"></i><span>Realizar Locação</span></a>
+                            class="ti-money"></i><span>Realizar LocaÃ§Ã£o</span></a>
                 </li>
 
             </ul>
