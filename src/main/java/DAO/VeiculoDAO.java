@@ -52,15 +52,15 @@ public class VeiculoDAO {
         try {
             PreparedStatement Create = connection.prepareStatement(
                     "INSERT INTO tades_locadora.veiculo ("
-                    + "MODELO,"
-                    + "MONTADORA,"
-                    + "ANO,"
-                    + "PLACA,"
-                    + "RENAVAM,"
-                    + "ID_COMBUSTIVEL,"
-                    + "ID_CAMBIO,"
-                    + "ID_STATUS,"        
-                    + "ACESSORIOS)"
+                    + "modelo,"
+                    + "montadora,"
+                    + "ano,"
+                    + "placa,"
+                    + "renavam,"
+                    + "id_combustivel,"
+                    + "id_cambio,"
+                    + "id_status,"        
+                    + "acessorios)"
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             Create.setString(1, v.getModelo());
@@ -90,28 +90,31 @@ public class VeiculoDAO {
     public static boolean Atualizar(Veiculo v) {
 
         boolean retorno = false;
+        System.out.println(v);
         try {
             Connection Conexao = obterConexao();
 
             PreparedStatement Update = Conexao.prepareStatement(
-                    "UPDATE VEICULO SET MODELO = ? , "
-                            + "MONTADORA = ? , "
-                            + "ANO = ? , "
-                            + "PLACA = ? , "
-                            + "RENAVAM = ? , "
-                            + "ID_COMBUSTIVEL = ? ," 
-                            + "ID_CAMBIO = ? , "
-                            + "ID_STATUS = ? , "
-                            + "ACESSORIOS = ?"
-                    + "WHERE ID = " + v.getId());
+                    "UPDATE veiculo SET modelo = ? , "
+                            + "montadora = ? , "
+                            + "ano = ? , "
+                            + "placa = ? , "
+                            + "renavam = ? , "
+                            + "id_combustivel = ? ," 
+                            + "id_cambio = ? , "
+                            + "id_status = ? , "
+                            + "acessorios = ?"
+                    + "WHERE id = " + v.getId());
 
              Update.setString(1, v.getModelo());
              Update.setString(2, v.getMontadora());
              Update.setInt(3, v.getAno());
-             Update.setString(4, v.getRenavam());
-             Update.setInt(5, v.getIdCombustivel());
-             Update.setInt(6, v.getIdStatus());
-             Update.setString(7, v.getAcessorio());
+             Update.setString(4, v.getPlaca());
+             Update.setString(5, v.getRenavam());
+             Update.setInt(6, v.getIdCombustivel());
+             Update.setInt(7, v.getIdCambio());
+             Update.setInt(8, v.getIdStatus());
+             Update.setString(9, v.getAcessorio());
             int linhasAfetadas = Update.executeUpdate();
 
             if (linhasAfetadas > 0) {
@@ -121,6 +124,7 @@ public class VeiculoDAO {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            System.out.println(ex);
             Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return retorno;
@@ -153,7 +157,7 @@ public class VeiculoDAO {
     public static ArrayList<StatusVeiculo> getStatus() {
         ArrayList<StatusVeiculo> listaStatus = new ArrayList<StatusVeiculo>();
         
-        String query = "SELECT * FROM STATUS_VEICULO;";
+        String query = "SELECT * FROM status_veiculo;";
         
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
@@ -176,7 +180,7 @@ public class VeiculoDAO {
     public static ArrayList<CombustivelVeiculo> getCombustivel() {
         ArrayList<CombustivelVeiculo> listaCombustivel = new ArrayList<CombustivelVeiculo>();
         
-        String query = "SELECT * FROM COMBUSTIVEL;";
+        String query = "SELECT * FROM combustivel;";
         
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
@@ -199,7 +203,7 @@ public class VeiculoDAO {
     public static ArrayList<CambioVeiculo> getCambio() {
         ArrayList<CambioVeiculo> listaCambio = new ArrayList<CambioVeiculo>();
         
-        String query = "SELECT * FROM CAMBIO;";
+        String query = "SELECT * FROM cambio;";
         
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);

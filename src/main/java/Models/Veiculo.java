@@ -27,7 +27,7 @@ public class Veiculo
         
     }
     
-    public Veiculo(int vId, String vModelo, String vMontadora, int vAno, String vPlaca, String vRenavam, int vIdCombustivel, int vIdCambio, String vAcessorio)
+    public Veiculo(int vId, String vModelo, String vMontadora, int vAno, String vPlaca, String vRenavam, int vIdCombustivel, int vIdCambio, int vIdStatus, String vAcessorio)
     {
         this.id = vId;
         this.modelo = vModelo;
@@ -37,10 +37,11 @@ public class Veiculo
         this.renavam = vRenavam;
         this.idCombustivel = vIdCombustivel;
         this.idCambio = vIdCambio;
+        this.idStatus = vIdStatus;
         this.acessorio = vAcessorio;
     }
     
-    public Veiculo(String vModelo, String vMontadora, int vAno, String vPlaca, String vRenavam, int vIdCombustivel, int vIdCambio, String vAcessorio)
+    public Veiculo(String vModelo, String vMontadora, int vAno, String vPlaca, String vRenavam, int vIdCombustivel, int vIdCambio, int vIdStatus, String vAcessorio)
     {
         this.modelo = vModelo;
         this.montadora = vMontadora;
@@ -49,6 +50,7 @@ public class Veiculo
         this.renavam = vRenavam;
         this.idCombustivel = vIdCombustivel;
         this.idCambio = vIdCambio;
+        this.idStatus = vIdStatus;
         this.acessorio = vAcessorio;
     }
 
@@ -117,7 +119,7 @@ public class Veiculo
     }
     
     public int getIdStatus() {
-        return idCambio;
+        return idStatus;
     }
 
     public void setIdStatus(int idStatus) {

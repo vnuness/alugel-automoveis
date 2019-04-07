@@ -332,6 +332,7 @@
                         'renavam': $('input[name=renavam]').val(),
                         'combustivel': $('#combustivel').val(),
                         'cambio': $('#cambio').val(),
+                        'status' : $('#status').val(),
                         'acessorios': $('#acessorios').val()
                     }
                 } else if (action === "editar") { // se a ação for Editar, passo o ID para editar somente aquele ID.
@@ -344,6 +345,7 @@
                         'renavam': $('input[name=renavam]').val(),
                         'combustivel': $('#combustivel').val(),
                         'cambio': $('#cambio').val(),
+                        'status' : $('#status').val(),
                         'acessorios': $('#acessorios').val()
                     }
                 }
