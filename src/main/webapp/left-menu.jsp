@@ -13,11 +13,11 @@
                 <li class="menu-title">Cliente</li>
 
                 <li>
-                    <a href="index.html" class="waves-effect waves-primary"><i
+                    <a href="clientes.jsp" class="waves-effect waves-primary"><i
                             class="ti-user"></i><span> Gerenciamento </span></a>
                 </li>
 
-                <li class="menu-title">Veículos</li>
+                <li class="menu-title">Veï¿½culos</li>
 
                 <li>
                     <a href="veiculos.jsp" class="waves-effect waves-primary"><i
@@ -29,11 +29,11 @@
                             class="ti-back-left"></i><span> Devolutivas </span></a>
                 </li>
                 
-                <li class="menu-title">Ações</li>
+                <li class="menu-title">Aï¿½ï¿½es</li>
                 
                 <li>
                     <a href="index.html" class="waves-effect waves-primary"><i
-                            class="ti-money"></i><span>Realizar Locação</span></a>
+                            class="ti-money"></i><span>Realizar Locaï¿½ï¿½o</span></a>
                 </li>
 
             </ul>
