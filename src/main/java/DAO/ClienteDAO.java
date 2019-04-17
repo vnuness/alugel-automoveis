@@ -19,6 +19,8 @@ import Models.ListaCliente;
 import Models.Sexo;
 import Models.StatusClienteUsuario;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class ClienteDAO {
 
@@ -34,7 +36,7 @@ public class ClienteDAO {
         return conn;
     }
 
-    public static boolean Salvar(Cliente c) {
+    public static boolean Salvar(Cliente c) throws ParseException {
         boolean retorno = false;
 
         Connection connection = null;
@@ -45,56 +47,104 @@ public class ClienteDAO {
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //String data = dfUsa.format();
+        //Date parsed = (Date) dfUsa.parse(data);
 
-        try {
-            PreparedStatement Create = connection.prepareStatement(
-                    "INSERT INTO cliente ("
-                    + "NOME,"
-                    + "CPF_CNPJ,"
-                    + "ID_SEXO,"
-                    + "CNH,"
-                    + "ID_CATEGORIA_CNH,"
-                    + "RG,"
-                    + "EMAIL,"
-                    + "NACIONALIDASE,"
-                    + "DATA_NASCIMENTO,"
-                    + "ENDERECO,"
-                    + "CEP,"
-                    + "BAIRRO,"
-                    + "COMPLEMENTO,"
-                    + "CIDADE,"
-                    + "ESTADO,"
-                    + "CELULAR,"
-                    + "STATUS,"
-                    + "ID_CATEGORIA_CLIENTE)"
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        if (c.getIdCategoriaCliente() == 2) {
+            try {
+                PreparedStatement Create = connection.prepareStatement(
+                        "INSERT INTO cliente (nome, "
+                        + " cpf_cnpj,"
+                        + " cnh,"
+                        + " id_categoria_cnh,"
+                        + " email,"
+                        + " validade_cnh,"
+                        + " endereco,"
+                        + " cep,"
+                        + " bairro,"
+                        + " complemento,"
+                        + " cidade,"
+                        + " estado,"
+                        + " celular,"
+                        + " id_categoria_cliente)"
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-            Create.setString(1, c.getNome());
-            Create.setString(2, c.getCpfcnpj());
-            Create.setInt(3, c.getIdsexo());
-            Create.setString(4, c.getCnh());
-            Create.setInt(5, c.getIdcategoriacnh());
-            Create.setString(6, c.getRg());
-            Create.setString(7, c.getEmail());
-            Create.setString(8, c.getNacionalidade());
-            Create.setDate(9, (Date) c.getDatanascimento()); //duvida, tem que ficar assim para data???
-            Create.setString(10, c.getEndereco());
-            Create.setString(11, c.getCep());
-            Create.setString(12, c.getBairro());
-            Create.setString(13, c.getComplemento());
-            Create.setString(14, c.getCidade());
-            Create.setString(15, c.getEstado());
-            Create.setString(16, c.getCelular());
-            Create.setString(17, c.getStatus());
-            Create.setInt(18, c.getIdCategoriaCliente());
+                Create.setString(1, c.getNome());
+                Create.setString(2, c.getCpfCnpj());
+                Create.setString(3, c.getCnh());
+                Create.setInt(4, c.getIdcategoriacnh());
+                Create.setString(5, c.getEmail());
+                Create.setString(6, c.getDataNascimento());
+                Create.setString(7, c.getEndereco());
+                Create.setString(8, c.getCep());
+                Create.setString(9, c.getBairro());
+                Create.setString(10, c.getComplemento());
+                Create.setString(11, c.getCidade());
+                Create.setString(12, c.getEstado());
+                Create.setString(13, c.getCelular());
+                Create.setInt(14, c.getIdCategoriaCliente());
 
-            int linhasAfetadas = Create.executeUpdate();
+                int linhasAfetadas = Create.executeUpdate();
 
-            if (linhasAfetadas > 0) {
-                retorno = true;
+                if (linhasAfetadas > 0) {
+                    retorno = true;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } else {
+            try {
+                PreparedStatement Create = connection.prepareStatement(
+                        "INSERT INTO cliente ("
+                        + "nome,"
+                        + "	cpf_cnpj,"
+                        + "	id_sexo,"
+                        + "	 id_categoria_cliente ,"
+                        + "	 cnh ,"
+                        + "	 id_categoria_cnh ,"
+                        + "	 rg ,"
+                        + "	 email ,"
+                        + "	 nacionalidade ,"
+                        + "	 data_nascimento ,"
+                        + "	 validade_cnh ,"
+                        + "	 cep ,"
+                        + "	 endereco ,"
+                        + "	 numero ,"
+                        + "	 bairro ,"
+                        + "	 complemento ,"
+                        + "	 cidade ,"
+                        + "	 estado ,"
+                        + "	 celular)"
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+                Create.setString(1, c.getNome());
+                Create.setString(2, c.getCpfCnpj());
+                Create.setInt(3, c.getIdsexo());
+                Create.setInt(4, c.getIdCategoriaCliente());
+                Create.setString(5, c.getCnh());
+                Create.setInt(6, c.getIdcategoriacnh());
+                Create.setString(7, c.getRg());
+                Create.setString(8, c.getEmail());
+                Create.setString(9, c.getNacionalidade());
+                Create.setString(10, c.getDataNascimento());
+                Create.setString(11, c.getValidadeCnh());
+                Create.setString(12, c.getCep());
+                Create.setString(13, c.getEndereco());
+                Create.setInt(14, c.getNumero());
+                Create.setString(15, c.getBairro());
+                Create.setString(16, c.getComplemento());
+                Create.setString(17, c.getCidade());
+                Create.setString(18, c.getEstado());
+                Create.setString(19, c.getCelular());
+
+                int linhasAfetadas = Create.executeUpdate();
+
+                if (linhasAfetadas > 0) {
+                    retorno = true;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         return retorno;
@@ -108,8 +158,9 @@ public class ClienteDAO {
 
             PreparedStatement Update = Conexao.prepareStatement(
                     "UPDATE cliente SET "
-                    + "id_status_cliente = 2"
-                    + "WHERE ID = " + id);
+                    + "id_status = 2 "
+                    + "WHERE id = ?");
+            Update.setInt(1, id);
             int linhasAfetadas = Update.executeUpdate();
 
             if (linhasAfetadas > 0) {
@@ -153,14 +204,14 @@ public class ClienteDAO {
                     + "WHERE ID = ");
 
             Update.setString(1, c.getNome());
-            Update.setString(2, c.getCpfcnpj());
+            Update.setString(2, c.getCpfCnpj());
             Update.setInt(3, c.getIdsexo());
             Update.setString(4, c.getCnh());
             Update.setInt(5, c.getIdcategoriacnh());
             Update.setString(6, c.getRg());
             Update.setString(7, c.getEmail());
             Update.setString(8, c.getNacionalidade());
-            Update.setDate(9, (Date) c.getDatanascimento()); //duvida, tem que ficar assim para data???
+            Update.setString(9, c.getDataNascimento());
             Update.setString(10, c.getEndereco());
             Update.setString(11, c.getCep());
             Update.setString(12, c.getBairro());
@@ -168,7 +219,7 @@ public class ClienteDAO {
             Update.setString(14, c.getCidade());
             Update.setString(15, c.getEstado());
             Update.setString(16, c.getCelular());
-            Update.setString(17, c.getStatus());
+            Update.setInt(17, c.getStatus());
             Update.setInt(18, c.getIdCategoriaCliente());
             Update.setInt(19, c.getId());
         } catch (ClassNotFoundException ex) {
@@ -182,7 +233,7 @@ public class ClienteDAO {
     public static ArrayList<CategoriaCNH> getCategoriaCNH() {
         ArrayList<CategoriaCNH> listaCategoriaCNH = new ArrayList<CategoriaCNH>();
 
-        String query = "SELECT * FROM CATEGORIA_CNH;";
+        String query = "SELECT * FROM categoria_cnh;";
 
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
@@ -229,7 +280,7 @@ public class ClienteDAO {
     public static ArrayList<Sexo> getSexo() {
         ArrayList<Sexo> listaSexo = new ArrayList<Sexo>();
 
-        String query = "SELECT * FROM SEXO;";
+        String query = "SELECT * FROM sexo;";
 
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
@@ -276,37 +327,18 @@ public class ClienteDAO {
     public static ArrayList<ListaCliente> getCliente(int id) {
         ArrayList<ListaCliente> listaClientes = new ArrayList<ListaCliente>();
 
-        String query = "";
+        String query = "select "
+                + "cliente.id, "
+                + "nome, "
+                + "categoria_cliente.categoria, "
+                + "cpf_cnpj, "
+                + "email, "
+                + "`status_cliente_usuario`.`status` "
+                + "from tades_locadora.cliente "
+                + "INNER JOIN categoria_cliente ON cliente.id_categoria_cliente = categoria_cliente.id "
+                + "INNER JOIN status_cliente_usuario ON cliente.id_status = status_cliente_usuario.id";
         if (id != 0) {
-            query = "SELECT * FROM cliente where id = " + id;
-        } else {
-            query = "SELECT \n"
-                    + "	cliente.id, \n"
-                    + "	cliente.nome, \n"
-                    + "	cliente.cpfcnpj, \n"
-                    + "	cliente.idsexo, \n"
-                    + "	cliente.cnh, \n"
-                    + "	cliente.idcategoriacnh,\n"
-                    + "	cliente.rg,\n"
-                    + "	cliente.email,\n"
-                    + "	cliente.nacionalidade,\n"
-                    + "	cliente.datanascimento,\n"
-                    + "	cliente.endereco,\n"
-                    + "	cliente.cep,\n"
-                    + "	cliente.bairro,\n"
-                    + "	cliente.complemento,\n"
-                    + "	cliente.cidade,\n"
-                    + "	cliente.estado,\n"
-                    + "	cliente.celular,\n"
-                    + " categoria_cnh.categoria_cnh, \n"
-                    + " status_cliente_usuario.status,\n"
-                    + " sexo.sexo, \n"
-                    + " categoria_cliente.categoria, \n"
-                    + "	INNER JOIN `categoria_cnh` ON `clientes`.id_categoria_cnh = `categoria_cnh`.id \n"
-                    + "	INNER JOIN `Status_cliente_usuario` ON `clientes`.status = `status_cliente_usuario`.id \n"
-                    + "	INNER JOIN `sexo` ON `clientes`.id_sexo = `sexo`.id \n"
-                    + "	INNER JOIN `categoria_cleinte` ON `clientes`.id_categoria_cliente = `categoria_cliente`.id";
-
+            query += " where cliente.id = " + id;
         }
 
         try (Connection conn = obterConexao();
@@ -316,29 +348,10 @@ public class ClienteDAO {
                 ListaCliente lista = new ListaCliente();
                 lista.setId(rs.getInt("id"));
                 lista.setNome(rs.getString("nome"));
-                lista.setCpfcnpj(rs.getString("CPF/CNPJ"));
-                lista.setCnh(rs.getString("CNH"));
-                lista.setRg(rs.getString("RG"));
-                lista.setEmail(rs.getString("Email"));
-                lista.setNacionalidade(rs.getString("Nacionalidade"));
-                lista.setDatanascimento(rs.getDate("Data de Nascimento"));
-                lista.setEndereco(rs.getString("Endereço"));
-                lista.setCep(rs.getString("CEP"));
-                lista.setBairro(rs.getString("Bairro"));
-                lista.setComplemento(rs.getString("Complemento"));
-                lista.setCidade(rs.getString("Cidade"));
-                lista.setEstado(rs.getString("Estado"));
-                lista.setCelular(rs.getString("Celular"));
-                lista.setStatus(rs.getString("Status"));
-                if (id != 0) {
-                    lista.setIdsexo(rs.getInt("id_Sexo"));
-                    lista.setIdcategoriacnh(rs.getInt("id_Categoria_CNH"));
-                    lista.setIdCategoriaCliente(rs.getInt("id_Categoria "));
-                } else {
-                    lista.setIdsexo(rs.getInt("Sexo"));
-                    lista.setIdcategoriacnh(rs.getInt("Categoria_CNH"));
-                    lista.setIdCategoriaCliente(rs.getInt("Categoria "));
-                }
+                lista.setCpfcnpj(rs.getString("cpf_cnpj"));
+                lista.setEmail(rs.getString("email"));
+                lista.setStatus(rs.getString("status"));
+                lista.setCategoria(rs.getString("categoria"));
                 listaClientes.add(lista);
             }
 

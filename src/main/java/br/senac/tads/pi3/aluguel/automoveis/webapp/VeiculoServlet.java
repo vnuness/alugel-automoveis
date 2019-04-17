@@ -36,7 +36,7 @@ public class VeiculoServlet extends HttpServlet {
             if (request.getParameter("excluir") != null) { // Aqui verifico se o parametro EXCLUIR veio na requisição. Caso sim, o usuário está tentando excluir o veiculo.
                 response.setContentType("application/json"); //aqui defino que o tipo de retorno deve ser JSON, para conseguirmos capturar a mensagem na view
                 int id = Integer.parseInt(request.getParameter("id")); //Aqui defino o ID com o que veio na requisição
-                if (VeiculoDAO.Excluir(id)) { // Aqui chamo o metodo excluir da DAO, passando o ID por parametro
+                if (VeiculoDAO.Inativar(id)) { // Aqui chamo o metodo excluir da DAO, passando o ID por parametro
                     String resposta = "{\"return\" : \"success\"}"; //Aqui defino o que será retornado para a view em caso de sucesso
                     try (PrintWriter out = response.getWriter()) {
                         out.println(resposta);

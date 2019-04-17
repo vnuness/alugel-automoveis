@@ -13,7 +13,7 @@
                 <li class="menu-title">Cliente</li>
 
                 <li>
-                    <a href="index.html" class="waves-effect waves-primary"><i
+                    <a href="clientes.jsp" class="waves-effect waves-primary"><i
                             class="ti-user"></i><span> Gerenciamento </span></a>
                 </li>
 

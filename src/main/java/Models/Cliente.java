@@ -10,43 +10,44 @@ public class Cliente {
 
     private int id;
     private String nome;
-    private String cpfcnpj;
+    private String cpfCnpj;
     private int idsexo;
     private String cnh;
-    private int idcategoriacnh;
+    private int idCategoriaCnh;
     private String rg;
+    private String validadeCnh;
     private String email;
     private String nacionalidade;
-    private Date datanascimento;
+    private String dataNascimento;
     private String endereco;
     private String cep;
     private String bairro;
     private String complemento;
+    private int numero;
     private String cidade;
     private String estado;
     private String celular;
-    private String status;
+    private int status;
     private int idCategoriaCliente;
 
     public Cliente() {
 
     }
-    final String DATA_NASCIMENTO = "teste";
 
     public Cliente(int cId, String cNome, String cCpfCnpj, int cIdsexo, String cCnh, int cIdcategoriacnh,
-            String cRg, String cEmail, String cNacionalidade, Date cDatanascimento, String cEndereco,
-            String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular, String cStatus,
+            String cRg, String cEmail, String cNacionalidade, String cDatanascimento, String cEndereco,
+            String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular, int cStatus,
             int cIdCategoriaCliente) {
         this.id = cId;
         this.nome = cNome;
-        this.cpfcnpj = cCpfCnpj;
+        this.cpfCnpj = cCpfCnpj;
         this.idsexo = cIdsexo;
         this.cnh = cCnh;
-        this.idcategoriacnh = cIdcategoriacnh;
+        this.idCategoriaCnh = cIdcategoriacnh;
         this.rg = cRg;
         this.email = cEmail;
         this.nacionalidade = cNacionalidade;
-        this.datanascimento = cDatanascimento;
+        this.dataNascimento = cDatanascimento;
         this.endereco = cEndereco;
         this.cep = cCep;
         this.bairro = cBairro;
@@ -58,19 +59,40 @@ public class Cliente {
         this.idCategoriaCliente = cIdCategoriaCliente;
     }
 
-    public Cliente(String cNome, String cCpfCnpj, int cIdsexo, String cCnh, int cIdcategoriacnh,
-            String cRg, String cEmail, String cNacionalidade, Date cDatanascimento, String cEndereco,
-            String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular, String cStatus,
-            int cIdCategoriaCliente) {
+    public Cliente(String cNome, String cCpfCnpj, int cIdsexo, int cIdCategoriaCliente, String cCnh, int cIdcategoriacnh,
+            String cRg, String cEmail, String cNacionalidade, String cDatanascimento, String cValidadeCnh, String cCep, String cEndereco, int cNumero,
+            String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular
+            ) {
         this.nome = cNome;
-        this.cpfcnpj = cCpfCnpj;
+        this.cpfCnpj = cCpfCnpj;
         this.idsexo = cIdsexo;
+        this.idCategoriaCliente = cIdCategoriaCliente;
         this.cnh = cCnh;
-        this.idcategoriacnh = cIdcategoriacnh;
+        this.idCategoriaCnh = cIdcategoriacnh;
         this.rg = cRg;
         this.email = cEmail;
         this.nacionalidade = cNacionalidade;
-        this.datanascimento = cDatanascimento;
+        this.dataNascimento = cDatanascimento;
+        this.validadeCnh = cValidadeCnh;
+        this.cep = cCep;
+        this.endereco = cEndereco;
+        this.numero = cNumero;
+        this.bairro = cBairro;
+        this.complemento = cComplemento;
+        this.cidade = cCidade;
+        this.estado = cEstado;
+        this.celular = cCelular;
+
+    }
+    
+    public Cliente(String cNome, String cCpfCnpj, String cCnh, int cIdCategoriaCnh, String cEmail, String cDataNascimento, String cEndereco, String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular, int cIdCategoriaCliente)
+    {
+        this.nome = cNome;
+        this.cpfCnpj = cCpfCnpj;
+        this.cnh = cCnh;
+        this.idCategoriaCnh = cIdCategoriaCnh;
+        this.email = cEmail;
+        this.dataNascimento = cDataNascimento;
         this.endereco = cEndereco;
         this.cep = cCep;
         this.bairro = cBairro;
@@ -78,17 +100,40 @@ public class Cliente {
         this.cidade = cCidade;
         this.estado = cEstado;
         this.celular = cCelular;
-        this.status = cStatus;
         this.idCategoriaCliente = cIdCategoriaCliente;
-
+        
+    }
+    
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
-    public Cliente(String nome, String cpfCnpj, int id_sexo, String cnh, int idCategoriaCnh, String rg, String email, String nacionalidade, Date dataNascimento, String endereco, String cep, String bairro, String complemento, String cidade, String estado, String celular, String status, String categoria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
-    public Cliente(int id, String nome, String cpfCnpj, int id_sexo, String cnh, int idCategoriaCnh, String rg, String email, String nacionalidade, Date dataNascimento, String endereco, String cep, String bairro, String complemento, String cidade, String estado, String celular, String status, String categoria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getIdCategoriaCnh() {
+        return idCategoriaCnh;
+    }
+
+    public void setIdCategoriaCnh(int idCategoriaCnh) {
+        this.idCategoriaCnh = idCategoriaCnh;
+    }
+
+    public String getValidadeCnh() {
+        return validadeCnh;
+    }
+
+    public void setValidadeCnh(String validadeCnh) {
+        this.validadeCnh = validadeCnh;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
     public int getIdCategoriaCliente() {
@@ -99,11 +144,11 @@ public class Cliente {
         this.idCategoriaCliente = idCategoriaCliente;
     }
     
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -123,20 +168,12 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getCpfcnpj() {
-        return cpfcnpj;
-    }
-
-    public void setCpfcnpj(String cpf_cnpj) {
-        this.cpfcnpj = cpfcnpj;
-    }
-
     public int getIdsexo() {
         return idsexo;
     }
 
-    public void setIdsexo(int id_sexo) {
-        this.idsexo = idsexo;
+    public void setIdsexo(int idSexo) {
+        this.idsexo = idSexo;
     }
 
     public String getCnh() {
@@ -148,11 +185,11 @@ public class Cliente {
     }
 
     public int getIdcategoriacnh() {
-        return idcategoriacnh;
+        return idCategoriaCnh;
     }
 
     public void setIdcategoriacnh(int idcategoriacnh) {
-        this.idcategoriacnh = idcategoriacnh;
+        this.idCategoriaCnh = idcategoriacnh;
     }
 
     public String getRg() {
@@ -179,12 +216,12 @@ public class Cliente {
         this.nacionalidade = nacionalidade;
     }
 
-    public Date getDatanascimento() {
-        return datanascimento;
+    public String getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDatanascimento(Date data_nascimento) {
-        this.datanascimento = data_nascimento;
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public String getEndereco() {

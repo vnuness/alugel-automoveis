@@ -3,6 +3,7 @@
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
     <link href="plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
     <link href="plugins/select2/css/select2.css" rel="stylesheet"/>
@@ -15,8 +16,10 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <!-- Plugins  -->
     <script src="assets/js/jquery.min.js"></script>
-    <script src="plugins/jquery-mask/jquery.mask.min.js"
-    <script src="assets/js/popper.min.js"></script><!-- Popper for Bootstrap -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--<script src="plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"></script>-->
+    <script src="plugins/jquery-mask/jquery.mask.min.js"></script>
+    <!--<script src="assets/js/popper.min.js"></script><!-- Popper for Bootstrap -->
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/detect.js"></script>
     <script src="assets/js/fastclick.js"></script>
@@ -29,6 +32,7 @@
     <script src="plugins/switchery/switchery.min.js"></script>
     <script src="plugins/sweet-alert/sweetalert2.min.js"></script>
     <script src="assets/pages/jquery.sweet-alert.init.js"></script>
+    <script src="plugins/moment/moment.js"></script>
 
     <!-- Counter Up  -->
     <script src="plugins/waypoints/lib/jquery.waypoints.min.js"></script>

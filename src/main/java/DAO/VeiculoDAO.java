@@ -59,7 +59,7 @@ public class VeiculoDAO {
                     + "renavam,"
                     + "id_combustivel,"
                     + "id_cambio,"
-                    + "id_status,"        
+                    + "id_status,"
                     + "acessorios)"
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
@@ -84,8 +84,6 @@ public class VeiculoDAO {
 
         return retorno;
     }
-    
-    
 
     public static boolean Atualizar(Veiculo v) {
 
@@ -96,25 +94,25 @@ public class VeiculoDAO {
 
             PreparedStatement Update = Conexao.prepareStatement(
                     "UPDATE veiculo SET modelo = ? , "
-                            + "montadora = ? , "
-                            + "ano = ? , "
-                            + "placa = ? , "
-                            + "renavam = ? , "
-                            + "id_combustivel = ? ," 
-                            + "id_cambio = ? , "
-                            + "id_status = ? , "
-                            + "acessorios = ?"
+                    + "montadora = ? , "
+                    + "ano = ? , "
+                    + "placa = ? , "
+                    + "renavam = ? , "
+                    + "id_combustivel = ? ,"
+                    + "id_cambio = ? , "
+                    + "id_status = ? , "
+                    + "acessorios = ?"
                     + "WHERE id = " + v.getId());
 
-             Update.setString(1, v.getModelo());
-             Update.setString(2, v.getMontadora());
-             Update.setInt(3, v.getAno());
-             Update.setString(4, v.getPlaca());
-             Update.setString(5, v.getRenavam());
-             Update.setInt(6, v.getIdCombustivel());
-             Update.setInt(7, v.getIdCambio());
-             Update.setInt(8, v.getIdStatus());
-             Update.setString(9, v.getAcessorio());
+            Update.setString(1, v.getModelo());
+            Update.setString(2, v.getMontadora());
+            Update.setInt(3, v.getAno());
+            Update.setString(4, v.getPlaca());
+            Update.setString(5, v.getRenavam());
+            Update.setInt(6, v.getIdCombustivel());
+            Update.setInt(7, v.getIdCambio());
+            Update.setInt(8, v.getIdStatus());
+            Update.setString(9, v.getAcessorio());
             int linhasAfetadas = Update.executeUpdate();
 
             if (linhasAfetadas > 0) {
@@ -153,12 +151,38 @@ public class VeiculoDAO {
         }
         return retorno;
     }
-    
+
+    public static boolean Inativar(int id) {
+        boolean retorno = false;
+        try {
+            Connection Conexao = obterConexao();
+
+            PreparedStatement Update = Conexao.prepareStatement(
+                    "UPDATE veiculo SET id_status_atividade = 2 "
+                    + "WHERE id = ?");
+
+            Update.setInt(1, id);
+            int linhasAfetadas = Update.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                retorno = true;
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
+
+    }
+
     public static ArrayList<StatusVeiculo> getStatus() {
         ArrayList<StatusVeiculo> listaStatus = new ArrayList<StatusVeiculo>();
-        
+
         String query = "SELECT * FROM status_veiculo;";
-        
+
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
@@ -176,12 +200,12 @@ public class VeiculoDAO {
         }
         return listaStatus;
     }
-    
+
     public static ArrayList<CombustivelVeiculo> getCombustivel() {
         ArrayList<CombustivelVeiculo> listaCombustivel = new ArrayList<CombustivelVeiculo>();
-        
+
         String query = "SELECT * FROM combustivel;";
-        
+
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
@@ -199,12 +223,12 @@ public class VeiculoDAO {
         }
         return listaCombustivel;
     }
-    
+
     public static ArrayList<CambioVeiculo> getCambio() {
         ArrayList<CambioVeiculo> listaCambio = new ArrayList<CambioVeiculo>();
-        
+
         String query = "SELECT * FROM cambio;";
-        
+
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
@@ -228,7 +252,7 @@ public class VeiculoDAO {
 
         String query = "";
         if (id != 0) {
-            query = "SELECT * FROM veiculo where id = " + id;
+            query = "SELECT * FROM veiculo where id_status_atividade = 1 AND id = " + id;
         } else {
             query = "SELECT \n"
                     + "	veiculo.id, \n"
@@ -243,7 +267,8 @@ public class VeiculoDAO {
                     + "	veiculo.acessorios FROM veiculo\n"
                     + "	INNER JOIN `combustivel` ON `combustivel`.id = `veiculo`.id_combustivel\n"
                     + "	INNER JOIN `status_veiculo` ON `status_veiculo`.id = `veiculo`.id_status\n"
-                    + "	INNER JOIN `cambio` ON `cambio`.id = `veiculo`.id_cambio";
+                    + "	INNER JOIN `cambio` ON `cambio`.id = `veiculo`.id_cambio"
+                    + " WHERE id_status_atividade = 1";
         }
 
         try (Connection conn = obterConexao();
@@ -279,6 +304,6 @@ public class VeiculoDAO {
 
         return listaVeiculos;
     }
-    
+
     //public static ArrayList<ListaVeiculos> getVeiculos(int id) {
 }

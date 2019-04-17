@@ -63,7 +63,7 @@
                                         <div class="portlet">
                                             <div class="portlet-heading bg-inverse">
                                                 <h3 class="portlet-title">
-                                                    <i class="ion-search"></i> RESULTADO DA PESQUISA
+                                                    <i class="ion-model-s"></i> VEÍCULOS
                                                 </h3>
 
                                                 <div class="portlet-widgets">
@@ -207,7 +207,7 @@
                                             <button type="button" id="cancelar" class="btn btn-secondary waves-effect" data-dismiss="modal">Cancelar
                                             </button>
                                             <button type="submit" id="enviar" class="btn btn-success waves-effect waves-light">
-                                                Cadastrar
+                                                Enviar
                                             </button>
                                         </div>
                                     </div><!-- /.modal-content -->
@@ -241,7 +241,11 @@
                 $('input[name=placa]').mask('AAA-0000');
                 loadTable(0);
                 popSelectBox();
+                
+                
             });
+            
+            
             
             //Essa função é a responsável por carregar a tabela com os dados do Banco de Dados
             function loadTable(id)
@@ -251,7 +255,7 @@
                     url: "veiculos",
                     type: 'GET',
                     data: {
-                        'id': id //aqui passo um ID que veio por parametro na funcao. Se o id for ZERO, trará todos os registros. Caso o ID seja outro, trará somente os dados daquel id especifico.
+                        'id': id //aqui passo um ID que veio por parametro na funcao. Se o id for ZERO, trará todos os registros. Caso o ID seja outro, trará somente os dados daquele id especifico.
                     },
                     success: function (result) {
                         popTable(result); // Aqui chamo uma função que preenche a tabela com os dados. passo por parâmetro os dados que vieram da consulta em formato JSON.
@@ -279,7 +283,7 @@
                             '<td>' + data[i].cambio + '</td>' +
                             '<td>' + data[i].acessorio + '</td>' +
                             '<td>' + data[i].status + '</td>' +
-                            '<td><button onClick="edit(' + data[i].id + ')" type="button" id="editar" class="btn btn-primary waves-effect" data-id="' + data[i].id + '">Editar</button> <button type="button" onClick="remove(' + data[i].id + ')" data-id="' + data[i].id + '" id="excluir" class="btn btn-danger waves-effect waves-light">Excluir</button></td>'
+                            '<td><button onClick="edit(' + data[i].id + ')" type="button" id="editar" class="btn btn-primary btn-sm waves-effect" data-id="' + data[i].id + '">Editar</button> <button type="button" onClick="remove(' + data[i].id + ')" data-id="' + data[i].id + '" id="excluir" class="btn btn-danger btn-sm waves-effect waves-light">Inativar</button></td>'
                             + '</tr>'; // Aqui crio os dois botões de ação. Repare que há o parâmetro onClick. Dentro do onClick, chamo uma função e passo um ID. Ou seja, qualquer ação do botão, irá referenciar o ID (veiculo) de sua respectiva linha
                     $('#tbl_veiculos tr').last().after(html); // AQUI insiro o registro na última linha da tabela
                 }
@@ -426,21 +430,37 @@
             //Essa função exclui o produto. É acionada ao clicar sobre o botão excluir
             function remove(id)
             {
-                $.ajax({
-                    url: "veiculos",
-                    type: 'POST',
-                    data: {
-                        'excluir': 'true',
-                        'id': id // aqui passo os parametros para o Servlet. 
-                    },
-                    success: function () {
-                        JOptionPane.showMessageDialog('success', 'Produto Excluído com sucesso!');
-                        loadTable(0); // aqui carrego a tabela após a exclusão
-                    },
-                    error: function () {
-                        JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao excluir o Produto!');
-                    }
-                });
+                    swal({
+                            title: 'Você tem certeza que deseja inativar este veículo?',
+                            text: "Você não poderá reverter isso!",
+                            type: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            cancelButtonText: 'Não',
+                            confirmButtonText: 'Sim'
+                        }).then((result) => {
+                            $.ajax({
+                                    url: "veiculos",
+                                    type: 'POST',
+                                    data: {
+                                        'excluir': 'true',
+                                        'id': id // aqui passo os parametros para o Servlet. 
+                                    },
+                                    success: function () {
+                                        swal(
+                                            'Inativado!',
+                                            'Veículo inativado com sucesso!.',
+                                            'success'
+                                        )
+                                        loadTable(0); // aqui carrego a tabela após a exclusão
+                                    },
+                                    error: function () {
+                                        JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao excluir o Produto!');
+                                    }
+                                });
+                        })
+                
             }
             //Nessa função, seto o valor dos campos do formulario com o registro que foi passado por parametro. Graças a essa funcão, que os campos estão preenchidos quando o usuario vai editar
             function setFields(data)
