@@ -295,6 +295,14 @@
              */
             //Aqui é um Objeto que dentro possui um método. Criei dessa forma para ficar parecido com o que usávamos no JAVA SWING
             //É necessário passar dois parametros para a funcao. Type e Message. Type definirá o tipo do POP UP. e Message, definirá a Mensagem que será exibida no PopUP
+            let me = this;
+            $('#cadastro').on('hidden.bs.modal', function (e) {
+                if($("#enviar").hasClass("editar")) {
+                    $("#enviar").removeClass("editar");
+                    me.limparFormulario();
+                }
+            })
+    
             JOptionPane = {
                 showMessageDialog: function (type, message) {
                     var title;

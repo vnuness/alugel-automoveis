@@ -77,7 +77,7 @@
                                                 </div>
                                                 <div class="form-group col-md-3">
                                                     <label class="col-form-label">Avaliação:</label>
-                                                    <select name="Avaliação"class="form-group col-md-5">
+                                                    <select name="avaliacao" id="avaliacao" class="form-group col-md-5">
                                                         <option value="" selected>Opinião </option>
                                                         <option value="M">Muito Satisfeito </option>
                                                         <option value="F">Satisfeito</option>
@@ -163,6 +163,8 @@
             var resizefunc = [];
 
             $(document).ready(function () {
+                
+                $('#avaliacao').select2();
            
                 $('input[name=categoria_devolutiva]').click(function () {
                     var value = $(this).val();
