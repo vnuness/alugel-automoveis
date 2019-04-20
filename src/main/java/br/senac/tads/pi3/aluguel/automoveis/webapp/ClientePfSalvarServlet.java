@@ -28,7 +28,7 @@ import java.util.logging.Logger;
  * @author oem
  */
 @WebServlet(name = "ClientePfSalvar", urlPatterns = {"/cliente/pf/salvar"})
-public class ClientePfSalvar extends HttpServlet {
+public class ClientePfSalvarServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
@@ -89,7 +89,7 @@ public class ClientePfSalvar extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(ClientePfSalvar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientePfSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -107,7 +107,7 @@ public class ClientePfSalvar extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(ClientePfSalvar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientePfSalvarServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
