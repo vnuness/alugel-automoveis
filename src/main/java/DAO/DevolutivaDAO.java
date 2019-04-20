@@ -50,15 +50,13 @@ public class DevolutivaDAO {
                     + "id_avaliacao,"
                     + "id_tipo_devolutiva,"
                     + "id_status_locacao,"
-                    + "data_devolucao,"
-                    + "VALUES (?, ?, ?, ?, ?)"
+                    + "VALUES (?, ?, ?, ?)"
                     );
 
             Create.setInt(1, d.getId_cliente());
             Create.setInt(2, d.getId_avaliacao());
             Create.setInt(3, d.getId_tipo_devolutiva());
             Create.setInt(4, d.getId_status_locacao());
-            Create.setDate(5, (Date) d.getData_devolucao());
 
             int linhasAfetadas = Create.executeUpdate();
 
