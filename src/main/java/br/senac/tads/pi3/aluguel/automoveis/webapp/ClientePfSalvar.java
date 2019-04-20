@@ -32,6 +32,9 @@ public class ClientePfSalvar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
+        /**
+         Inicio da coletagem de parametros
+         **/
         response.setContentType("text/html;charset=UTF-8");
         int categoriaCliente = Integer.parseInt(request.getParameter("tipo"));
         String nome = request.getParameter("nome");
@@ -52,8 +55,12 @@ public class ClientePfSalvar extends HttpServlet {
         String estado = request.getParameter("estado");
         String celular = request.getParameter("celular");
         String nacionalidade = request.getParameter("nacionalidade");
+        /*FIM DA COLETAGEM DE PARAMETROS*/
+        /*INSTANCIO O OBJETO PASSANDO AS VARIAVEIS POR PARAMETRO*/
         Cliente c = new Cliente(nome, cpfCnpj, sexo, categoriaCliente, cnh, categoriaCnh, rg, email, nacionalidade, dataNascimento, validadeCnh, cep, endereco, numero, bairro, complemento, cidade, estado, celular);
 
+        
+        /*CHAMO O METODO DA DAO PASSANDO O OBJETO QUE ACABEI DE CRIAR*/
         if (ClienteDAO.Salvar(c)) {
             String resposta = "{\"return\" : \"success\"}";
             try (PrintWriter out = response.getWriter()) {
