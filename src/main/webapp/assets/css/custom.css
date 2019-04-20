@@ -13,6 +13,10 @@
     border: 1px solid #ffffff !important;
 }
 
+#cpf_cnpj {
+    border: 1px solid #ffffff !important;
+}
+
 #enviar #cancelar {
     right: 50% !important;
 }

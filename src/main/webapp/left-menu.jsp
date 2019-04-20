@@ -7,7 +7,16 @@
 
                 <li>
                     <a href="dashboard.jsp" class="waves-effect waves-primary"><i
-                            class="ti-home"></i><span> Dashboard </span></a>
+                            class="ti-stats-up"></i><span> Dashboard </span></a>
+                </li>
+
+                <li class="menu-title">Relatórios</li>
+
+                <li>
+
+                <li>
+                    <a href="relatorio-locacoes.jsp" class="waves-effect waves-primary"><i
+                            class="ti-receipt"></i><span> Locações </span></a>
                 </li>
 
                 <li class="menu-title">Cliente</li>
@@ -25,14 +34,14 @@
                 </li>
 
                 <li>
-                    <a href="index.html" class="waves-effect waves-primary"><i
+                    <a href="devolutiva.jsp" class="waves-effect waves-primary"><i
                             class="ti-back-left"></i><span> Devolutivas </span></a>
                 </li>
-                
-                <li class="menu-title">Aluguél</li>
-                
+
+                <li class="menu-title">Aluguel</li>
+
                 <li>
-                    <a href="index.html" class="waves-effect waves-primary"><i
+                    <a href="locacao.jsp" class="waves-effect waves-primary"><i
                             class="ti-money"></i><span>Realizar Locação</span></a>
                 </li>
 
