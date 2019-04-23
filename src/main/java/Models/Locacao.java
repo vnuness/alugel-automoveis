@@ -5,10 +5,16 @@
  */
 package Models;
 
+import java.util.Date;
+
 /**
  *
  * @author FGO064
  */
 public class Locacao {
+
+    public Locacao(int idCliente, int idVeiculo, Double valor, Date dataLocacao, String obs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

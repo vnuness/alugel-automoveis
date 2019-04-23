@@ -124,9 +124,9 @@
                                             <div class="form-row">
                                                 <label class="col-form-label">CPF/CNPJ</label>
                                                 <div class="input-group" id="default-daterange">
-                                                    <input type="text" name="cpf_cnpj" class="form-control" placeholder="Digite o CPF ou CNPJ do cliente">
+                                                    <input type="text" name="cpf_cnpj" id="cpf_cnpj" class="form-control" placeholder="Digite o CPF ou CNPJ do cliente">
                                                     <span class="input-group-append">
-                                                        <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                                        <button type="button" id="search_client" class="btn btn-primary"><i class="fa fa-search"></i></button>
                                                     </span>
                                                 </div>
                                             </div>
@@ -145,11 +145,15 @@
                                                 </div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="form-group col-md-12">
+                                                <div class="form-group col-md-9">
                                                     <label class="col-form-label">Veículo</label>
                                                     <select name="veiculo" id="veiculos">
                                                         <option value="" selected>Escolha o veículo </option>
                                                     </select>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label class="col-form-label">Valor diário</label>
+                                                    <input type="text" name="veiculo_valor" autocomplete="off" class="form-control" disabled>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -157,10 +161,6 @@
                                                     <label class="col-form-label">Quantidade de dias</label>
                                                     <input type="text" name="qtd_dias" autocomplete="off" class="form-control">
                                                 </div>  
-                                                <div class="form-group col-md-3">
-                                                    <label class="col-form-label">Valor diário</label>
-                                                    <input type="text" name="veiculo_valor" autocomplete="off" class="form-control" disabled>
-                                                </div>
                                             </div>
                                             <div class="form-row">
                                                 <label class="col-form-label">Observações</label>
@@ -211,6 +211,51 @@
                     dropdownParent: $('#cadastro')
                 });
             });
+
+            $('#search_client').click(function() {
+                $.ajax({
+                    url: 'cliente/search',
+                    data: {
+                        'cpf': $('#cpf_cnpj').val()
+                    },
+                    type: 'GET',
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function () {
+                        JOptionPane.showMessageDialog('error', 'Cliente inexistente');
+                    }
+                });
+            });
+
+            JOptionPane = {
+                showMessageDialog: function (type, message) {
+                    var title;
+                    switch (type) {
+                        case 'error':
+                            title = 'Ops!';
+                            break;
+                        case 'warning':
+                            title = 'Atenção';
+                            break;
+                        case 'success':
+                            title = 'Sucesso';
+                            break;
+                        default:
+                            title = 'Aguarde';
+                            break;
+                    }
+                    //SWAL é Abreviação de SWEET ALERT. SWEET ALERT é o componente que possui esses alertas pronto.
+                    return swal({
+                        title: title,
+                        text: message,
+                        type: type,
+                        showCancelButton: false,
+                        confirmButtonClass: 'btn btn-confirm mt-2',
+                        confirmButtonText: 'OK!'
+                    })
+                }
+            }
 
         </script>
 

@@ -47,7 +47,7 @@ public class LocacaoSalvarServlet extends HttpServlet {
         int idVeiculo = Integer.parseInt(request.getParameter("id_veiculo"));
         Double valor = Double.parseDouble(request.getParameter("valor"));
         Date dataLocacao = (java.util.Date)formatter.parse(request.getParameter("data"));
-        int obs = request.getParameter("observacao");
+        String obs = request.getParameter("observacao");
         /*FIM DA COLETAGEM DE PARAMETROS*/
         /*INSTANCIO O OBJETO PASSANDO AS VARIAVEIS POR PARAMETRO*/
         Locacao l = new Locacao(idCliente, idVeiculo, valor, dataLocacao, obs);

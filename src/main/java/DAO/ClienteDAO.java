@@ -364,4 +364,29 @@ public class ClienteDAO {
         return listaClientes;
     }
 
+    public static ArrayList<Cliente> getClienteCpf(String cpf) {
+        ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
+
+        String query = "SELECT nome FROM cliente where cpf_cnpj = " + cpf + ";";
+
+        try (Connection conn = obterConexao();
+                PreparedStatement stmt = conn.prepareStatement(query);
+                ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setCnh(rs.getString("cnh"));
+                cliente.setValidadeCnh(rs.getString("validate_cnh"));
+                listaCliente.add(cliente);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+
+        return listaCliente;
+    }
+
 }
