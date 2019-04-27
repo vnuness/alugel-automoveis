@@ -130,7 +130,7 @@
                                                         <div class="form-group align-self-center">
                                                             <div class="row align-self-center ">
                                                                 <div class="col-sm-6 align-self-center">
-                                                                    <button type="button" class="btn btn-primary btn-lg btn-block" style="position: relative; left: 54%;">Enviar</button>
+                                                                    <button type="button" id="salvar" class="btn btn-primary btn-lg btn-block" style="position: relative; left: 54%;">Enviar</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -182,7 +182,23 @@
 //                    }
                 });
             });
+            
+            $('#salvar').click(function() {
+                if(validaFormulario()){
+                    
+                }
+            });
+            
+            function validarFormulario() {
+                if($('#avaliacao').val() == '') {
+                    return false;
+                }
+                
+                
+            }
             $('#cpf_cnpj').mask('000.000.000-00');
+            
+            
             
         </script>
 

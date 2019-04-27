@@ -20,6 +20,7 @@ public class Veiculo
     private int idCombustivel;
     private int idCambio;
     private int idStatus;
+    private double valor;
     private String acessorio;
     
     public Veiculo() 
@@ -27,7 +28,7 @@ public class Veiculo
         
     }
     
-    public Veiculo(int vId, String vModelo, String vMontadora, int vAno, String vPlaca, String vRenavam, int vIdCombustivel, int vIdCambio, int vIdStatus, String vAcessorio)
+    public Veiculo(int vId, String vModelo, String vMontadora, int vAno, String vPlaca, String vRenavam, double valor, int vIdCombustivel, int vIdCambio, int vIdStatus, String vAcessorio)
     {
         this.id = vId;
         this.modelo = vModelo;
@@ -41,7 +42,7 @@ public class Veiculo
         this.acessorio = vAcessorio;
     }
     
-    public Veiculo(String vModelo, String vMontadora, int vAno, String vPlaca, String vRenavam, int vIdCombustivel, int vIdCambio, int vIdStatus, String vAcessorio)
+    public Veiculo(String vModelo, String vMontadora, int vAno, String vPlaca, String vRenavam, double valor, int vIdCombustivel, int vIdCambio, int vIdStatus, String vAcessorio)
     {
         this.modelo = vModelo;
         this.montadora = vMontadora;
@@ -52,6 +53,14 @@ public class Veiculo
         this.idCambio = vIdCambio;
         this.idStatus = vIdStatus;
         this.acessorio = vAcessorio;
+    }
+    
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
     public int getId() {

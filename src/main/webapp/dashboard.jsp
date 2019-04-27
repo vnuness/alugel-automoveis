@@ -157,9 +157,7 @@
                 </div>
                 <!-- end content -->
 
-                <footer class="footer">
-                    2016 - 2018 Â© Minton <span class="hide-phone">- Coderthemes.com</span>
-                </footer>
+                <jsp:include page="footer.jsp"/>
 
             </div>
             <!-- ============================================================== -->

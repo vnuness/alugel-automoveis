@@ -20,6 +20,7 @@ public class ListaVeiculos {
     private String combustivel;
     private String cambio;
     private String status;
+    private double valor;
     private String acessorio;
     
     
@@ -33,6 +34,14 @@ public class ListaVeiculos {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
     public String getModelo() {

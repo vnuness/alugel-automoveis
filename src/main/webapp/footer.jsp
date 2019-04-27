@@ -1,3 +1,3 @@
 <footer class="footer">
-    2018 © Locadora de Automóveis <span class="hide-phone">- Locadora.com</span>
+    2019 © TADES - Locadora de Automóveis <span class="hide-phone">- tades.com.br</span>
 </footer>

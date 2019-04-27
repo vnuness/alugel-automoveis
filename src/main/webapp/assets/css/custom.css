@@ -39,3 +39,11 @@
 .required {
     color: red !important;
 }
+
+.daterangepicker table tr td span:hover, .daterangepicker thead tr:first-child th:hover, .daterangepicker tfoot tr th:hover {
+    color:#555 !important;
+}
+
+.daterangepicker .calendar-table {
+    color:#555 !important;
+}

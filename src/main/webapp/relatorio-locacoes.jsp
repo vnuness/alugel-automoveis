@@ -13,7 +13,7 @@
         <title>Locadora de Automóveis</title>
 
         <jsp:include page="imports.jsp"/>
-        
+
     </head>
 
 
@@ -44,7 +44,7 @@
                     <div class="container-fluid">
 
                         <!-- Page-Title -->
-                       <div class="row">
+                        <div class="row">
                             <div class="col-sm-12">
                                 <div class="page-title-box">
                                     <h4 class="page-title">Bem-Vindo !</h4>
@@ -70,7 +70,7 @@
                                                     <button id="cadastro_button"
                                                             class="btn btn-outline-success btn-rounded waves-effect waves-light"
                                                             data-toggle="modal"
-                                                            data-target="#cadastro">
+                                                            data-target="#filters">
                                                         <i class="ion-funnel"></i>
                                                         Filtros
                                                     </button>
@@ -80,7 +80,7 @@
                                             <div id="bg-inverse" class="panel-collapse collapse show">
                                                 <div class="portlet-body">
                                                     <div class="table-responsive mt-3">
-                                                        <table id="tbl_veiculos" class="table table-bordered" style="width:100%;">
+                                                        <table id="tbl_relatorio" class="table table-bordered" style="width:100%;">
                                                             <thead>
                                                                 <tr>
                                                                     <th>#</th>
@@ -108,8 +108,8 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div id="cadastro" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="CenterModalLabel"
+
+                        <div id="filters" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="CenterModalLabel"
                              aria-hidden="true">
                             <form class="form-horizontal" id="cad-veiculos" role="form" action="" type="POST">
                                 <input type="hidden" name="id" value=""/>
@@ -118,84 +118,24 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            <h4 class="modal-title" id="CenterModalLabel">Cadastro de Veículos</h4>
+                                            <h4 class="modal-title" id="CenterModalLabel">Fitros</h4>
                                         </div>
                                         <div class="modal-body">
                                             <div class="form-group row" >
-                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Modelo: <span class="required">*</span></label>
+                                                <label for="datetimes" class="col-md-3 col-form-label"> Data: </label>
 
                                                 <div class="input-daterange input-group col-md-9" id="daterangepicker">
-                                                    <input class="form-control input-daterange-timepicker" name="modelo" required="required" type="text" autocomplete="off">
+                                                    <input class="form-control input-daterange-timepicker" id="datetimes" name="datetimes" required="required" type="text" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Montadora: <span class="required">*</span></label>
-
-                                                <div class="input-daterange input-group col-md-9" id="daterangepicker">
-                                                    <input class="form-control input-daterange-timepicker" name="montadora" required="required" type="text" autocomplete="off">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Ano: <span class="required">*</span></label>
-
-                                                <div class="input-daterange input-group col-md-9" id="daterangepicker">
-                                                    <input class="form-control input-daterange-timepicker" name="ano" required="required" type="text" autocomplete="off">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row" >
-                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Placa: <span class="required">*</span></label>
-
-                                                <div class="input-daterange input-group col-md-9" id="daterangepicker">
-                                                    <input class="form-control input-daterange-timepicker" name="placa" required="required" type="text" autocomplete="off">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Renavam: <span class="required">*</span></label>
-
-                                                <div class="input-daterange input-group col-md-9" id="daterangepicker">
-                                                    <input class="form-control input-daterange-timepicker" required="required" name="renavam" type="text" autocomplete="off">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="status" class="col-3 col-form-label">Status: <span class="required">*</span></label>
+                                                <label for="avaliacao" class="col-3 col-form-label">Avaliação: </label>
 
                                                 <div class="col-md-9">
-                                                    <select name="status" id="status">
-                                                        <option value="">Selecione o Status do Veículo </option>
+                                                    <select name="avaliacao" id="avaliacao">
+                                                        <option value="">Selecione a Avaliação </option>
                                                     </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="combustivel" class="col-3 col-form-label">Combustível: <span class="required">*</span></label>
-
-                                                <div class="col-md-9">
-                                                    <select name="combustivel" id="combustivel">
-                                                        <option value=""> Selecione o tipo de Combustível </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="cambio" class="col-3 col-form-label">Câmbio: <span class="required">*</span></label>
-
-                                                <div class="col-md-9">
-                                                    <select name="cambio" id="cambio">
-                                                        <option value=""> Selecione o tipo de Câmbio do Veículo </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Acessórios: <span class="required"></span></label>
-
-                                                <div class="input-daterange input-group col-md-9">
-                                                    <textarea  id="acessorios" placeholder="Digite os acessórios do veículo. Ex: Wifi, Entrada USB etc" class="form-control" rows="4" cols="20"></textarea>
                                                 </div>
                                             </div>
 
@@ -217,9 +157,7 @@
                 </div>
                 <!-- end content -->
 
-                <footer class="footer">
-                    2016 - 2018 Â© Minton <span class="hide-phone">- Coderthemes.com</span>
-                </footer>
+                <jsp:include page="footer.jsp"/>
 
             </div>
             <!-- ============================================================== -->
@@ -234,6 +172,119 @@
 
         <script>
             var resizefunc = [];
+
+            $(document).ready(function () {
+
+                $('#avaliacao').select2({
+                    dropdownParent: $('#cadastro')
+                });
+                
+                popSelectBox();
+
+                loadTable();
+
+                $('input[name="datetimes"]').daterangepicker({
+                    "autoApply": true,
+                    "linkedCalendars": false,
+                    "showCustomRangeLabel": false,
+                    "parentEl": "#filters",
+                    "locale": {
+                        "format": "DD/MM/YYYY",
+                        "separator": " - ",
+                        "applyLabel": "Aplicar",
+                        "cancelLabel": "Cancelar",
+                        "fromLabel": "De",
+                        "toLabel": "Até",
+                        "customRangeLabel": "Customizado",
+                        "daysOfWeek": [
+                            "Dom",
+                            "Seg",
+                            "Ter",
+                            "Qua",
+                            "Qui",
+                            "Sex",
+                            "Sáb"
+                        ],
+                        "monthNames": [
+                            "Janeiro",
+                            "Fevereiro",
+                            "Março",
+                            "Abril",
+                            "Maio",
+                            "Junho",
+                            "Julho",
+                            "Agosto",
+                            "Setembro",
+                            "Outubro",
+                            "Novembro",
+                            "Dezembro"
+                        ],
+                        "firstDay": 1
+                    }
+                });
+            });
+            
+            function popSelectBox()
+                {
+                    $.ajax({
+                        url: "veiculos",
+                        type: 'GET',
+                        data: {
+                            'getStatus': true
+                        },
+                        success: function (data) {
+                            //aqui utilizo o Jquery para preencher o select com as opcoes
+                            $('#avaliacao').empty(); // aqui deixo o select Vazio
+                            $('<option>').val(0).text("Selecione a avaliação").appendTo('#status'); // aqui defino a primeira opção para orientar o usuario
+                            for (var i in data) { // aqui faço um for each com todas as opções. Para cada opção, adiciono uma opção no combo
+                                var options = $('<option>').val(data[i].id).text(data[i].avaliacao);
+                                options.appendTo('#avaliacao');
+                            }
+                        },
+                        error: function () {
+                            JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao carregar os Status dos Veículos!');
+                        }
+                    });
+                }
+
+            function loadTable()
+            {
+                $.ajax({
+                    url: "getlocacoes",
+                    type: 'POST',
+                    success: function (result) {
+                        popTable(result);
+                    },
+                    error: function () {
+                        JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao carregar a Tabela!');
+                    }
+                });
+            }
+
+            function getFilters()
+            {
+
+            }
+
+            function popTable(data)
+            {
+                $('#tbl_relatorio tr').not(':first').remove(); //Aqui eu limpo a tabela
+                var html = ''; // Aqui declaro a variável que receberá o conteúdo HTML
+                for (var i in data) { // aqui faço um FOREACH, para a minha lista de dados. Cada linha de dado, preencho uma linha na tabela
+                    html = '<tr><td>' + (parseInt(data[i].id) + 1) + '</td>' +
+                            '<td>' + data[i].cliente + '</td>' +
+                            '<td>' + data[i].categoriaCliente + '</td>' +
+                            '<td>' + data[i].veiculo + '</td>' +
+                            '<td>' + data[i].placa + '</td>' +
+                            '<td>' + data[i].tipoDevolutiva + '</td>' +
+                            '<td>' + data[i].avaliacao + '</td>' +
+                            '<td>' + moment(moment(data[i].dataLocacao, "YYYY-mm-DD")).format("DD/mm/YYYY") + '</td>' +
+                            '<td>' + moment(moment(data[i].dataDevolucao, "YYYY-mm-DD")).format("DD/mm/YYYY") + '</td></tr>';
+                    $('#tbl_relatorio tr').last().after(html);
+                }
+            }
+
+
         </script>
 
         <!-- Plugins  -->

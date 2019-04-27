@@ -57,21 +57,23 @@ public class VeiculoDAO {
                     + "ano,"
                     + "placa,"
                     + "renavam,"
+                    + "valor_diaria,"       
                     + "id_combustivel,"
                     + "id_cambio,"
                     + "id_status,"
                     + "acessorios)"
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             Create.setString(1, v.getModelo());
             Create.setString(2, v.getMontadora());
             Create.setInt(3, v.getAno());
             Create.setString(4, v.getPlaca());
             Create.setString(5, v.getRenavam());
-            Create.setInt(6, v.getIdCombustivel());
-            Create.setInt(7, v.getIdCambio());
-            Create.setInt(8, v.getIdStatus());
-            Create.setString(9, v.getAcessorio());
+            Create.setDouble(6, v.getValor());
+            Create.setInt(7, v.getIdCombustivel());
+            Create.setInt(8, v.getIdCambio());
+            Create.setInt(9, v.getIdStatus());
+            Create.setString(10, v.getAcessorio());
 
             int linhasAfetadas = Create.executeUpdate();
 
@@ -261,6 +263,7 @@ public class VeiculoDAO {
                     + "	veiculo.ano, \n"
                     + "	veiculo.placa, \n"
                     + "	veiculo.renavam,\n"
+                    + "	veiculo.valor_diaria,\n"
                     + "	combustivel.combustivel,\n"
                     + "	cambio.cambio,\n"
                     + "	`status_veiculo`.status,\n"
@@ -282,6 +285,7 @@ public class VeiculoDAO {
                 lista.setAno(rs.getInt("ano"));
                 lista.setPlaca(rs.getString("placa"));
                 lista.setRenavam(rs.getString("renavam"));
+                lista.setValor(rs.getDouble("valor_diaria"));
                 if (id != 0) {
                     lista.setCombustivel(rs.getString("id_combustivel"));
                     lista.setCambio(rs.getString("id_cambio"));
@@ -299,6 +303,7 @@ public class VeiculoDAO {
         } catch (SQLException ex) {
             System.out.println(ex);
         } catch (ClassNotFoundException ex) {
+            System.out.println(ex);
             ex.printStackTrace();
         }
 

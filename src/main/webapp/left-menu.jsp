@@ -41,7 +41,7 @@
                 <li class="menu-title">Aluguel</li>
 
                 <li>
-                    <a href="locacao.jsp" class="waves-effect waves-primary"><i
+                    <a href="locacoes.jsp" class="waves-effect waves-primary"><i
                             class="ti-money"></i><span>Realizar Locação</span></a>
                 </li>
 

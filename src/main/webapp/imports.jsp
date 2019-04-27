@@ -4,12 +4,12 @@
     <link href="plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
     <link href="plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
 
     <link href="plugins/select2/css/select2.css" rel="stylesheet"/>
     <link href="assets/css/style_dark.css" rel="stylesheet" type="text/css">
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css">
-
     <script src="assets/js/modernizr.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -33,6 +33,7 @@
     <script src="plugins/sweet-alert/sweetalert2.min.js"></script>
     <script src="assets/pages/jquery.sweet-alert.init.js"></script>
     <script src="plugins/moment/moment.js"></script>
+    <script src="plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Counter Up  -->
     <script src="plugins/waypoints/lib/jquery.waypoints.min.js"></script>

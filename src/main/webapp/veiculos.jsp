@@ -93,6 +93,7 @@
                                                                     <th> Câmbio</th>
                                                                     <th> Acessórios</th>
                                                                     <th> Status</th>
+                                                                    <th> Valor</th>
                                                                     <th> Ações</th>
                                                                 </tr>
                                                             </thead>
@@ -161,6 +162,14 @@
 
                                                 <div class="input-daterange input-group col-md-9" id="daterangepicker">
                                                     <input class="form-control input-daterange-timepicker" required="required" name="renavam" type="text" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Valor Diária <span class="required">*</span></label>
+
+                                                <div class="input-daterange input-group col-md-9" id="daterangepicker">
+                                                    <input class="form-control input-daterange-timepicker" required="required" name="valor" type="text" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -283,6 +292,7 @@
                             '<td>' + data[i].cambio + '</td>' +
                             '<td>' + data[i].acessorio + '</td>' +
                             '<td>' + data[i].status + '</td>' +
+                            '<td>' + data[i].valor + '</td>' +
                             '<td><button onClick="edit(' + data[i].id + ')" type="button" id="editar" class="btn btn-primary btn-sm waves-effect" data-id="' + data[i].id + '">Editar</button> <button type="button" onClick="remove(' + data[i].id + ')" data-id="' + data[i].id + '" id="excluir" class="btn btn-danger btn-sm waves-effect waves-light">Inativar</button></td>'
                             + '</tr>'; // Aqui crio os dois botões de ação. Repare que há o parâmetro onClick. Dentro do onClick, chamo uma função e passo um ID. Ou seja, qualquer ação do botão, irá referenciar o ID (veiculo) de sua respectiva linha
                     $('#tbl_veiculos tr').last().after(html); // AQUI insiro o registro na última linha da tabela
@@ -342,6 +352,7 @@
                         'ano': $('input[name=ano]').val(),
                         'placa': $('input[name=placa]').val(),
                         'renavam': $('input[name=renavam]').val(),
+                        'valor' : $('input[name=valor]').val(),
                         'combustivel': $('#combustivel').val(),
                         'cambio': $('#cambio').val(),
                         'status' : $('#status').val(),
@@ -355,6 +366,7 @@
                         'ano': $('input[name=ano]').val(),
                         'placa': $('input[name=placa]').val(),
                         'renavam': $('input[name=renavam]').val(),
+                        'valor' : $('input[name=valor]').val(),
                         'combustivel': $('#combustivel').val(),
                         'cambio': $('#cambio').val(),
                         'status' : $('#status').val(),

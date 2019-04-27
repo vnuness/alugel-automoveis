@@ -53,6 +53,7 @@ public class VeiculoServlet extends HttpServlet {
             int ano = Integer.parseInt(request.getParameter("ano"));
             String placa = request.getParameter("placa");
             String renavam = request.getParameter("renavam");
+            double valor = Double.parseDouble(request.getParameter("valor"));
             int combustivel = Integer.parseInt(request.getParameter("combustivel"));
             int cambio = Integer.parseInt(request.getParameter("cambio"));
             int status = Integer.parseInt(request.getParameter("status"));
@@ -60,7 +61,7 @@ public class VeiculoServlet extends HttpServlet {
             response.setContentType("application/json");
             //Nas linhas acima defini as variaveis com os parametros que vieram na requisicao
             if (request.getParameter("id") == null) { // aqui pergunto se veio ID na requisição. Caso não tenha vindo (igual a null) o usuário está tentando cadastrar um veiculo
-                Veiculo v = new Veiculo(modelo, montadora, ano, placa, renavam, combustivel, cambio, status, acessorios); // Então instancio um objeto da model para cadastrar (sem id)
+                Veiculo v = new Veiculo(modelo, montadora, ano, placa, renavam, valor, combustivel, cambio, status, acessorios); // Então instancio um objeto da model para cadastrar (sem id)
                 if (VeiculoDAO.Salvar(v)) {
                     String resposta = "{\"return\" : \"success\"}";
                     try (PrintWriter out = response.getWriter()) {
@@ -74,7 +75,7 @@ public class VeiculoServlet extends HttpServlet {
                 }
             } else { // Caso caia no ELSE, significa que o usuario está tentando EDITAR. Ou sejam veio ID na requisição
                 int id = Integer.parseInt(request.getParameter("id"));
-                Veiculo v = new Veiculo(id, modelo, montadora, ano, placa, renavam, combustivel, cambio, status, acessorios);
+                Veiculo v = new Veiculo(id, modelo, montadora, ano, placa, renavam, valor, combustivel, cambio, status, acessorios);
                 if (VeiculoDAO.Atualizar(v)) {
                     String resposta = "{\"return\" : \"success\"}";
                     try (PrintWriter out = response.getWriter()) {
