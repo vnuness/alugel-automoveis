@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.tads.pi3.aluguel.automoveis.webapp;
+package br.senac.tads.pi3.aluguel.automoveis.webapp.Devolutiva;
 
+import br.senac.tads.pi3.aluguel.automoveis.webapp.Cliente.ClienteServlet;
 import DAO.ClienteDAO;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -29,7 +30,7 @@ public class GetClienteByCpfServlet extends HttpServlet {
     throws ServletException, IOException, ParseException {
         response.setContentType("application/json");
         String cpf = request.getParameter("cpf");
-        String json = new Gson().toJson(ClienteDAO.getClienteCpf(cpf)); // AQUI uso uma API do Google que converte um ArrayList em JSON. Faço isso por que é melhor para tratar os dados no javascript/jquery
+        String json = new Gson().toJson(ClienteDAO.getClienteCpf(cpf));
         try (PrintWriter out = response.getWriter()) {
             out.println(json);
         }

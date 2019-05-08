@@ -367,7 +367,7 @@ public class ClienteDAO {
     public static ArrayList<Cliente> getClienteCpf(String cpf) {
         ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
 
-        String query = "SELECT nome FROM cliente where cpf_cnpj = " + cpf + ";";
+        String query = "SELECT * FROM cliente where cpf_cnpj = '" + cpf + "';";
 
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
@@ -377,7 +377,7 @@ public class ClienteDAO {
                 cliente.setId(rs.getInt("id"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setCnh(rs.getString("cnh"));
-                cliente.setValidadeCnh(rs.getString("validate_cnh"));
+                cliente.setValidadeCnh(rs.getString("validade_cnh"));
                 listaCliente.add(cliente);
             }
         } catch (SQLException ex) {

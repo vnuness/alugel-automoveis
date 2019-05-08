@@ -1,4 +1,4 @@
-package br.senac.tads.pi3.aluguel.automoveis.webapp;
+package br.senac.tads.pi3.aluguel.automoveis.webapp.Cliente;
 
 import DAO.ClienteDAO;
 import Models.Cliente;

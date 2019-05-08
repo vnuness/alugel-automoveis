@@ -12,40 +12,26 @@ package Models;
  */
 public class Funcionario {
    private int id;
-   private String usuario;
-   private String senha;
-   private int matricula;
-   private int id_filial;
-   private int id_cargo;
-   private String nome; 
+   private String matricula;
+   private String nome;
    private String email;
-   private int id_status; //1 - ATIVO 2 - INATIVO
+   private String senha;
+   private int idFilial;
+   private int idCargo;
+   private int idStatus;
    
-    public Funcionario(int fId, String fUsuario, String fSenha, int fMatricula, int fId_filial, int fId_cargo, String fNome, String fEmail, int fId_status){
-        this.id = fId;
-        this.usuario = fUsuario;
-        this.senha = fSenha;
+    public Funcionario(String fMatricula, String fNome, String fEmail, String fSenha, int fIdFilial, int fIdCargo){
         this.matricula = fMatricula;
-        this.id_filial = fId_filial;
-        this.id_cargo = fId_cargo;
         this.nome = fNome;
         this.email = fEmail;
-        this.id_status= fId_status;
+        this.senha = fSenha;
+        this.idFilial = fIdFilial;
+        this.idCargo = fIdCargo;
     }
 
     public int getId() {
         return id;
     }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-    
-    
 
     public void setId(int id) {
         this.id = id;
@@ -59,28 +45,28 @@ public class Funcionario {
         this.senha = senha;
     }
 
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
-    public int getId_filial() {
-        return id_filial;
+    public int getIdFilial() {
+        return idFilial;
     }
 
-    public void setId_filial(int id_filial) {
-        this.id_filial = id_filial;
+    public void setIdFilial(int idFilial) {
+        this.idFilial = idFilial;
     }
 
-    public int getId_cargo() {
-        return id_cargo;
+    public int getIdCargo() {
+        return idCargo;
     }
 
-    public void setId_cargo(int id_cargo) {
-        this.id_cargo = id_cargo;
+    public void setIdCargo(int id_cargo) {
+        this.idCargo = id_cargo;
     }
 
     public String getNome() {
@@ -99,12 +85,12 @@ public class Funcionario {
         this.email = email;
     }
 
-    public int getId_status() {
-        return id_status;
+    public int getIdStatus() {
+        return idStatus;
     }
 
-    public void setId_status(int id_status) {
-        this.id_status = id_status;
+    public void setIdStatus(int id_status) {
+        this.idStatus = id_status;
     }
    
    

@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.tads.pi3.aluguel.automoveis.webapp;
+package br.senac.tads.pi3.aluguel.automoveis.webapp.Funcionario;
 
+import DAO.FuncionarioDAO;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,17 +14,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Models.RelatorioLocacao;
-import DAO.RelatorioLocacoesDAO;
-import DAO.VeiculoDAO;
-import com.google.gson.Gson;
 
 /**
  *
  * @author oem
  */
-@WebServlet(name = "getLocacoesServlet", urlPatterns = {"/getlocacoes"})
-public class getLocacoesServlet extends HttpServlet {
+@WebServlet(name = "GetFilialServlet", urlPatterns = {"/get-filial"})
+public class GetFilialServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,15 +33,14 @@ public class getLocacoesServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         response.setContentType("application/json");
-        String json = new Gson().toJson(RelatorioLocacoesDAO.getLocacoes()); // AQUI uso uma API do Google que converte um ArrayList em JSON. Faço isso por que é melhor para tratar os dados no javascript/jquery
+        String json = new Gson().toJson(FuncionarioDAO.getFilial()); // AQUI uso uma API do Google que converte um ArrayList em JSON. Faço isso por que é melhor para tratar os dados no javascript/jquery
         try (PrintWriter out = response.getWriter()) {
             out.println(json);
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

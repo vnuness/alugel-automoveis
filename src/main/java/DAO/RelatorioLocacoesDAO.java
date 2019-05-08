@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Models.Avaliacao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,12 +32,42 @@ public class RelatorioLocacoesDAO {
         return conn;
     }
     
-    //public static 
-    
-    public static ArrayList<RelatorioLocacao> getLocacoes() {
-        ArrayList<RelatorioLocacao> relatorioLocacao = new ArrayList<RelatorioLocacao>();
+    public static ArrayList<Avaliacao> getAvaliacoes() {
+        ArrayList<Avaliacao> avaliacao = new ArrayList<Avaliacao>();
+        
+        String query = "SELECT * FROM avaliacao";
+        
+        try (Connection conn = obterConexao();
+                PreparedStatement stmt = conn.prepareStatement(query);
+                ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Avaliacao lista = new Avaliacao();
+                lista.setId(rs.getInt("id"));
+                lista.setAvaliacao(rs.getString("nome"));
+                avaliacao.add(lista);
+            }
 
-        String query = "SELECT * FROM relatorio_locacoes";
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        
+        return avaliacao;
+    }
+    
+    public static ArrayList<RelatorioLocacao> getLocacoes(String dateIni, String dateFim, int idAvaliacao) {
+        ArrayList<RelatorioLocacao> relatorioLocacao = new ArrayList<RelatorioLocacao>();
+        
+        String query = "";
+        if(idAvaliacao == 0) {
+            query = "SELECT * FROM relatorio_locacoes WHERE data_locacao BETWEEN '" + dateIni + "' AND '" + dateFim + "'";
+        } else {
+            query = "SELECT * FROM relatorio_locacoes "
+                    + "INNER JOIN avaliacao on relatorio_locacoes.avaliacao = avaliacao.nome "
+                    + "WHERE data_locacao BETWEEN '" + dateIni + "' AND '" + dateFim + "' AND avaliacao.id = " + idAvaliacao;
+            System.out.println(query);
+        }
 
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
@@ -58,6 +89,7 @@ public class RelatorioLocacoesDAO {
         } catch (SQLException ex) {
             System.out.println(ex);
         } catch (ClassNotFoundException ex) {
+            System.out.println(ex);
             ex.printStackTrace();
         }
 

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.tads.pi3.aluguel.automoveis.webapp;
+package br.senac.tads.pi3.aluguel.automoveis.webapp.Funcionario;
 
+import DAO.FuncionarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,13 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import Models.Funcionario;
 
 /**
  *
  * @author oem
  */
-@WebServlet(name = "ClienteListaServlet", urlPatterns = {"/ClienteListaServlet"})
-public class ClienteListaServlet extends HttpServlet {
+@WebServlet(name = "FuncionarioSalvarServlet", urlPatterns = {"/funcionario-salvar"})
+public class FuncionarioSalvarServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,17 +34,24 @@ public class ClienteListaServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ClienteListaServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ClienteListaServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String matricula = request.getParameter("martricula");
+        String nome = request.getParameter("nome");
+        String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
+        int idFilial = Integer.parseInt(request.getParameter("filial"));
+        int idCargo = Integer.parseInt(request.getParameter("cargo"));
+        Funcionario f = new Funcionario(matricula, nome, email, senha, idFilial, idCargo);
+        response.setContentType("application/json");
+        if (FuncionarioDAO.Salvar(f)) {
+            String resposta = "{\"return\" : \"success\"}";
+            try (PrintWriter out = response.getWriter()) {
+                out.println(resposta);
+            }
+        } else {
+            String resposta = "{\"return\" : \"error\"}";
+            try (PrintWriter out = response.getWriter()) {
+                out.println(resposta);
+            }
         }
     }
 

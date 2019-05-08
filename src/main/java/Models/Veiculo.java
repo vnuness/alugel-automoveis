@@ -28,6 +28,11 @@ public class Veiculo
         
     }
     
+    public Veiculo(int vId, String vModelo) {
+        this.id = vId;
+        this.modelo = vModelo;
+    }
+    
     public Veiculo(int vId, String vModelo, String vMontadora, int vAno, String vPlaca, String vRenavam, double valor, int vIdCombustivel, int vIdCambio, int vIdStatus, String vAcessorio)
     {
         this.id = vId;

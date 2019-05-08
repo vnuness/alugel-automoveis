@@ -80,12 +80,13 @@
                                             </div>
                                             <div id="bg-inverse" class="panel-collapse collapse show">
                                                 <div class="portlet-body">
-                                                    <form class="form-horizontal" id="cad-cliente" role="form">
-                                                        <input type="hidden" name="id" value=""/>
+                                                    <form class="form-horizontal" id="locacao" role="form">
+                                                        <input type="hidden" name="id_cliente" value=""/>
+                                                        <input type="hidden" name="id_veiculo" value=""/>
 
                                                         <div class="form-row">
                                                             <label class="col-form-label">CPF/CNPJ</label>
-                                                            <div class="input-group" id="default-daterange">
+                                                            <div class="input-group">
                                                                 <input type="text" name="cpf_cnpj" id="cpf_cnpj" class="form-control" placeholder="Digite o CPF ou CNPJ do cliente">
                                                                 <span class="input-group-append">
                                                                     <button type="button" id="search_client" class="btn btn-primary"><i class="fa fa-search"></i></button>
@@ -109,24 +110,22 @@
                                                         <div class="form-row">
                                                             <div class="form-group col-md-9">
                                                                 <label class="col-form-label">Veículo</label>
-                                                                <select name="veiculo" id="veiculos">
-                                                                    <option value="" selected>Escolha o veículo </option>
+                                                                <select name="veiculos" id="veiculos">
                                                                 </select>
                                                             </div>
                                                             <div class="form-group col-md-3">
-                                                                <label class="col-form-label">Valor diário</label>
+                                                                <label class="col-form-label">Valor diária</label>
                                                                 <input type="text" name="veiculo_valor" autocomplete="off" class="form-control" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
-                                                            <div class="form-group col-md-3">
-                                                                <label class="col-form-label">Quantidade de dias</label>
-                                                                <input type="text" name="qtd_dias" autocomplete="off" class="form-control">
-                                                            </div>  
-                                                        </div>
-                                                        <div class="form-row">
-                                                            <label class="col-form-label">Observações</label>
-                                                            <textarea class="form-control" id="clipboard-textarea" rows="5"></textarea>
+                                                            <label class="col-form-label">Quantidade de Dias</label>
+                                                            <div class="input-group">
+                                                                <input type="text" name="qtd_dias" class="form-control col-md-3">
+                                                                <span class="input-group-append">
+                                                                    <button type="button" id="calc" class="btn btn-primary">Calcular Valor</button>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-9"></div>
@@ -136,11 +135,15 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
+                                                            <label class="col-form-label">Observações</label>
+                                                            <textarea class="form-control" id="observacao" rows="5"></textarea>
+                                                        </div>
+                                                        <div class="form-row ">
                                                             <button type="button" id="cancelar" class="btn btn-secondary waves-effect" data-dismiss="modal">
                                                                 Cancelar
                                                             </button>
-                                                            <button type="button" id="enviar" class="btn btn-success waves-effect waves-light">
-                                                                Cadastrar
+                                                            <button type="submit" id="enviar" class="btn btn-success waves-effect waves-light">
+                                                                Alugar
                                                             </button>
                                                         </div>
                                                     </form>
@@ -176,31 +179,126 @@
 
 
     <script>
-    var resizefunc = [];</script>
+        var resizefunc = [];</script>
 
     <script>
         $(document).ready(function () {
+            $('#cpf_cnpj').mask('000.000.000-00');
             $('#validade_cnh').mask('00/00/0000');
             $('#veiculos').select2({
-                dropdownParent: $('#cadastro')
+                //dropdownParent: $('#cadastro')
             });
+            getVeiculos();
         });
 
+        $("#veiculos").change(function () {
+            $("input[name='veiculo_valor']").val($(this).children("option:selected").data('valor'));
+            $('input[name="id_veiculo"]').val($(this).children("option:selected").val());
+        });
+
+        function getVeiculos() {
+            $.ajax({
+                url: 'getveiculos',
+                type: 'GET',
+                success: function (data) {
+                    $('#veiculos').empty(); // aqui deixo o select Vazio
+                    $('<option>').val(0).text("Selecione o Veículo").appendTo('#veiculos'); // aqui defino a primeira opção para orientar o usuario
+                    for (var i in data) {
+                        var options = $('<option data-valor="' + data[i].valor + '">').val(data[i].id).text(data[i].modelo);
+                        options.appendTo('#veiculos');
+                    }
+                },
+                error: function () {
+                    JOptionPane.showMessageDialog('error', 'Cliente inexistente');
+                }
+            });
+        }
+
         $('#search_client').click(function () {
+            if($('#cpf_cnpj').val() === '') {
+                JOptionPane.showMessageDialog('warning', 'Digite o CPF');
+                return;
+            }
+            
             $.ajax({
                 url: 'cliente/search',
                 data: {
-                    'cpf': $('#cpf_cnpj').val()
+                    'cpf': $('#cpf_cnpj').unmask().val()
                 },
                 type: 'GET',
                 success: function (data) {
-                    console.log(data);
+                    if(data.length === 0) {
+                        JOptionPane.showMessageDialog('warning', 'Cliente não encontrado em nossos registros');
+                        return;
+                    }
+                    $('input[name="id_cliente"]').val(data[0].id);
+                    $("input[name='nome']").val(data[0].nome);
+                    $("input[name='cnh']").val(data[0].cnh);
+                    $("input[name=validade_cnh]").val(moment(data[0].validadeCnh).format("DD/MM/YYYY"));
                 },
                 error: function () {
                     JOptionPane.showMessageDialog('error', 'Cliente inexistente');
                 }
             });
         });
+        
+        $('#calc').click(function() {
+            if($("input[name='veiculo_valor']").val() === '') {
+                JOptionPane.showMessageDialog('warning', 'Selecione um veículo');
+                return;
+            }
+            
+            if($("input[name='qtd_dias']").val() === '') {
+                JOptionPane.showMessageDialog('warning', 'Selecione a quantidade de dias');
+                return;
+            }
+            
+            $("input[name='valor_aluguel']").val(parseFloat($("input[name='veiculo_valor']").val()) * parseFloat($("input[name='qtd_dias']").val()));
+        });
+        
+        $("#locacao").submit(function(event) {
+            event.preventDefault();
+            if(validaFormulario()) {
+                $.ajax({
+                url: 'locacao/salvar',
+                type: 'POST',
+                data: {
+                    'id_cliente' : $("input[name='id_cliente']").val(),
+                    'id_veiculo' : $("input[name='id_veiculo']").val(),
+                    'valor' : $("input[name='veiculo_valor']").val(),
+                    'obs' : $("#observacao").val()
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function () {
+                    JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao realizar a locação!');
+                }
+            });
+            }
+        });
+        
+        function validaFormulario()
+        {
+            if($('#cpf_cnpj').val() === '') {
+                JOptionPane.showMessageDialog('warning', 'Digite um valor no campo CPF/CNPJ');
+                return false;
+            }
+            
+            if($('#veiculos').val() === '0' || $('#veiculos').val() === 0) {
+                JOptionPane.showMessageDialog('warning', 'Selecione um veículo');
+                return false;
+            }
+            
+            if($('input[name="qtd_dias"]').val() === '') {
+                JOptionPane.showMessageDialog('warning', 'Digite um valor no campo Quantidade de Dias');
+                return false;
+            }
+            
+            return true;
+        }
+        
+        
 
         JOptionPane = {
             showMessageDialog: function (type, message) {

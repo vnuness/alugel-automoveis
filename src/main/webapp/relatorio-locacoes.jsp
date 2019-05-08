@@ -111,7 +111,7 @@
 
                         <div id="filters" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="CenterModalLabel"
                              aria-hidden="true">
-                            <form class="form-horizontal" id="cad-veiculos" role="form" action="" type="POST">
+                            <form class="form-horizontal" id="filtro" role="form" action="" type="POST">
                                 <input type="hidden" name="id" value=""/>
 
                                 <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -172,116 +172,129 @@
 
         <script>
             var resizefunc = [];
+                    $(document).ready(function () {
 
-            $(document).ready(function () {
-
-                $('#avaliacao').select2({
-                    dropdownParent: $('#cadastro')
-                });
-                
-                popSelectBox();
-
-                loadTable();
-
-                $('input[name="datetimes"]').daterangepicker({
-                    "autoApply": true,
+            $('#avaliacao').select2({
+            dropdownParent: $('#filters')
+            });
+                    popSelectBox();
+                    loadTable();
+                    $('input[name="datetimes"]').daterangepicker({
+            "autoApply": true,
                     "linkedCalendars": false,
                     "showCustomRangeLabel": false,
                     "parentEl": "#filters",
                     "locale": {
-                        "format": "DD/MM/YYYY",
-                        "separator": " - ",
-                        "applyLabel": "Aplicar",
-                        "cancelLabel": "Cancelar",
-                        "fromLabel": "De",
-                        "toLabel": "Até",
-                        "customRangeLabel": "Customizado",
-                        "daysOfWeek": [
-                            "Dom",
-                            "Seg",
-                            "Ter",
-                            "Qua",
-                            "Qui",
-                            "Sex",
-                            "Sáb"
-                        ],
-                        "monthNames": [
-                            "Janeiro",
-                            "Fevereiro",
-                            "Março",
-                            "Abril",
-                            "Maio",
-                            "Junho",
-                            "Julho",
-                            "Agosto",
-                            "Setembro",
-                            "Outubro",
-                            "Novembro",
-                            "Dezembro"
-                        ],
-                        "firstDay": 1
+                    "format": "DD/MM/YYYY",
+                            "separator": " - ",
+                            "applyLabel": "Aplicar",
+                            "cancelLabel": "Cancelar",
+                            "fromLabel": "De",
+                            "toLabel": "Até",
+                            "customRangeLabel": "Customizado",
+                            "daysOfWeek": [
+                                    "Dom",
+                                    "Seg",
+                                    "Ter",
+                                    "Qua",
+                                    "Qui",
+                                    "Sex",
+                                    "Sáb"
+                            ],
+                            "monthNames": [
+                                    "Janeiro",
+                                    "Fevereiro",
+                                    "Março",
+                                    "Abril",
+                                    "Maio",
+                                    "Junho",
+                                    "Julho",
+                                    "Agosto",
+                                    "Setembro",
+                                    "Outubro",
+                                    "Novembro",
+                                    "Dezembro"
+                            ],
+                            "firstDay": 1
                     }
-                });
             });
-            
-            function popSelectBox()
-                {
+                    getFilterData();
+            });
+                    function popSelectBox()
+                    {
                     $.ajax({
-                        url: "veiculos",
-                        type: 'GET',
-                        data: {
-                            'getStatus': true
-                        },
-                        success: function (data) {
-                            //aqui utilizo o Jquery para preencher o select com as opcoes
-                            $('#avaliacao').empty(); // aqui deixo o select Vazio
-                            $('<option>').val(0).text("Selecione a avaliação").appendTo('#status'); // aqui defino a primeira opção para orientar o usuario
-                            for (var i in data) { // aqui faço um for each com todas as opções. Para cada opção, adiciono uma opção no combo
-                                var options = $('<option>').val(data[i].id).text(data[i].avaliacao);
-                                options.appendTo('#avaliacao');
+                    url: "getavaliacao",
+                            type: 'GET',
+                            success: function (data) {
+                            $('#avaliacao').empty();
+                                    $('<option>').val(0).text("Selecione a avaliação").appendTo('#avaliacao'); // aqui defino a primeira opção para orientar o usuario
+                                    for (var i in data)
+                            {
+                            console.log(data[i])
+                                    var options = $('<option>').val(data[i].id).text(data[i].avaliacao);
+                                    options.appendTo('#avaliacao');
                             }
-                        },
-                        error: function () {
+                            },
+                            error: function () {
                             JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao carregar os Status dos Veículos!');
-                        }
+                            }
                     });
-                }
-
-            function loadTable()
-            {
-                $.ajax({
-                    url: "getlocacoes",
-                    type: 'POST',
-                    success: function (result) {
-                        popTable(result);
-                    },
-                    error: function () {
-                        JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao carregar a Tabela!');
                     }
-                });
-            }
 
-            function getFilters()
+            function getFilterData()
             {
-
+            let data = {};
+                    let datePart = $('#datetimes').val().split("-");
+                    if (datePart[0] === "") {
+            data.dateIni = moment().format("YYYY-MM-DD");
+                    data.dateFim = moment().format("YYYY-MM-DD");
+                    data.avaliacao = 0;
+            } else {
+            data.dateIni = moment(moment(datePart[0].trim(), "DD/mm/YYYY")).format("YYYY-mm-DD");
+                    data.dateFim = moment(moment(datePart[1].trim(), "DD/mm/YYYY")).format("YYYY-mm-DD");
+                    data.avaliacao = $('#avaliacao').val()
             }
+
+            return data;
+            }
+
+            $("#filtro").submit(function(e) {
+            e.preventDefault();
+                    loadTable();
+                    $('#filters').modal('hide');
+            });
+                    var me = this;
+                    function loadTable()
+                    {
+                    $.ajax({
+                    url: "getlocacoes",
+                            type: 'POST',
+                            data: getFilterData(),
+                            success: function (result) {
+                            popTable(result);
+                            },
+                            error: function () {
+                            JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao carregar a Tabela!');
+                            }
+                    });
+                    }
 
             function popTable(data)
             {
-                $('#tbl_relatorio tr').not(':first').remove(); //Aqui eu limpo a tabela
-                var html = ''; // Aqui declaro a variável que receberá o conteúdo HTML
-                for (var i in data) { // aqui faço um FOREACH, para a minha lista de dados. Cada linha de dado, preencho uma linha na tabela
-                    html = '<tr><td>' + (parseInt(data[i].id) + 1) + '</td>' +
-                            '<td>' + data[i].cliente + '</td>' +
-                            '<td>' + data[i].categoriaCliente + '</td>' +
-                            '<td>' + data[i].veiculo + '</td>' +
-                            '<td>' + data[i].placa + '</td>' +
-                            '<td>' + data[i].tipoDevolutiva + '</td>' +
-                            '<td>' + data[i].avaliacao + '</td>' +
-                            '<td>' + moment(moment(data[i].dataLocacao, "YYYY-mm-DD")).format("DD/mm/YYYY") + '</td>' +
-                            '<td>' + moment(moment(data[i].dataDevolucao, "YYYY-mm-DD")).format("DD/mm/YYYY") + '</td></tr>';
+            $('#tbl_relatorio tr').not(':first').remove(); //Aqui eu limpo a tabela
+                    var html = ''; // Aqui declaro a variável que receberá o conteúdo HTML
+                    for (var i in data) { // aqui faço um FOREACH, para a minha lista de dados. Cada linha de dado, preencho uma linha na tabela
+            html = '<tr><td>' + (parseInt(data[i].id) + 1) + '</td>' +
+                    '<td>' + data[i].cliente + '</td>' +
+                    '<td>' + data[i].categoriaCliente + '</td>' +
+                    '<td>' + data[i].veiculo + '</td>' +
+                    '<td>' + data[i].placa + '</td>' +
+                    '<td>' + data[i].tipoDevolutiva + '</td>' +
+                    '<td>' + data[i].avaliacao + '</td>' +
+                    '<td>' + moment(moment(data[i].dataLocacao, "YYYY-mm-DD")).format("DD/mm/YYYY") + '</td>' +
+                    '<td>' + moment(moment(data[i].dataDevolucao, "YYYY-mm-DD")).format("DD/mm/YYYY") + '</td></tr>';
                     $('#tbl_relatorio tr').last().after(html);
-                }
+            }
             }
 
 

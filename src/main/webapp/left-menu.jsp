@@ -10,6 +10,15 @@
                             class="ti-stats-up"></i><span> Dashboard </span></a>
                 </li>
 
+                <li class="menu-title">Credenciais</li>
+
+                <li>
+
+                <li>
+                    <a href="funcionarios.jsp" class="waves-effect waves-primary"><i
+                            class="mdi mdi-account-multiple"></i><span> Usuários </span></a>
+                </li>
+
                 <li class="menu-title">Relatórios</li>
 
                 <li>

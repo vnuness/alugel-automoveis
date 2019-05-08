@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.tads.pi3.aluguel.automoveis.webapp;
+package br.senac.tads.pi3.aluguel.automoveis.webapp.Devolutiva;
 
 import DAO.DevolutivaDAO;
 import Models.Devolutiva;

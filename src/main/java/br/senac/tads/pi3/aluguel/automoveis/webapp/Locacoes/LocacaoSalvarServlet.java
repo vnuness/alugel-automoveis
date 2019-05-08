@@ -8,8 +8,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.tads.pi3.aluguel.automoveis.webapp;
+package br.senac.tads.pi3.aluguel.automoveis.webapp.Locacoes;
 
+import br.senac.tads.pi3.aluguel.automoveis.webapp.Cliente.ClientePfSalvarServlet;
 import DAO.LocacaoDAO;
 import Models.Locacao;
 import com.google.gson.Gson;
@@ -41,19 +42,15 @@ public class LocacaoSalvarServlet extends HttpServlet {
         /**
          Inicio da coletagem de parametros
          **/
-        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         response.setContentType("text/html;charset=UTF-8");
         int idCliente = Integer.parseInt(request.getParameter("id_cliente"));
         int idVeiculo = Integer.parseInt(request.getParameter("id_veiculo"));
         Double valor = Double.parseDouble(request.getParameter("valor"));
-        Date dataLocacao = (java.util.Date)formatter.parse(request.getParameter("data"));
-        String obs = request.getParameter("observacao");
+        String obs = request.getParameter("obs");
         /*FIM DA COLETAGEM DE PARAMETROS*/
         /*INSTANCIO O OBJETO PASSANDO AS VARIAVEIS POR PARAMETRO*/
-        Locacao l = new Locacao(idCliente, idVeiculo, valor, dataLocacao, obs);
-
-        
-        /*CHAMO O METODO DA DAO PASSANDO O OBJETO QUE ACABEI DE CRIAR*/
+        Locacao l = new Locacao(idCliente, idVeiculo, valor, obs);
+        response.setContentType("application/json");
         if (LocacaoDAO.Salvar(l)) {
             String resposta = "{\"return\" : \"success\"}";
             try (PrintWriter out = response.getWriter()) {

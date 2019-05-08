@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.tads.pi3.aluguel.automoveis.webapp;
+package br.senac.tads.pi3.aluguel.automoveis.webapp.Relatorios;
 
+import DAO.UltimasLocacoesDAO;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author oem
  */
-@WebServlet(name = "ClientePfEditarServlet", urlPatterns = {"/cliente/pf/editar"})
-public class ClientePfEditarServlet extends HttpServlet {
+@WebServlet(name = "UltimasLocacoesServlet", urlPatterns = {"/ultimaslocacoes"})
+public class UltimasLocacoesServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,8 +33,12 @@ public class ClientePfEditarServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        //request.getParameter("")
+        response.setContentType("application/json");
+        String json = new Gson().toJson(UltimasLocacoesDAO.getUltimasLocacoes());
+        try (PrintWriter out = response.getWriter()) {
+            out.println(json);
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
