@@ -39,6 +39,7 @@ public class Veiculo
         this.modelo = vModelo;
         this.montadora = vMontadora;
         this.ano = vAno;
+        this.valor = valor;
         this.placa = vPlaca;
         this.renavam = vRenavam;
         this.idCombustivel = vIdCombustivel;
@@ -53,6 +54,7 @@ public class Veiculo
         this.montadora = vMontadora;
         this.ano = vAno;
         this.placa = vPlaca;
+        this.valor = valor;
         this.renavam = vRenavam;
         this.idCombustivel = vIdCombustivel;
         this.idCambio = vIdCambio;

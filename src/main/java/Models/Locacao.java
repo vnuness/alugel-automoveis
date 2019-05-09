@@ -26,6 +26,33 @@ public class Locacao {
         this.obs = lObs;
     }
     
+    public Locacao() {
+        
+    }
+    
+    public double aplicaDesconto(double valor, int idCategoria, int qtdDias) {
+        double desconto = 0;
+        double valorAtualizado = 0;
+        if(idCategoria == 3) {
+            if(qtdDias > 1) {
+                desconto = (valor * 15) / 100;
+                valorAtualizado = valor - desconto;
+            } else {
+                desconto = (valor * 10) / 100;
+                valorAtualizado = valor - desconto;
+            }
+        } else if(idCategoria == 1) {
+            if(qtdDias >= 7) {
+                desconto = (valor * 10) / 100;
+                valorAtualizado = valor - desconto;
+            } else {
+                valorAtualizado = valor;
+            }
+        }
+        
+        return valorAtualizado;
+    }
+    
     public int getId() {
         return id;
     }

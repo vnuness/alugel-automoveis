@@ -12,27 +12,20 @@ import java.util.Date;
  */
 public class Devolutiva {
     int id;
-    int id_cliente;
-    int id_avaliacao;
-    int id_tipo_devolutiva;
-    int id_status_locacao;
-    Date data_devolucao;
+    int idCliente;
+    int idAvaliacao;
+    int idTipoDevolutiva;
+    int idLocacao;
+    String dataDevolucao;
     String observacao;
     
-    public Devolutiva(int dId, int dId_cliente, int dId_avaliacao, int dId_tipo_devolutiva,
-            int dId_status_locacao, Date dData_devolucao, String dObservacao){
-        this.id = dId;
-        this.id_cliente = dId_cliente;
-        this.id_avaliacao = dId_avaliacao;
-        this.id_tipo_devolutiva = dId_tipo_devolutiva;
-        this.id_status_locacao = dId_status_locacao;
-        this.data_devolucao = dData_devolucao;
+    public Devolutiva(int dId_cliente, int dId_avaliacao, int dId_tipo_devolutiva, int dId_locacao , String dObservacao){
+        this.idCliente = dId_cliente;
+        this.idAvaliacao = dId_avaliacao;
+        this.idTipoDevolutiva = dId_tipo_devolutiva;
+        this.idLocacao = dId_locacao;
         this.observacao = dObservacao;
               
-    }
-
-    public Devolutiva() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId() {
@@ -43,44 +36,44 @@ public class Devolutiva {
         this.id = id;
     }
 
-    public int getId_cliente() {
-        return id_cliente;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setIdCliente(int id_cliente) {
+        this.idCliente = id_cliente;
     }
 
-    public int getId_avaliacao() {
-        return id_avaliacao;
+    public int getIdAvaliacao() {
+        return idAvaliacao;
     }
 
-    public void setId_avaliacao(int id_avaliacao) {
-        this.id_avaliacao = id_avaliacao;
+    public void setIdAvaliacao(int id_avaliacao) {
+        this.idAvaliacao = id_avaliacao;
     }
 
-    public int getId_tipo_devolutiva() {
-        return id_tipo_devolutiva;
+    public int getIdTipoDevolutiva() {
+        return idTipoDevolutiva;
     }
 
-    public void setId_tipo_devolutiva(int id_tipo_devolutiva) {
-        this.id_tipo_devolutiva = id_tipo_devolutiva;
+    public void setIdTipoDevolutiva(int id_tipo_devolutiva) {
+        this.idTipoDevolutiva = id_tipo_devolutiva;
     }
 
-    public int getId_status_locacao() {
-        return id_status_locacao;
+    public int getIdLocacao() {
+        return idLocacao;
     }
 
-    public void setId_status_locacao(int id_status_locacao) {
-        this.id_status_locacao = id_status_locacao;
+    public void setIdLocacao(int idLocacao) {
+        this.idLocacao = idLocacao;
     }
 
-    public Date getData_devolucao() {
-        return data_devolucao;
+    public String getDataDevolucao() {
+        return dataDevolucao;
     }
 
-    public void setData_devolucao(Date data_devolucao) {
-        this.data_devolucao = data_devolucao;
+    public void setDataDevolucao(String dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
     }
 
     public String getObservacao() {

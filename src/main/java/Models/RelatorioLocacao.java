@@ -18,12 +18,22 @@ public class RelatorioLocacao {
     private String placa;
     private String tipoDevolutiva;
     private String avaliacao;
+    private double valor;
     private String dataLocacao;
     private String dataDevolucao;
     
     public RelatorioLocacao() {
         
     }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+    
 
     public int getId() {
         return id;

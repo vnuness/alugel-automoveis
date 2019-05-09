@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mia_a
  */
-@WebServlet(name = "DevolutivaServlet", urlPatterns = {"/salvar"})
+@WebServlet(name = "DevolutivaServlet", urlPatterns = {"/devolutiva/salvar"})
 public class DevolutivaSalvarServlet extends HttpServlet {
 
     /**
@@ -31,66 +31,54 @@ public class DevolutivaSalvarServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(String metodoHttp,HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(String metodoHttp, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (metodoHttp.equals("POST")) { // Aqui verifico se o que veio na requisição é POST
-            if (request.getParameter("id_cliente") != null 
-                    || request.getParameter("id_avaliacao") != null
-                    || request.getParameter("id_tipo_devolutiva") != null
-                    || request.getParameter("id_status_locacao") != null
-                    || request.getParameter("observacao") != null
-                    ) { // Aqui verifico se o parametro INATIVAR veio na requisição. Caso sim, o usuário está tentando inativar um Cliente.
-                response.setContentType("application/json"); //aqui defino que o tipo de retorno deve ser JSON, para conseguirmos capturar a mensagem na view
-                
-                Devolutiva devolutiva = new Devolutiva();
-                devolutiva.setId_cliente(Integer.parseInt(request.getParameter("id_cliente")));
-                devolutiva.setId_avaliacao(Integer.parseInt(request.getParameter("id_avaliacao")));
-                devolutiva.setId_tipo_devolutiva(Integer.parseInt(request.getParameter("id_tipo_devolutiva")));
-                devolutiva.setId_status_locacao(Integer.parseInt(request.getParameter("id_status_locacao")));
-                devolutiva.setObservacao(request.getParameter("observacao"));
-                
-               
-                
-                if (DevolutivaDAO.Salvar(devolutiva)) { // Aqui chamo o metodo inativar da DAO, passando o ID por parametro
-                    String resposta = "{\"return\" : \"success\"}"; //Aqui defino o que será retornado para a view em caso de sucesso
-                    try (PrintWriter out = response.getWriter()) {
-                        out.println(resposta);
-                    }
-                } else {
-                    String resposta = "{\"return\" : \"error\"}"; //Aqui defino o que será retornado para a view em caso de erro
-                    try (PrintWriter out = response.getWriter()) {
-                        out.println(resposta);
-                    }
-                }
+        response.setContentType("application/json"); //aqui defino que o tipo de retorno deve ser JSON, para conseguirmos capturar a mensagem na view
+
+        int idCliente = Integer.parseInt(request.getParameter("id_cliente"));
+        int idAvaliacao = Integer.parseInt(request.getParameter("id_avaliacao"));
+        int idTipoDevolutiva = Integer.parseInt(request.getParameter("id_tipo_devolutiva"));
+        int idLocacao = Integer.parseInt(request.getParameter("id_locacao"));
+        String observacao = request.getParameter("observacao");
+
+        Devolutiva devolutiva = new Devolutiva(idCliente, idAvaliacao, idTipoDevolutiva, idLocacao, observacao);
+
+        if (DevolutivaDAO.Salvar(devolutiva)) { // Aqui chamo o metodo inativar da DAO, passando o ID por parametro
+            String resposta = "{\"return\" : \"success\"}"; //Aqui defino o que será retornado para a view em caso de sucesso
+            try (PrintWriter out = response.getWriter()) {
+                out.println(resposta);
+            }
+        } else {
+            String resposta = "{\"return\" : \"error\"}"; //Aqui defino o que será retornado para a view em caso de erro
+            try (PrintWriter out = response.getWriter()) {
+                out.println(resposta);
+
             }
         }
     }
 
-        /**
-         * Handles the HTTP <code>POST</code> method.
-         *
-         * @param request servlet request
-         * @param response servlet response
-         * @throws ServletException if a servlet-specific error occurs
-         * @throws IOException if an I/O error occurs
-         */
-        @Override
-        protected void doPost
-        (HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            processRequest("Post",request, response);
-        }
-
-        /**
-         * Returns a short description of the servlet.
-         *
-         * @return a String containing servlet description
-         */
-        @Override
-        public String getServletInfo
-        
-            () {
-        return "Short description";
-        }// </editor-fold>
-
+        processRequest("Post", request, response);
     }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

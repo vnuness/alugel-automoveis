@@ -17,6 +17,7 @@
     </head>
 
 
+    
     <body class="fixed-left">
 
         <!-- Begin page -->
@@ -89,6 +90,7 @@
                                                                     <th> Veículo</th>
                                                                     <th> Placa</th>
                                                                     <th> Tipo Devolutiva</th>
+                                                                    <th> Valor</th>
                                                                     <th> Avaliação</th>
                                                                     <th> Data Locação</th>
                                                                     <th> Data Devolução</th>
@@ -227,7 +229,7 @@
                             type: 'GET',
                             success: function (data) {
                             $('#avaliacao').empty();
-                                    $('<option>').val(0).text("Selecione a avaliação").appendTo('#avaliacao'); // aqui defino a primeira opção para orientar o usuario
+                                    $('<option>').val(0).text("Todas").appendTo('#avaliacao'); // aqui defino a primeira opção para orientar o usuario
                                     for (var i in data)
                             {
                             console.log(data[i])
@@ -282,14 +284,16 @@
             function popTable(data)
             {
             $('#tbl_relatorio tr').not(':first').remove(); //Aqui eu limpo a tabela
+                    let contador = 1
                     var html = ''; // Aqui declaro a variável que receberá o conteúdo HTML
                     for (var i in data) { // aqui faço um FOREACH, para a minha lista de dados. Cada linha de dado, preencho uma linha na tabela
-            html = '<tr><td>' + (parseInt(data[i].id) + 1) + '</td>' +
+            html = '<tr><td>' + (contador++) + '</td>' +
                     '<td>' + data[i].cliente + '</td>' +
                     '<td>' + data[i].categoriaCliente + '</td>' +
                     '<td>' + data[i].veiculo + '</td>' +
                     '<td>' + data[i].placa + '</td>' +
                     '<td>' + data[i].tipoDevolutiva + '</td>' +
+                    '<td>' + data[i].valor + '</td>' +
                     '<td>' + data[i].avaliacao + '</td>' +
                     '<td>' + moment(moment(data[i].dataLocacao, "YYYY-mm-DD")).format("DD/mm/YYYY") + '</td>' +
                     '<td>' + moment(moment(data[i].dataDevolucao, "YYYY-mm-DD")).format("DD/mm/YYYY") + '</td></tr>';

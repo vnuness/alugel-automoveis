@@ -366,6 +366,23 @@ public class ClienteDAO {
 
     public static ArrayList<Cliente> getClienteCpf(String cpf) {
         ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
+        int numeroLinhas = 0;
+        
+        String verificaLocacao = "SELECT * FROM cliente inner join locacoes on cliente.id = locacoes.id_cliente where cliente.cpf_cnpj = '" + cpf + "' AND locacoes.id_status_locacao = 1;";
+        try (Connection conn = obterConexao();
+                PreparedStatement stmt = conn.prepareStatement(verificaLocacao);
+                ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                numeroLinhas = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        if(numeroLinhas > 0 ) {
+            return listaCliente;
+        } 
 
         String query = "SELECT * FROM cliente where cpf_cnpj = '" + cpf + "';";
 
@@ -375,6 +392,7 @@ public class ClienteDAO {
             while (rs.next()) {
                 Cliente cliente = new Cliente();
                 cliente.setId(rs.getInt("id"));
+                cliente.setIdCategoriaCliente(rs.getInt("id_categoria_cliente"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setCnh(rs.getString("cnh"));
                 cliente.setValidadeCnh(rs.getString("validade_cnh"));
