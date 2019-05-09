@@ -44,12 +44,16 @@ public class LocacaoSalvarServlet extends HttpServlet {
          **/
         response.setContentType("text/html;charset=UTF-8");
         int idCliente = Integer.parseInt(request.getParameter("id_cliente"));
+        int idCategoria = Integer.parseInt(request.getParameter("id_categoria"));
         int idVeiculo = Integer.parseInt(request.getParameter("id_veiculo"));
         Double valor = Double.parseDouble(request.getParameter("valor"));
+        int qtdDias = Integer.parseInt(request.getParameter("qtd_dias"));
         String obs = request.getParameter("obs");
+        Locacao loc = new Locacao();
+        double valorDesconto = loc.aplicaDesconto(valor, idCategoria, qtdDias);
         /*FIM DA COLETAGEM DE PARAMETROS*/
         /*INSTANCIO O OBJETO PASSANDO AS VARIAVEIS POR PARAMETRO*/
-        Locacao l = new Locacao(idCliente, idVeiculo, valor, obs);
+        Locacao l = new Locacao(idCliente, idVeiculo, valorDesconto, obs);
         response.setContentType("application/json");
         if (LocacaoDAO.Salvar(l)) {
             String resposta = "{\"return\" : \"success\"}";

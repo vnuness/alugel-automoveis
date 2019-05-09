@@ -78,6 +78,7 @@ public class RelatorioLocacoesDAO {
                 lista.setCategoriaCliente(rs.getString("categoria_cliente"));
                 lista.setVeiculo(rs.getString("veiculo"));
                 lista.setPlaca(rs.getString("placa"));
+                lista.setValor(rs.getDouble("valor"));
                 lista.setTipoDevolutiva(rs.getString("tipo_devolutiva"));
                 lista.setAvaliacao(rs.getString("avaliacao"));
                 lista.setDataLocacao(rs.getString("data_locacao"));

@@ -83,6 +83,7 @@
                                                     <form class="form-horizontal" id="locacao" role="form">
                                                         <input type="hidden" name="id_cliente" value=""/>
                                                         <input type="hidden" name="id_veiculo" value=""/>
+                                                        <input type="hidden" name="id_categoria" value=""/>
 
                                                         <div class="form-row">
                                                             <label class="col-form-label">CPF/CNPJ</label>
@@ -228,11 +229,12 @@
                 type: 'GET',
                 success: function (data) {
                     if(data.length === 0) {
-                        JOptionPane.showMessageDialog('warning', 'Cliente não encontrado em nossos registros');
+                        JOptionPane.showMessageDialog('warning', 'Este Cliente já possui uma locação em aberto!');
                         return;
                     }
                     $('input[name="id_cliente"]').val(data[0].id);
                     $("input[name='nome']").val(data[0].nome);
+                    $("input[name='id_categoria']").val(data[0].idCategoriaCliente);
                     $("input[name='cnh']").val(data[0].cnh);
                     $("input[name=validade_cnh]").val(moment(data[0].validadeCnh).format("DD/MM/YYYY"));
                 },
@@ -266,11 +268,14 @@
                     'id_cliente' : $("input[name='id_cliente']").val(),
                     'id_veiculo' : $("input[name='id_veiculo']").val(),
                     'valor' : $("input[name='veiculo_valor']").val(),
+                    'qtd_dias' : $("input[name=qtd_dias]").val(),
+                    'id_categoria' : $("input[name='id_categoria']").val(),
                     'obs' : $("#observacao").val()
                 },
                 success: function (data) {
                     data.return === "success" ? JOptionPane.showMessageDialog('success', 'Locação realizada com sucesso !') : JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao realizar a locação !');
                     $("#cpf_cnpj").val('');
+                    $("#input[name='nome']").val('');
                     $("#veiculos").val(0).trigger('change');
                     $("input[name='veiculo_valor']").val('');
                     $("input[name='cnh']").val('');
@@ -337,7 +342,7 @@
                     confirmButtonText: 'OK!'
                 })
             }
-        }
+        };
 
     </script>
 
