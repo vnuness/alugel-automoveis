@@ -86,9 +86,10 @@ public class FuncionarioDAO {
                 + "usuarios.data_cadastro "
                 + " FROM tades_locadora.usuarios "
                 + "INNER JOIN filial on filial.id = usuarios.id_filial "
-                + "INNER JOIN cargo on cargo.id = usuarios.id_cargo";
+                + "INNER JOIN cargo on cargo.id = usuarios.id_cargo "
+                + "WHERE usuarios.id_status = 1";
         if (id != 0) {
-            query += " where usuario.id = " + id;
+            query = "SELECT id, matricula, email, senha, nome, id_cargo as cargo, id_filial as filial, data_cadastro FROM usuarios where id = " + id;
         }
 
         try (Connection conn = obterConexao();
@@ -206,10 +207,10 @@ public class FuncionarioDAO {
             Connection Conexao = obterConexao();
 
             PreparedStatement Update = Conexao.prepareStatement(
-                    "UPDATE tades_locadora.funcionario SET "
-                    + "STATUS = 2"
-                    + "WHERE ID = " + id);
-
+                    "UPDATE usuarios SET id_status = 2 "
+                    + "WHERE id = ?");
+            
+            Update.setInt(1, id);
             int linhasAfetadas = Update.executeUpdate();
 
             if (linhasAfetadas > 0) {

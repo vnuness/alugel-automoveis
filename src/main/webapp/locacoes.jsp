@@ -269,7 +269,17 @@
                     'obs' : $("#observacao").val()
                 },
                 success: function (data) {
-                    console.log(data);
+                    data.return === "success" ? JOptionPane.showMessageDialog('success', 'Locação realizada com sucesso !') : JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao realizar a locação !');
+                    $("#cpf_cnpj").val('');
+                    $("#veiculos").val(0).trigger('change');
+                    $("input[name='veiculo_valor']").val('');
+                    $("input[name='cnh']").val('');
+                    $("input[name='validade_cnh']").val('');
+                    $("input[name='veiculo_valor']").val('');
+                    $("input[name='qtd_dias']").val('');
+                    $("input[name='valor_aluguel']").val('');
+                    $("#observacao").val('');
+
                 },
                 error: function () {
                     JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao realizar a locação!');
