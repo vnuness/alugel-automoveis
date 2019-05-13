@@ -10,15 +10,15 @@ package Models;
  * @author Gabriel
  */
 public class Login {
-    String login;
+    String email;
     String senha;
 
-    public String getLogin() {
-        return login;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {
@@ -29,8 +29,8 @@ public class Login {
         this.senha = senha;
     }
     
-    public Login (String login, String senha){
-        this.login = login;
+    public Login (String email, String senha){
+        this.email = email;
         this.senha = senha;
     }
 }
