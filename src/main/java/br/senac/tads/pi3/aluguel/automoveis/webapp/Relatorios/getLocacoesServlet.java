@@ -16,6 +16,7 @@ import Models.RelatorioLocacao;
 import DAO.RelatorioLocacoesDAO;
 import DAO.VeiculoDAO;
 import com.google.gson.Gson;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -41,7 +42,9 @@ public class getLocacoesServlet extends HttpServlet {
         String dateIni = request.getParameter("dateIni");
         String dateFim = request.getParameter("dateFim");
         int avaliacao = Integer.parseInt(request.getParameter("avaliacao"));
-        String json = new Gson().toJson(RelatorioLocacoesDAO.getLocacoes(dateIni, dateFim, avaliacao)); 
+        HttpSession session = request.getSession();
+        int idFilial = Integer.parseInt(session.getAttribute("idFilial").toString());
+        String json = new Gson().toJson(RelatorioLocacoesDAO.getLocacoes(dateIni, dateFim, avaliacao, idFilial)); 
         try (PrintWriter out = response.getWriter()) {
             out.println(json);
         }

@@ -184,7 +184,6 @@
 
     <script>
         $(document).ready(function () {
-            $('#cpf_cnpj').mask('000.000.000-00');
             $('#validade_cnh').mask('00/00/0000');
             $('#veiculos').select2({
                 //dropdownParent: $('#cadastro')
@@ -199,7 +198,7 @@
 
         function getVeiculos() {
             $.ajax({
-                url: 'getveiculos',
+                url: '../getveiculos',
                 type: 'GET',
                 success: function (data) {
                     $('#veiculos').empty(); // aqui deixo o select Vazio
@@ -222,7 +221,7 @@
             }
             
             $.ajax({
-                url: 'cliente/search',
+                url: '../cliente/search',
                 data: {
                     'cpf': $('#cpf_cnpj').unmask().val()
                 },
@@ -262,7 +261,7 @@
             event.preventDefault();
             if(validaFormulario()) {
                 $.ajax({
-                url: 'locacao/salvar',
+                url: '../locacao/salvar',
                 type: 'POST',
                 data: {
                     'id_cliente' : $("input[name='id_cliente']").val(),

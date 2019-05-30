@@ -28,6 +28,10 @@ public class Funcionario {
         this.idFilial = fIdFilial;
         this.idCargo = fIdCargo;
     }
+    
+    public Funcionario() {
+        
+    }
 
     public int getId() {
         return id;

@@ -13,22 +13,17 @@ package br.senac.tads.pi3.aluguel.automoveis.webapp.Locacoes;
 import br.senac.tads.pi3.aluguel.automoveis.webapp.Cliente.ClientePfSalvarServlet;
 import DAO.LocacaoDAO;
 import Models.Locacao;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import static java.util.Date.parse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -53,7 +48,8 @@ public class LocacaoSalvarServlet extends HttpServlet {
         double valorDesconto = loc.aplicaDesconto(valor, idCategoria, qtdDias);
         /*FIM DA COLETAGEM DE PARAMETROS*/
         /*INSTANCIO O OBJETO PASSANDO AS VARIAVEIS POR PARAMETRO*/
-        Locacao l = new Locacao(idCliente, idVeiculo, valorDesconto, obs);
+        HttpSession session = request.getSession();
+        Locacao l = new Locacao(idCliente, idVeiculo, valorDesconto, obs, Integer.parseInt(session.getAttribute("idFilial").toString()));
         response.setContentType("application/json");
         if (LocacaoDAO.Salvar(l)) {
             String resposta = "{\"return\" : \"success\"}";

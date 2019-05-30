@@ -1,7 +1,5 @@
 package Models;
 
-import java.util.Date;
-
 /**
  *
  * @author RaphaelOrlandi
@@ -37,7 +35,7 @@ public class Cliente {
     public Cliente(int cId, String cNome, String cCpfCnpj, int cIdsexo, String cCnh, int cIdcategoriacnh,
             String cRg, String cEmail, String cNacionalidade, String cDatanascimento, String cEndereco,
             String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular, int cStatus,
-            int cIdCategoriaCliente) {
+            int cIdCategoriaCliente, String validadeCnh, int cNumero) {
         this.id = cId;
         this.nome = cNome;
         this.cpfCnpj = cCpfCnpj;
@@ -52,11 +50,13 @@ public class Cliente {
         this.cep = cCep;
         this.bairro = cBairro;
         this.complemento = cComplemento;
+        this.numero = cNumero;
         this.cidade = cCidade;
         this.estado = cEstado;
         this.celular = cCelular;
         this.status = cStatus;
         this.idCategoriaCliente = cIdCategoriaCliente;
+        this.validadeCnh = validadeCnh;
     }
 
     public Cliente(String cNome, String cCpfCnpj, int cIdsexo, int cIdCategoriaCliente, String cCnh, int cIdcategoriacnh,
@@ -85,8 +85,27 @@ public class Cliente {
 
     }
     
-    public Cliente(String cNome, String cCpfCnpj, String cCnh, int cIdCategoriaCnh, String cEmail, String cDataNascimento, String cEndereco, String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular, int cIdCategoriaCliente)
+    public Cliente(String cNome, String cCpfCnpj, String cCnh, int cIdCategoriaCnh, String cEmail, String cDataNascimento, String cEndereco, String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular, int cIdCategoriaCliente, int cNumero)
     {
+        this.numero = cNumero;
+        this.nome = cNome;
+        this.cpfCnpj = cCpfCnpj;
+        this.cnh = cCnh;
+        this.idCategoriaCnh = cIdCategoriaCnh;
+        this.email = cEmail;
+        this.endereco = cEndereco;
+        this.cep = cCep;
+        this.bairro = cBairro;
+        this.complemento = cComplemento;
+        this.cidade = cCidade;
+        this.estado = cEstado;
+        this.celular = cCelular;
+        this.idCategoriaCliente = cIdCategoriaCliente;
+    }
+    
+    public Cliente(int cId, String cNome, String cCpfCnpj, String cCnh, int cIdCategoriaCnh, String cEmail, String cDataNascimento, String cEndereco, String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular, int cIdCategoriaCliente, int cNumero)
+    {
+        this.id = cId;
         this.nome = cNome;
         this.cpfCnpj = cCpfCnpj;
         this.cnh = cCnh;
@@ -98,6 +117,7 @@ public class Cliente {
         this.bairro = cBairro;
         this.complemento = cComplemento;
         this.cidade = cCidade;
+        this.numero = cNumero;
         this.estado = cEstado;
         this.celular = cCelular;
         this.idCategoriaCliente = cIdCategoriaCliente;

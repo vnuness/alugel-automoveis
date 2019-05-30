@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.tads.pi3.aluguel.automoveis.webapp.Locacoes;
+package br.senac.tads.pi3.aluguel.automoveis.webapp.Veiculos;
 
-import DAO.VeiculoDAO;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,14 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author oem
  */
-@WebServlet(name = "GetVeiculosServlet", urlPatterns = {"/getveiculos"})
-public class GetVeiculosServlet extends HttpServlet {
+@WebServlet(name = "VeiculosServlet", urlPatterns = {"/jsp/veiculos"})
+public class VeiculosServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,16 +29,6 @@ public class GetVeiculosServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("application/json");
-        HttpSession session = request.getSession();
-        int idFilial = Integer.parseInt(session.getAttribute("idFilial").toString());
-        String json = new Gson().toJson(VeiculoDAO.getVeiculos(0, idFilial));
-        try (PrintWriter out = response.getWriter()) {
-            out.println(json);
-        }
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -55,7 +42,9 @@ public class GetVeiculosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        request.getRequestDispatcher("/jsp/veiculos.jsp").forward(request, response);
+        
     }
 
     /**
@@ -66,11 +55,6 @@ public class GetVeiculosServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
 
     /**
      * Returns a short description of the servlet.

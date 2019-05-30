@@ -135,7 +135,8 @@
 
             </div>
         </div>
-
+<script>
+        var resizefunc = [];</script>
         <script>
             $(document).ready(function () {
 
@@ -144,10 +145,10 @@
             });
             $('#cpf_cnpj').focusout(function () {
                 $.ajax({
-                    'url': 'devolutiva/buscar-cliente',
+                    'url': '../devolutiva/buscar-cliente',
                     'type': 'POST',
                     'data': {
-                        'cpf': $('#cpf_cnpj').unmask().val()
+                        'cpf': $('#cpf_cnpj').val()
                     },
                     success: function (data) {
                         if (data.length !== 0) {
@@ -168,7 +169,7 @@
 
 
                     $.ajax({
-                        'url': 'devolutiva/salvar',
+                        'url': '../devolutiva/salvar',
                         'type': 'POST',
                         'data': {
                             'id_cliente': $('#id_cliente').val(),
@@ -235,7 +236,6 @@
 
                 return true;
             }
-            $('#cpf_cnpj').mask('000.000.000-00');
 
         </script>
     </body>

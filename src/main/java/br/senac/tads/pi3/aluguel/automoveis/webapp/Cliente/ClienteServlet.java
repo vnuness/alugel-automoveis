@@ -11,7 +11,6 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import static java.util.Date.parse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -94,10 +92,11 @@ public class ClienteServlet extends HttpServlet {
                     validadeCnh = request.getParameter("validade_cnh");
                     cidade = request.getParameter("cidade");
                     estado = "SP";
+                    int numero = 5;
                     celular = request.getParameter("celular");
                     categoria = Integer.parseInt(request.getParameter("categoria_cnh"));
-                    c = new Cliente(nome, cpfCnpj, cnh, categoria, email, validadeCnh, endereco, cep, bairro, complemento, cidade, estado, celular, tipo);
-                    if (ClienteDAO.Salvar(c)) {
+                    c = new Cliente(nome, cpfCnpj, cnh, categoria, email, validadeCnh, endereco, cep, bairro, complemento, cidade, estado, celular, tipo, numero);
+                    if (ClienteDAO.salvar(c)) {
                         String resposta = "{\"return\" : \"success\"}";
                         try (PrintWriter out = response.getWriter()) {
                             out.println(resposta);

@@ -12,6 +12,11 @@ package Models;
 public class Login {
     String email;
     String senha;
+    
+    public Login (String email, String senha){
+        this.email = email;
+        this.senha = senha;
+    }
 
     public String getEmail() {
         return email;
@@ -26,11 +31,6 @@ public class Login {
     }
 
     public void setSenha(String senha) {
-        this.senha = senha;
-    }
-    
-    public Login (String email, String senha){
-        this.email = email;
         this.senha = senha;
     }
 }

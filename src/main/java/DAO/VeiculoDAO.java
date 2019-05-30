@@ -61,8 +61,9 @@ public class VeiculoDAO {
                     + "id_combustivel,"
                     + "id_cambio,"
                     + "id_status,"
-                    + "acessorios)"
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    + "acessorios,"
+                    + "id_filial)"
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             Create.setString(1, v.getModelo());
             Create.setString(2, v.getMontadora());
@@ -74,6 +75,7 @@ public class VeiculoDAO {
             Create.setInt(8, v.getIdCambio());
             Create.setInt(9, v.getIdStatus());
             Create.setString(10, v.getAcessorio());
+            Create.setInt(11, v.getIdFilial());
 
             int linhasAfetadas = Create.executeUpdate();
 
@@ -249,7 +251,7 @@ public class VeiculoDAO {
         return listaCambio;
     }
 
-    public static ArrayList<ListaVeiculos> getVeiculos(int id) {
+    public static ArrayList<ListaVeiculos> getVeiculos(int id, int idFilial) {
         ArrayList<ListaVeiculos> listaVeiculos = new ArrayList<ListaVeiculos>();
 
         String query = "";
@@ -271,7 +273,7 @@ public class VeiculoDAO {
                     + "	INNER JOIN `combustivel` ON `combustivel`.id = `veiculo`.id_combustivel\n"
                     + "	INNER JOIN `status_veiculo` ON `status_veiculo`.id = `veiculo`.id_status\n"
                     + "	INNER JOIN `cambio` ON `cambio`.id = `veiculo`.id_cambio"
-                    + " WHERE id_status_atividade = 1";
+                    + " WHERE id_status_atividade = 1 AND id_filial = " + idFilial;
         }
 
         try (Connection conn = obterConexao();

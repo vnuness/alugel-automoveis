@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,7 +7,6 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
         <meta name="author" content="Coderthemes">
-        <%@ page contentType="text/html; charset=UTF-8" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -27,8 +28,9 @@
 
 
             <!-- ========== Left Sidebar Start ========== -->
-
+            
             <jsp:include page="left-menu.jsp"/>
+            
             <!-- Left Sidebar End -->
 
 
@@ -220,7 +222,7 @@
                             {
                             //Aqui faço uma requisição AJAX para pegar todos os registros.
                             $.ajax({
-                            url: "lista-funcionarios",
+                            url: "../lista-funcionarios",
                                     type: 'GET',
                                     data: {
                                     'id': id //aqui passo um ID que veio por parametro na funcao. Se o id for ZERO, trará todos os registros. Caso o ID seja outro, trará somente os dados daquele id especifico.
@@ -329,7 +331,7 @@
                             if ($("#enviar").hasClass("editar")) { //AQUI eu verifico se o botão Enviar, possui a classe "editar" Caso sim, o usuário esta tentando editar um registro
                     if (validarFormulario()) {
                     $.ajax({
-                    url: "veiculos",
+                    url: "../veiculos",
                             type: 'POST',
                             data: pegarDados('editar'), // aqui passo por parametro a ação que estou realizando. Ou seja, estou passando o ID
                             success: function (result) {
@@ -352,7 +354,7 @@
                     } else {
                     if (validarFormulario()) {
                     $.ajax({
-                    url: "funcionario-salvar",
+                    url: "../funcionario-salvar",
                             type: 'POST',
                             data: pegarDados('salvar'),
                             success: function (result) {
@@ -454,7 +456,7 @@
                             function popSelectBox()
                             {
                             $.ajax({
-                            url: "get-cargo",
+                            url: "../get-cargo",
                                     type: 'GET',
                                     success: function (data) {
                                     $('#cargo').empty();
@@ -469,7 +471,7 @@
                                     }
                             });
                                     $.ajax({
-                                    url: "get-filial",
+                                    url: "../get-filial",
                                             type: 'GET',
                                             success: function (data) {
                                             $('#filial').empty();

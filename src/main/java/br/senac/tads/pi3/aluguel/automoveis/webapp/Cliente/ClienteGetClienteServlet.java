@@ -3,25 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.tads.pi3.aluguel.automoveis.webapp.Locacoes;
+package br.senac.tads.pi3.aluguel.automoveis.webapp.Cliente;
 
-import DAO.VeiculoDAO;
-import com.google.gson.Gson;
+import DAO.ClienteDAO;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import com.google.gson.Gson;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author oem
  */
-@WebServlet(name = "GetVeiculosServlet", urlPatterns = {"/getveiculos"})
-public class GetVeiculosServlet extends HttpServlet {
+@WebServlet(name = "ClientePfEditarServlet", urlPatterns = {"/cliente/get-cliente"})
+public class ClienteGetClienteServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,12 +35,14 @@ public class GetVeiculosServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json");
-        HttpSession session = request.getSession();
-        int idFilial = Integer.parseInt(session.getAttribute("idFilial").toString());
-        String json = new Gson().toJson(VeiculoDAO.getVeiculos(0, idFilial));
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        String json = new Gson().toJson(ClienteDAO.getClienteById(id));
+        response.setContentType("application/json");
         try (PrintWriter out = response.getWriter()) {
             out.println(json);
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

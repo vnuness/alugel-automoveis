@@ -6,11 +6,8 @@ package DAO;
  */
 import Models.CategoriaCNH;
 import Models.CategoriaCliente;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,9 +15,8 @@ import Models.Cliente;
 import Models.ListaCliente;
 import Models.Sexo;
 import Models.StatusClienteUsuario;
-import java.sql.Date;
+
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class ClienteDAO {
 
@@ -36,7 +32,7 @@ public class ClienteDAO {
         return conn;
     }
 
-    public static boolean Salvar(Cliente c) throws ParseException {
+    public static boolean salvar(Cliente c) throws ParseException {
         boolean retorno = false;
 
         Connection connection = null;
@@ -66,8 +62,9 @@ public class ClienteDAO {
                         + " cidade,"
                         + " estado,"
                         + " celular,"
+                        + " numero,"
                         + " id_categoria_cliente)"
-                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
                 Create.setString(1, c.getNome());
                 Create.setString(2, c.getCpfCnpj());
@@ -82,7 +79,8 @@ public class ClienteDAO {
                 Create.setString(11, c.getCidade());
                 Create.setString(12, c.getEstado());
                 Create.setString(13, c.getCelular());
-                Create.setInt(14, c.getIdCategoriaCliente());
+                Create.setInt(14, c.getNumero());
+                Create.setInt(15, c.getIdCategoriaCliente());
 
                 int linhasAfetadas = Create.executeUpdate();
 
@@ -175,58 +173,145 @@ public class ClienteDAO {
         return retorno;
     }
 
-    public static boolean Atualizar(Cliente c) {
-
+    public static boolean ativar(int id) {
         boolean retorno = false;
         try {
             Connection Conexao = obterConexao();
 
             PreparedStatement Update = Conexao.prepareStatement(
                     "UPDATE cliente SET "
-                    + "NOME,"
-                    + "CPF_CNPJ,"
-                    + "ID_SEXO,"
-                    + "CNH,"
-                    + "ID_CATEGORIA_CNH,"
-                    + "RG,"
-                    + "EMAIL,"
-                    + "NACIONALIDASE,"
-                    + "DATA_NASCIMENTO,"
-                    + "ENDERECO,"
-                    + "CEP,"
-                    + "BAIRRO,"
-                    + "COMPLEMENTO,"
-                    + "CIDADE,"
-                    + "ESTADO,"
-                    + "CELULAR,"
-                    + "STATUS,"
-                    + "ID_CATEGORIA_CLIENTE)"
-                    + "WHERE ID = ");
+                    + "id_status = 1 "
+                    + "WHERE id = ?");
+            Update.setInt(1, id);
+            int linhasAfetadas = Update.executeUpdate();
 
-            Update.setString(1, c.getNome());
-            Update.setString(2, c.getCpfCnpj());
-            Update.setInt(3, c.getIdsexo());
-            Update.setString(4, c.getCnh());
-            Update.setInt(5, c.getIdcategoriacnh());
-            Update.setString(6, c.getRg());
-            Update.setString(7, c.getEmail());
-            Update.setString(8, c.getNacionalidade());
-            Update.setString(9, c.getDataNascimento());
-            Update.setString(10, c.getEndereco());
-            Update.setString(11, c.getCep());
-            Update.setString(12, c.getBairro());
-            Update.setString(13, c.getComplemento());
-            Update.setString(14, c.getCidade());
-            Update.setString(15, c.getEstado());
-            Update.setString(16, c.getCelular());
-            Update.setInt(17, c.getStatus());
-            Update.setInt(18, c.getIdCategoriaCliente());
-            Update.setInt(19, c.getId());
+            if (linhasAfetadas > 0) {
+                retorno = true;
+            }
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return retorno;
+    }
+
+    public static boolean atualizar(Cliente c) {
+
+        boolean retorno = false;
+
+        if (c.getIdCategoriaCliente() == 2) {
+            try {
+                Connection Conexao = obterConexao();
+
+                PreparedStatement Update = Conexao.prepareStatement(
+                        "UPDATE cliente SET "
+                        + "nome = ?,"
+                        + "cpf_cnpj = ?,"
+                        + "cnh = ?,"
+                        + "id_categoria_cnh = ?,"
+                        + "email = ?,"
+                        + "validade_cnh = ?"
+                        + "cep = ?,"
+                        + "endereco = ?,"
+                        + "numero = ?,"
+                        + "bairro = ?,"
+                        + "complemento = ?,"
+                        + "cidade = ?,"
+                        + "estado = ?,"
+                        + "celular = ?)"
+                        + "WHERE id = ?");
+
+                Update.setString(1, c.getNome());
+                Update.setString(2, c.getCpfCnpj());
+                Update.setString(3, c.getCnh());
+                Update.setInt(4, c.getIdCategoriaCnh());
+                Update.setString(5, c.getEmail());
+                Update.setString(6, c.getValidadeCnh());
+                Update.setString(7, c.getCep());
+                Update.setString(8, c.getEndereco());
+                Update.setInt(9, c.getNumero());
+                Update.setString(10, c.getBairro());
+                Update.setString(11, c.getComplemento());
+                Update.setString(12, c.getCidade());
+                Update.setString(13, c.getEstado());
+                Update.setString(14, c.getCelular());
+                Update.setInt(15, c.getId());
+
+                int linhasAfetadas = Update.executeUpdate();
+
+                if (linhasAfetadas > 0) {
+                    retorno = true;
+                }
+
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            try {
+                Connection Conexao = obterConexao();
+
+                PreparedStatement Update = Conexao.prepareStatement(
+                        "UPDATE `tades_locadora`.`cliente` "
+                        + "SET "
+                        + "`nome` = ?, "
+                        + "`cpf_cnpj` = ?, "
+                        + "`id_sexo` = ?, "
+                        + "`id_categoria_cliente` = ?, "
+                        + "`cnh` = ?, "
+                        + "`id_categoria_cnh` = ?, "
+                        + "`rg` = ?, "
+                        + "`email` = ?, "
+                        + "`nacionalidade` = ?, "
+                        + "`data_nascimento` = ?, "
+                        + "`validade_cnh` = ?, "
+                        + "`cep` = ?, "
+                        + "`endereco` = ?, "
+                        + "`numero` = ?, "
+                        + "`bairro` = ?, "
+                        + "`complemento` = ?, "
+                        + "`cidade` = ?, "
+                        + "`estado` = ?, "
+                        + "`celular` = ? "
+                        + "WHERE `id` = ?;");
+
+                Update.setString(1, c.getNome());
+                Update.setString(2, c.getCpfCnpj());
+                Update.setInt(3, c.getIdsexo());
+                Update.setInt(4, c.getIdCategoriaCliente());
+                Update.setString(5, c.getCnh());
+                Update.setInt(6, c.getIdCategoriaCnh());
+                Update.setString(7, c.getRg());
+                Update.setString(8, c.getEmail());
+                Update.setString(9, c.getNacionalidade());
+                Update.setString(10, c.getDataNascimento());
+                Update.setString(11, c.getValidadeCnh());
+                Update.setString(12, c.getCep());
+                Update.setString(13, c.getEndereco());
+                Update.setInt(14, c.getNumero());
+                Update.setString(15, c.getBairro());
+                Update.setString(16, c.getComplemento());
+                Update.setString(17, c.getCidade());
+                Update.setString(18, c.getEstado());
+                Update.setString(19, c.getCelular());
+                Update.setInt(20, c.getId());
+
+                int linhasAfetadas = Update.executeUpdate();
+
+                if (linhasAfetadas > 0) {
+                    retorno = true;
+                }
+
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
         return retorno;
     }
 
@@ -324,6 +409,49 @@ public class ClienteDAO {
         return ListaCategoriaCliente;
     }
 
+    public static ArrayList<Cliente> getClienteById(int id) {
+        ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
+
+        String query = "select * from cliente where id = " + id;
+
+        try (Connection conn = obterConexao();
+                PreparedStatement stmt = conn.prepareStatement(query);
+                ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Cliente c = new Cliente();
+                c.setId(rs.getInt("id"));
+                c.setNome(rs.getString("nome"));
+                c.setCpfCnpj(rs.getString("cpf_cnpj"));
+                c.setIdsexo(rs.getInt("id_sexo"));
+                c.setIdCategoriaCliente(rs.getInt("id_categoria_cliente"));
+                c.setCnh(rs.getString("cnh"));
+                c.setIdCategoriaCnh(rs.getInt("id_categoria_cnh"));
+                c.setRg(rs.getString("rg"));
+                c.setEmail(rs.getString("email"));
+                c.setNacionalidade(rs.getString("nacionalidade"));
+                c.setDataNascimento(rs.getString("data_nascimento"));
+                c.setValidadeCnh(rs.getString("validade_cnh"));
+                c.setCep(rs.getString("cep"));
+                c.setEndereco(rs.getString("endereco"));
+                c.setNumero(rs.getInt("numero"));
+                c.setBairro(rs.getString("bairro"));
+                c.setComplemento(rs.getString("complemento"));
+                c.setCidade(rs.getString("cidade"));
+                c.setEstado(rs.getString("estado"));
+                c.setCelular(rs.getString("celular"));
+                listaCliente.add(c);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+
+        return listaCliente;
+
+    }
+
     public static ArrayList<ListaCliente> getCliente(int id) {
         ArrayList<ListaCliente> listaClientes = new ArrayList<ListaCliente>();
 
@@ -367,7 +495,7 @@ public class ClienteDAO {
     public static ArrayList<Cliente> getClienteCpf(String cpf) {
         ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
         int numeroLinhas = 0;
-        
+
         String verificaLocacao = "SELECT * FROM cliente inner join locacoes on cliente.id = locacoes.id_cliente where cliente.cpf_cnpj = '" + cpf + "' AND locacoes.id_status_locacao = 1;";
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(verificaLocacao);
@@ -380,9 +508,9 @@ public class ClienteDAO {
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         }
-        if(numeroLinhas > 0 ) {
+        if (numeroLinhas > 0) {
             return listaCliente;
-        } 
+        }
 
         String query = "SELECT * FROM cliente where cpf_cnpj = '" + cpf + "';";
 

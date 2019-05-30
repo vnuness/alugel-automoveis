@@ -44,7 +44,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Bem-Vindo !</h4>
+                                    <h4 class="page-title">Bem-Vindo ${sessionScope.nome}!!</h4>
                                     <ol class="breadcrumb float-right">
                                         <li class="breadcrumb-item"><a href="#">Minton</a></li>
                                         <li class="breadcrumb-item active">Dashboard</li>
@@ -140,18 +140,18 @@
         <!--<script src="plugins/counterup/jquery.counterup.min.js"></script>-->
 
         <!-- circliful Chart -->
-        <script src="plugins/jquery-circliful/js/jquery.circliful.min.js"></script>
-        <script src="plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+        <script src="../plugins/jquery-circliful/js/jquery.circliful.min.js"></script>
+        <script src="../plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 
         <!-- skycons -->
-        <script src="plugins/skyicons/skycons.min.js" type="text/javascript"></script>
+        <script src="../plugins/skyicons/skycons.min.js" type="text/javascript"></script>
 
         <!-- Page js  -->
-        <script src="assets/pages/jquery.dashboard.js"></script>
+        <script src="../assets/pages/jquery.dashboard.js"></script>
 
         <!-- Custom main Js -->
-        <script src="assets/js/jquery.core.js"></script>
-        <script src="assets/js/jquery.app.js"></script>
+        <script src="../assets/js/jquery.core.js"></script>
+        <script src="../assets/js/jquery.app.js"></script>
 
 
         <script type="text/javascript">
@@ -164,7 +164,7 @@
                 function loadBarGraph() {
 
                     $.ajax({
-                        url: "locacoes-mensais",
+                        url: "../locacoes-mensais",
                         type: 'GET',
                         assync: true,
                         success: function (result) {
@@ -272,7 +272,7 @@
 
                 function loadPieGraph() {
                     $.ajax({
-                        url: "locacoescategoria",
+                        url: "../locacoescategoria",
                         type: 'GET',
                         assync: true,
                         success: function (result) {
@@ -392,7 +392,7 @@
             function loadTable()
             {
                 $.ajax({
-                    url: "ultimaslocacoes",
+                    url: "../ultimaslocacoes",
                     type: 'GET',
                     success: function (result) {
                         popTable(result);

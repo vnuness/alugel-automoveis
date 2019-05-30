@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,7 +35,8 @@ public class UltimasLocacoesServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json");
-        String json = new Gson().toJson(UltimasLocacoesDAO.getUltimasLocacoes());
+        HttpSession session = request.getSession();
+        String json = new Gson().toJson(UltimasLocacoesDAO.getUltimasLocacoes(Integer.parseInt(session.getAttribute("idFilial").toString())));
         try (PrintWriter out = response.getWriter()) {
             out.println(json);
         }

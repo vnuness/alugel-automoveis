@@ -61,7 +61,8 @@ public class ClientePfSalvarServlet extends HttpServlet {
 
         
         /*CHAMO O METODO DA DAO PASSANDO O OBJETO QUE ACABEI DE CRIAR*/
-        if (ClienteDAO.Salvar(c)) {
+        response.setContentType("application/json");
+        if (ClienteDAO.salvar(c)) {
             String resposta = "{\"return\" : \"success\"}";
             try (PrintWriter out = response.getWriter()) {
                 out.println(resposta);

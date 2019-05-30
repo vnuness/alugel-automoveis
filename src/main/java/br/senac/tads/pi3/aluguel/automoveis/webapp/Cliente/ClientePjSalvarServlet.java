@@ -32,19 +32,20 @@ import java.util.logging.Logger;
                     String cpfCnpj = request.getParameter("cpf_cnpj");
                     String cnh = request.getParameter("cnh");
                     String email = request.getParameter("email");
-                    //int idCategoriaCnh = Integer.parseInt(request.getParameter("categoria_cnh"));
                     String endereco = request.getParameter("endereco");
                     String cep = request.getParameter("cep");
                     String bairro = request.getParameter("bairro");
                     String complemento = "";
                     String validadeCnh = request.getParameter("validade_cnh");
                     String cidade = request.getParameter("cidade");
-                    String estado = "SP";
+                    String estado = request.getParameter("estado");
+                    int numero = Integer.parseInt(request.getParameter("numero"));
                     String celular = request.getParameter("celular");
                     int categoria = Integer.parseInt(request.getParameter("categoria_cnh"));
                     int tipo = Integer.parseInt(request.getParameter("tipo"));
-                    Cliente c = new Cliente(nome, cpfCnpj, cnh, categoria, email, validadeCnh, endereco, cep, bairro, complemento, cidade, estado, celular, tipo);
-                    if (ClienteDAO.Salvar(c)) {
+                    Cliente c = new Cliente(nome, cpfCnpj, cnh, categoria, email, validadeCnh, endereco, cep, bairro, complemento, cidade, estado, celular, tipo, numero);
+                    response.setContentType("application/json");
+                    if (ClienteDAO.salvar(c)) {
                         String resposta = "{\"return\" : \"success\"}";
                         try (PrintWriter out = response.getWriter()) {
                             out.println(resposta);

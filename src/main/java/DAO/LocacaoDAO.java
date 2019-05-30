@@ -36,7 +36,7 @@ import java.util.logging.Logger;
         
         try {
             PreparedStatement Create = connection.prepareStatement(
-                    "INSERT INTO locacoes (`id_cliente`, `id_veiculo`, `valor`, `obs`) VALUES (" + l.getIdCliente() + ", " + l.getIdVeiculo() +  ", '" + l.getValor() + "', '" + l.getObs() + "');");
+                    "INSERT INTO locacoes (`id_cliente`, `id_veiculo`, `valor`, `obs`, `id_filial`) VALUES (" + l.getIdCliente() + ", " + l.getIdVeiculo() +  ", '" + l.getValor() + "', '" + l.getObs() + "', '" + l.getIdFilial() + "');");
             
 //            String query = "INSERT INTO tades_locadora.locacoes ("
 //                    + "id_cliente,"

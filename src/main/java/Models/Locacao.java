@@ -16,14 +16,16 @@ public class Locacao {
     private double valor;
     private String dataLocacao;
     private String obs;
-    private int idStatusLocacao; //nao achei referencia para o nome, se puder avisar no grupo qual é o correto  
+    private int idStatusLocacao; 
+    private int idFilial;
     
-    public Locacao(int lIdCliente,int lIdVeiculo, double lValor, String lObs)
+    public Locacao(int lIdCliente,int lIdVeiculo, double lValor, String lObs, int lIdFilial)
     {
         this.idCliente = lIdCliente;
         this.idVeiculo = lIdVeiculo;
         this.valor = lValor;
         this.obs = lObs;
+        this.idFilial = lIdFilial;
     }
     
     public Locacao() {
@@ -52,6 +54,16 @@ public class Locacao {
         
         return valorAtualizado;
     }
+
+    public int getIdFilial() {
+        return idFilial;
+    }
+
+    public void setIdFilial(int idFilial) {
+        this.idFilial = idFilial;
+    }
+    
+    
     
     public int getId() {
         return id;

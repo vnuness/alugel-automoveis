@@ -22,6 +22,7 @@ public class Veiculo
     private int idStatus;
     private double valor;
     private String acessorio;
+    private int idFilial;
     
     public Veiculo() 
     {
@@ -48,7 +49,7 @@ public class Veiculo
         this.acessorio = vAcessorio;
     }
     
-    public Veiculo(String vModelo, String vMontadora, int vAno, String vPlaca, String vRenavam, double valor, int vIdCombustivel, int vIdCambio, int vIdStatus, String vAcessorio)
+    public Veiculo(String vModelo, String vMontadora, int vAno, String vPlaca, String vRenavam, double valor, int vIdCombustivel, int vIdCambio, int vIdStatus, String vAcessorio, int vIdFilial)
     {
         this.modelo = vModelo;
         this.montadora = vMontadora;
@@ -60,6 +61,15 @@ public class Veiculo
         this.idCambio = vIdCambio;
         this.idStatus = vIdStatus;
         this.acessorio = vAcessorio;
+        this.idFilial = vIdFilial;
+    }
+
+    public int getIdFilial() {
+        return idFilial;
+    }
+
+    public void setIdFilial(int idFilial) {
+        this.idFilial = idFilial;
     }
     
     public double getValor() {

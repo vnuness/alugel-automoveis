@@ -18,15 +18,27 @@ public class Devolutiva {
     int idLocacao;
     String dataDevolucao;
     String observacao;
+    int idFilial;
     
-    public Devolutiva(int dId_cliente, int dId_avaliacao, int dId_tipo_devolutiva, int dId_locacao , String dObservacao){
+    public Devolutiva(int dId_cliente, int dId_avaliacao, int dId_tipo_devolutiva, int dId_locacao , String dObservacao, int dIdFilial){
         this.idCliente = dId_cliente;
         this.idAvaliacao = dId_avaliacao;
         this.idTipoDevolutiva = dId_tipo_devolutiva;
         this.idLocacao = dId_locacao;
         this.observacao = dObservacao;
+        this.idFilial = dIdFilial;
               
     }
+
+    public int getIdFilial() {
+        return idFilial;
+    }
+
+    public void setIdFilial(int idFilial) {
+        this.idFilial = idFilial;
+    }
+    
+    
 
     public int getId() {
         return id;

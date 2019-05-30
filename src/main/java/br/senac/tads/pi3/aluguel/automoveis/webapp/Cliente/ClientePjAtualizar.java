@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author oem
  */
-@WebServlet(name = "ClientePfEditarServlet", urlPatterns = {"/cliente/pf/editar"})
-public class ClientePfEditarServlet extends HttpServlet {
+@WebServlet(name = "ClientePjAtualizar", urlPatterns = {"/cliente/pj/atualizar"})
+public class ClientePjAtualizar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +32,43 @@ public class ClientePfEditarServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //request.getParameter("")
+        try (PrintWriter out = response.getWriter()) {
+            
+/*            int cId, 
+            String cNome,
+            String cCpfCnpj,
+            String cCnh,
+            int cIdCategoriaCnh,
+            String cEmail,
+            String cDataNascimento,
+            String cEndereco,
+            String cCep,
+            String cBairro,
+            String cComplemento,
+            String cCidade,
+            String cEstado,
+            String cCelular,
+            int cIdCategoriaCliente
+*/
+            int id = Integer.parseInt(request.getParameter("id"));
+            String nome = request.getParameter("nome");
+            String cpf = request.getParameter("cpf_cnpj");
+            String cnh = request.getParameter("cnh");
+            int idCategoriaCnh = Integer.parseInt(request.getParameter("categoria_cnh"));
+            String email = request.getParameter("email");
+            String endereco = request.getParameter("endereco");
+            String cep = request.getParameter("cep");
+            String bairro = request.getParameter("bairro");
+            String complemento = request.getParameter("complemento");
+            String cidade = request.getParameter("cidade");
+            String estado = request.getParameter("estado");
+            String celular = request.getParameter("celular");
+            int idStatus = 1;
+            int idCategoriaCliente = Integer.parseInt(request.getParameter("categoria_cliente"));
+            String validadeCnh = request.getParameter("validade_cnh");
+            int numero = Integer.parseInt(request.getParameter("numero"));
+
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

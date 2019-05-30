@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.tads.pi3.aluguel.automoveis.webapp.Locacoes;
+package br.senac.tads.pi3.aluguel.automoveis.webapp.login;
 
-import DAO.VeiculoDAO;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author oem
  */
-@WebServlet(name = "GetVeiculosServlet", urlPatterns = {"/getveiculos"})
-public class GetVeiculosServlet extends HttpServlet {
+@WebServlet(name = "LogoutServlet", urlPatterns = {"/logout"})
+public class LogoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,13 +32,10 @@ public class GetVeiculosServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json");
-        HttpSession session = request.getSession();
-        int idFilial = Integer.parseInt(session.getAttribute("idFilial").toString());
-        String json = new Gson().toJson(VeiculoDAO.getVeiculos(0, idFilial));
-        try (PrintWriter out = response.getWriter()) {
-            out.println(json);
-        }
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession sessao = request.getSession();
+        sessao.invalidate();
+        response.sendRedirect("");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

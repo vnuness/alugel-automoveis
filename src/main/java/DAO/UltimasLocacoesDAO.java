@@ -32,10 +32,16 @@ public class UltimasLocacoesDAO {
         return conn;
     }
     
-    public static ArrayList<UltimasLocacoes> getUltimasLocacoes() {
+    public static ArrayList<UltimasLocacoes> getUltimasLocacoes(int idFilial) {
         ArrayList<UltimasLocacoes> ultimasLocacoes = new ArrayList<UltimasLocacoes>();
 
-        String query = "SELECT * FROM ultimas_locacoes";
+        String query;
+        
+        if(idFilial != 4) {
+            query = "SELECT * FROM ultimas_locacoes where id_filial = " + idFilial;
+        } else {
+            query = "SELECT * FROM ultimas_locacoes";
+        }
 
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);

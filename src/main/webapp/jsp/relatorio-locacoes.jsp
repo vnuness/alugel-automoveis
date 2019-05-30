@@ -225,7 +225,7 @@
                     function popSelectBox()
                     {
                     $.ajax({
-                    url: "getavaliacao",
+                    url: "../getavaliacao",
                             type: 'GET',
                             success: function (data) {
                             $('#avaliacao').empty();
@@ -269,7 +269,7 @@
                     function loadTable()
                     {
                     $.ajax({
-                    url: "getlocacoes",
+                    url: "../getlocacoes",
                             type: 'POST',
                             data: getFilterData(),
                             success: function (result) {

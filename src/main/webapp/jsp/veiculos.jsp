@@ -261,7 +261,7 @@
             {
                 //Aqui faço uma requisição AJAX para pegar todos os registros.
                 $.ajax({
-                    url: "veiculos",
+                    url: "../veiculos",
                     type: 'GET',
                     data: {
                         'id': id //aqui passo um ID que veio por parametro na funcao. Se o id for ZERO, trará todos os registros. Caso o ID seja outro, trará somente os dados daquele id especifico.
@@ -404,7 +404,7 @@
                 } else {
                     if (validarFormulario()) {
                         $.ajax({
-                            url: "veiculos",
+                            url: "../veiculos",
                             type: 'POST',
                             data: pegarDados('salvar'),
                             success: function (result) {
@@ -428,7 +428,7 @@
             //Esta função é responsável por Carregar o formulário com os dados do item selecionado, para ser editado. Ela é acionada ao clicar no botao editar
             function edit(id) {
                 $.ajax({
-                    url: "veiculos",
+                    url: "../veiculos",
                     type: 'GET',
                     data: {
                         'id': id
@@ -502,7 +502,7 @@
             function popSelectBox()
             {
                 $.ajax({
-                    url: "veiculos",
+                    url: "../veiculos",
                     type: 'GET',
                     data: {
                         'getStatus': true
@@ -522,7 +522,7 @@
                 });
                 
                 $.ajax({
-                    url: "veiculos",
+                    url: "../veiculos",
                     type: 'GET',
                     data: {
                         'getCombustivel': true
@@ -541,7 +541,7 @@
                 });
                 
                 $.ajax({
-                    url: "veiculos",
+                    url: "../veiculos",
                     type: 'GET',
                     data: {
                         'getCambio': true

@@ -5,12 +5,14 @@
  */
 package DAO;
 
+import Models.Funcionario;
 import Models.Login;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,6 +35,7 @@ public class LoginDAO {
     
     public static boolean login(Login credenciais) throws SQLException
     {
+        boolean retorno = false;
         Connection connection = null;
         try {
             connection = obterConexao();
@@ -42,19 +45,51 @@ public class LoginDAO {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        PreparedStatement select = connection.prepareStatement(
-            "Select usuarios"
-            + "WHERE email = ? and senha = ?"
-        );
+        String query = "select * from usuarios where email = '" + credenciais.getEmail() + "' and senha = '" + credenciais.getSenha() + "'";
         
-        select.setString(1, credenciais.getEmail());
-        select.setString(2, credenciais.getSenha());
+        System.out.println(query);
         
+        int numeroLinhas = 0;
+        
+        try (PreparedStatement stmt = connection.prepareStatement(query);
+                ResultSet rs = stmt.executeQuery()) {
+//            stmt.setString(1, credenciais.getEmail());
+//            stmt.setString(2, credenciais.getSenha());
+            while (rs.next()) {
+                numeroLinhas = rs.getInt(1);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        if(numeroLinhas > 0 ) {
+            return true;
+        } 
+        
+        return retorno;
+        
+    }
+    
+    public static ArrayList<Funcionario> getInfoUsuario(String email) {
+        ArrayList<Funcionario> listaFuncionario = new ArrayList<Funcionario>();
+
+        String query = "SELECT * FROM usuarios where email = '" + email + "'";
 
         try (Connection conn = obterConexao();
-            ResultSet rs = select.executeQuery()) {
+                PreparedStatement stmt = conn.prepareStatement(query);
+                ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-               return true;
+                Funcionario funcionario = new Funcionario();
+                funcionario.setId(rs.getInt("id"));
+                funcionario.setNome(rs.getString("nome"));
+                funcionario.setMatricula(rs.getString("matricula"));
+                funcionario.setEmail(rs.getString("email"));
+                funcionario.setSenha(rs.getString("senha"));
+                funcionario.setIdFilial(rs.getInt("id_filial"));
+                funcionario.setIdCargo(rs.getInt("id_cargo"));
+                listaFuncionario.add(funcionario);
+
             }
 
         } catch (SQLException ex) {
@@ -62,7 +97,6 @@ public class LoginDAO {
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         }
-        return false;
-        
+        return listaFuncionario;
     }
 }

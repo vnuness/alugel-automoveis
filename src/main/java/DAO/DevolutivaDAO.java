@@ -55,8 +55,9 @@ public class DevolutivaDAO {
                     + "id_avaliacao, "
                     + "id_tipo_devolutiva, "
                     + "id_locacao, "
-                    + "observacao) "
-                    + "VALUES(?, ?, ?, ?, ?);"
+                    + "observacao, "
+                    + "id_filial) "
+                    + "VALUES(?, ?, ?, ?, ?, ?);"
             );
 
             Create.setInt(1, d.getIdCliente());
@@ -64,6 +65,7 @@ public class DevolutivaDAO {
             Create.setInt(3, d.getIdTipoDevolutiva());
             Create.setInt(4, d.getIdLocacao());
             Create.setString(5, d.getObservacao());
+            Create.setInt(6, d.getIdFilial());
 
             System.out.print(d.getIdLocacao());
             

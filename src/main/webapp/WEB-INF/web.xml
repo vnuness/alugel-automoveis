@@ -4,21 +4,9 @@
         <servlet-name>ProdutoServlet</servlet-name>
         <servlet-class>br.senac.tads.pi3.aluguel.automoveis.webapp.VeiculoServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>br.senac.tads.pi3.aluguel.automoveis.webapp.login.LoginServlet</servlet-class>
-        <servlet-name>AluguelAutomoveis</servlet-name>
-        <servlet-class>br.senac.tads.pi3.aluguel.automoveis.webapp.Login.AluguelAutomoveisServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AluguelEntrarServlet</servlet-name>
-        <servlet-class>br.senac.tads.pi3.aluguel.automoveis.webapp.Login.AluguelEntrarServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>ProdutoServlet</servlet-name>
         <url-pattern>/ProdutoServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
     </servlet-mapping>
     <session-config>
         <session-timeout>

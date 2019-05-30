@@ -19,7 +19,7 @@ import Models.RelatorioLocacao;
  * @author oem
  */
 public class RelatorioLocacoesDAO {
-    
+
     private static Connection obterConexao() throws ClassNotFoundException, SQLException {
         // 1) Declarar o driver JDBC de acordo com o Banco de dados usado
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -31,12 +31,12 @@ public class RelatorioLocacoesDAO {
                 "");
         return conn;
     }
-    
+
     public static ArrayList<Avaliacao> getAvaliacoes() {
         ArrayList<Avaliacao> avaliacao = new ArrayList<Avaliacao>();
-        
+
         String query = "SELECT * FROM avaliacao";
-        
+
         try (Connection conn = obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
@@ -52,21 +52,33 @@ public class RelatorioLocacoesDAO {
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         }
-        
+
         return avaliacao;
     }
-    
-    public static ArrayList<RelatorioLocacao> getLocacoes(String dateIni, String dateFim, int idAvaliacao) {
+
+    public static ArrayList<RelatorioLocacao> getLocacoes(String dateIni, String dateFim, int idAvaliacao, int idFilial) {
         ArrayList<RelatorioLocacao> relatorioLocacao = new ArrayList<RelatorioLocacao>();
-        
-        String query = "";
-        if(idAvaliacao == 0) {
-            query = "SELECT * FROM relatorio_locacoes WHERE data_locacao BETWEEN '" + dateIni + "' AND '" + dateFim + "'";
+
+        String query;
+
+        if (idFilial != 4) {
+            if (idAvaliacao == 0) {
+                query = "SELECT * FROM relatorio_locacoes WHERE data_locacao BETWEEN '" + dateIni + "' AND '" + dateFim + "' AND id_filial = " + idFilial;
+            } else {
+                query = "SELECT * FROM relatorio_locacoes "
+                        + "INNER JOIN avaliacao on relatorio_locacoes.avaliacao = avaliacao.nome "
+                        + "WHERE data_locacao BETWEEN '" + dateIni + "' AND '" + dateFim + "' AND avaliacao.id = " + idAvaliacao + " AND id_filial = " + idFilial;
+                System.out.println(query);
+            }
         } else {
-            query = "SELECT * FROM relatorio_locacoes "
-                    + "INNER JOIN avaliacao on relatorio_locacoes.avaliacao = avaliacao.nome "
-                    + "WHERE data_locacao BETWEEN '" + dateIni + "' AND '" + dateFim + "' AND avaliacao.id = " + idAvaliacao;
-            System.out.println(query);
+            if (idAvaliacao == 0) {
+                query = "SELECT * FROM relatorio_locacoes WHERE data_locacao BETWEEN '" + dateIni + "' AND '" + dateFim + "'";
+            } else {
+                query = "SELECT * FROM relatorio_locacoes "
+                        + "INNER JOIN avaliacao on relatorio_locacoes.avaliacao = avaliacao.nome "
+                        + "WHERE data_locacao BETWEEN '" + dateIni + "' AND '" + dateFim + "' AND avaliacao.id = " + idAvaliacao + "";
+                System.out.println(query);
+            }
         }
 
         try (Connection conn = obterConexao();
