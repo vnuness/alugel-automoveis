@@ -254,7 +254,20 @@
                 return;
             }
             
-            $("input[name='valor_aluguel']").val(parseFloat($("input[name='veiculo_valor']").val()) * parseFloat($("input[name='qtd_dias']").val()));
+            $.ajax({
+               url: '../get-desconto',
+               type: 'POST',
+               data: {
+                   id_categoria: $("input[name='id_categoria']").val(),
+                   qtd_dias: $("input[name='qtd_dias']").val(),
+                   valor: parseFloat($("input[name='veiculo_valor']").val()) * parseFloat($("input[name='qtd_dias']").val())      
+               },
+               success: function(result) {
+                   $("input[name='valor_aluguel']").val(result.valor);
+               }
+            });
+            
+            
         });
         
         $("#locacao").submit(function(event) {
@@ -266,7 +279,7 @@
                 data: {
                     'id_cliente' : $("input[name='id_cliente']").val(),
                     'id_veiculo' : $("input[name='id_veiculo']").val(),
-                    'valor' : $("input[name='veiculo_valor']").val(),
+                    'valor' : $("input[name='valor_aluguel']").val(),
                     'qtd_dias' : $("input[name=qtd_dias]").val(),
                     'id_categoria' : $("input[name='id_categoria']").val(),
                     'obs' : $("#observacao").val()

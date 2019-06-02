@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.tads.pi3.aluguel.automoveis.webapp.Cliente;
+package br.senac.tads.pi3.aluguel.automoveis.webapp.Locacoes;
 
-import DAO.ClienteDAO;
-import DAO.PessoaJuridicaDAO;
-import Models.Cliente;
-import Models.PessoaJuridica;
+import DAO.LocacaoDAO;
+import Models.MotoristaAplicativo;
+import Models.PessoaFisica;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -21,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author oem
  */
-@WebServlet(name = "ClientePjAtualizar", urlPatterns = {"/cliente/pj/atualizar"})
-public class ClientePjAtualizar extends HttpServlet {
+@WebServlet(name = "GetDescontoServlet", urlPatterns = {"/get-desconto"})
+public class GetDescontoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,41 +34,25 @@ public class ClientePjAtualizar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        int id = Integer.parseInt(request.getParameter("id"));
-        String nome = request.getParameter("nome");
-        String cnpj = request.getParameter("cpf_cnpj");
-        String cnh = request.getParameter("cnh");
-        int idCategoriaCnh = Integer.parseInt(request.getParameter("categoria_cnh"));
-        String email = request.getParameter("email");
-        String validadeCnh = request.getParameter("validade_cnh");
-        String endereco = request.getParameter("endereco");
-        String cep = request.getParameter("cep");
-        String bairro = request.getParameter("bairro");
-        String complemento = request.getParameter("complemento");
-        String cidade = request.getParameter("cidade");
-        String estado = request.getParameter("estado");
-        String celular = request.getParameter("celular");
-        int idCategoriaCliente = Integer.parseInt(request.getParameter("categoria_cliente"));
-        int numero = Integer.parseInt(request.getParameter("numero"));
-
-        PessoaJuridica pj = new PessoaJuridica(id, nome, cnpj, cnh, idCategoriaCnh, email, validadeCnh, endereco, cep, bairro, complemento, cidade, estado, celular, idCategoriaCliente, numero);
-
-        response.setContentType("application/json");
-        
-        PessoaJuridicaDAO pjd = new PessoaJuridicaDAO();
-        
-        if (pjd.atualizar(pj)) {
-            String resposta = "{\"return\" : \"success\"}";
-            try (PrintWriter out = response.getWriter()) {
-                out.println(resposta);
-            }
+        int idCategoriaCliente = Integer.parseInt(request.getParameter("id_categoria"));
+        double valor = Double.parseDouble(request.getParameter("valor"));
+        int qtdDias = Integer.parseInt(request.getParameter("qtd_dias"));
+        double valorDesconto;
+        PessoaFisica pf = new PessoaFisica();
+        MotoristaAplicativo ma = new MotoristaAplicativo();
+        if (idCategoriaCliente == 1) {
+            valorDesconto = pf.aplicaDesconto(valor, qtdDias);
+        } else if(idCategoriaCliente == 3) {
+            valorDesconto = ma.aplicaDesconto(valor, qtdDias);
         } else {
-            String resposta = "{\"return\" : \"error\"}";
-            try (PrintWriter out = response.getWriter()) {
-                out.println(resposta);
-            }
+            valorDesconto = valor;
         }
+        response.setContentType("application/json");
+        String resposta = "{\"valor\" : \"" + valorDesconto + "\"}";
+        try (PrintWriter out = response.getWriter()) {
+            out.println(resposta);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

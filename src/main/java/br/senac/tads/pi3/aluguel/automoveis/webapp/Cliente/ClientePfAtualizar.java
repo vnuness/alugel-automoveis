@@ -5,8 +5,9 @@
  */
 package br.senac.tads.pi3.aluguel.automoveis.webapp.Cliente;
 
-import DAO.ClienteDAO;
-import Models.Cliente;
+import DAO.PessoaFisicaDAO;
+import Models.MotoristaAplicativo;
+import Models.PessoaFisica;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -48,10 +49,15 @@ public class ClientePfAtualizar extends HttpServlet {
         int idStatus = 1;
         int idCategoriaCliente = Integer.parseInt(request.getParameter("categoria_cliente"));
         String validadeCnh = request.getParameter("validade_cnh");
+        PessoaFisica pf = null;
+        if(idCategoriaCliente == 1) {
+            pf = new PessoaFisica(id, nome, cpf, idSexo, cnh, idCategoriaCnh, rg, email, nacionalidade, nascimento, endereco, cep, bairro, complemento, cidade, estado, celular, idStatus, idCategoriaCliente, validadeCnh, numero);
+        } else {
+            pf = new MotoristaAplicativo(id, nome, cpf, idSexo, cnh, idCategoriaCnh, cep, email, nacionalidade, nascimento, endereco, cep, bairro, complemento, cidade, estado, celular, idStatus, idCategoriaCliente, validadeCnh, numero);
+        }
         
-        Cliente c = new Cliente(id, nome, cpf, idSexo, cnh, idCategoriaCnh, rg, email, nacionalidade, nascimento, endereco, cep, bairro, complemento, cidade, estado, celular, idStatus, idCategoriaCliente, validadeCnh, numero);
-        
-        if (ClienteDAO.atualizar(c)) { 
+        PessoaFisicaDAO pfd = new PessoaFisicaDAO();
+        if (pfd.atualizar(pf)) { 
                     String resposta = "{\"return\" : \"success\"}"; 
                     try (PrintWriter out = response.getWriter()) {
                         out.println(resposta);

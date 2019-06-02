@@ -623,6 +623,7 @@
                                 'endereco': $('input[name=endereco_pj]').val(),
                                 'cep': $('input[name=cep_pj]').unmask().val(),
                                 'bairro': $('input[name=bairro_pj]').val(),
+                                'numero' : $('input[name=numero_pj]').val(),
                                 'cidade': $('input[name=cidade_pj]').val(),
                                 'estado': $('input[name=estado_pj]').val()
                             }
@@ -910,12 +911,6 @@
 
             }
 
-            function validarFormulario()
-            {
-
-                return true;
-            }
-
             function validarFormularioPf() {
 
                 if ($("input[name=nome]").val() == '') {
@@ -938,10 +933,11 @@
                     return false;
                 }
 
-                if ($("input[name=data_nascimento]").val() == '') {
+                if ($("input[name=nascimento]").val() == '') {
                     JOptionPane.showMessageDialog('warning', 'Selecione uma data de nascimento!');
                     return false;
                 }
+                
 
                 if ($("input[name=nacionalidade]").val() == '') {
                     JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo nacionalidade!');
@@ -1058,7 +1054,7 @@
                     return false;
                 }
 
-                if ($("input[name=numero_pj]").val() == '' || !isNumber($("input[name=numero]").val())) {
+                if ($("input[name=numero_pj]").val() == '' || !isNumber($("input[name=numero_pj]").val())) {
                     JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo número');
                     return false;
                 }

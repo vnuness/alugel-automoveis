@@ -1,20 +1,16 @@
 package br.senac.tads.pi3.aluguel.automoveis.webapp.Cliente;
 
 import DAO.ClienteDAO;
-import Models.Cliente;
-import com.google.gson.Gson;
+import DAO.PessoaJuridicaDAO;
+import Models.PessoaJuridica;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import static java.util.Date.parse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,9 +39,10 @@ import java.util.logging.Logger;
                     String celular = request.getParameter("celular");
                     int categoria = Integer.parseInt(request.getParameter("categoria_cnh"));
                     int tipo = Integer.parseInt(request.getParameter("tipo"));
-                    Cliente c = new Cliente(nome, cpfCnpj, cnh, categoria, email, validadeCnh, endereco, cep, bairro, complemento, cidade, estado, celular, tipo, numero);
+                    PessoaJuridica pj = new PessoaJuridica(nome, cpfCnpj, cnh, categoria, email, validadeCnh, endereco, cep, bairro, complemento, cidade, estado, celular, tipo, numero);
                     response.setContentType("application/json");
-                    if (ClienteDAO.salvar(c)) {
+                    PessoaJuridicaDAO pjd = new PessoaJuridicaDAO();
+                    if (pjd.salvar(pj)) {
                         String resposta = "{\"return\" : \"success\"}";
                         try (PrintWriter out = response.getWriter()) {
                             out.println(resposta);

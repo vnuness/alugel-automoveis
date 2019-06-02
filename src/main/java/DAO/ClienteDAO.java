@@ -6,7 +6,6 @@ package DAO;
  */
 import Models.CategoriaCNH;
 import Models.CategoriaCliente;
-import DAO.ConnectionUtil;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -33,8 +32,6 @@ public class ClienteDAO {
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //String data = dfUsa.format();
-        //Date parsed = (Date) dfUsa.parse(data);
 
         if (c.getIdCategoriaCliente() == 2) {
             try {
@@ -137,8 +134,7 @@ public class ClienteDAO {
 
         return retorno;
     }
-
-    //implementar metodo inativar - recebe ID e realizar UPDATE no registro
+    
     public static boolean Inativar(int id) {
         boolean retorno = false;
         try {
@@ -179,9 +175,7 @@ public class ClienteDAO {
                 retorno = true;
             }
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return retorno;

@@ -13,6 +13,8 @@ package br.senac.tads.pi3.aluguel.automoveis.webapp.Locacoes;
 import br.senac.tads.pi3.aluguel.automoveis.webapp.Cliente.ClientePfSalvarServlet;
 import DAO.LocacaoDAO;
 import Models.Locacao;
+import Models.MotoristaAplicativo;
+import Models.PessoaFisica;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -34,20 +36,15 @@ public class LocacaoSalvarServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
-        /**
-         Inicio da coletagem de parametros
-         **/
-        response.setContentType("text/html;charset=UTF-8");
+        
         int idCliente = Integer.parseInt(request.getParameter("id_cliente"));
         int idCategoria = Integer.parseInt(request.getParameter("id_categoria"));
         int idVeiculo = Integer.parseInt(request.getParameter("id_veiculo"));
         Double valor = Double.parseDouble(request.getParameter("valor"));
         int qtdDias = Integer.parseInt(request.getParameter("qtd_dias"));
         String obs = request.getParameter("obs");
-        Locacao loc = new Locacao();
-        double valorDesconto = loc.aplicaDesconto(valor, idCategoria, qtdDias);
         HttpSession session = request.getSession();
-        Locacao l = new Locacao(idCliente, idVeiculo, valorDesconto, obs, Integer.parseInt(session.getAttribute("idFilial").toString()));
+        Locacao l = new Locacao(idCliente, idVeiculo, valor, obs, Integer.parseInt(session.getAttribute("idFilial").toString()));
         response.setContentType("application/json");
         if (LocacaoDAO.Salvar(l)) {
             String resposta = "{\"return\" : \"success\"}";

@@ -102,6 +102,7 @@ public class Cliente {
         this.estado = cEstado;
         this.celular = cCelular;
         this.idCategoriaCliente = cIdCategoriaCliente;
+        
     }
     
     public Cliente(int cId, String cNome, String cCpfCnpj, String cCnh, int cIdCategoriaCnh, String cEmail, String cValidadeCnh, String cEndereco, String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular, int cIdCategoriaCliente, int cNumero)
@@ -122,6 +123,7 @@ public class Cliente {
         this.estado = cEstado;
         this.celular = cCelular;
         this.idCategoriaCliente = cIdCategoriaCliente;
+        
         
     }
     

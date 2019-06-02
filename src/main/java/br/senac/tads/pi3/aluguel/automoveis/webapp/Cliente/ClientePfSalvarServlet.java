@@ -5,21 +5,17 @@
  */
 package br.senac.tads.pi3.aluguel.automoveis.webapp.Cliente;
 
-import DAO.ClienteDAO;
-import Models.Cliente;
-import com.google.gson.Gson;
+import DAO.PessoaFisicaDAO;
+import Models.MotoristaAplicativo;
+import Models.PessoaFisica;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import static java.util.Date.parse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,12 +53,18 @@ public class ClientePfSalvarServlet extends HttpServlet {
         String nacionalidade = request.getParameter("nacionalidade");
         /*FIM DA COLETAGEM DE PARAMETROS*/
         /*INSTANCIO O OBJETO PASSANDO AS VARIAVEIS POR PARAMETRO*/
-        Cliente c = new Cliente(nome, cpfCnpj, sexo, categoriaCliente, cnh, categoriaCnh, rg, email, nacionalidade, dataNascimento, validadeCnh, cep, endereco, numero, bairro, complemento, cidade, estado, celular);
+        PessoaFisica pf;
+        if(categoriaCliente == 1 ) {
+            pf = new PessoaFisica(nome, cpfCnpj, sexo, categoriaCliente, cnh, categoriaCnh, rg, email, nacionalidade, dataNascimento, validadeCnh, cep, endereco, numero, bairro, complemento, cidade, estado, celular);
+        } else {
+            pf = new MotoristaAplicativo(nome, cpfCnpj, sexo, categoriaCliente, cnh, categoriaCnh, cep, email, nacionalidade, dataNascimento, validadeCnh, cep, endereco, numero, bairro, complemento, cidade, estado, celular);
+        }
 
         
         /*CHAMO O METODO DA DAO PASSANDO O OBJETO QUE ACABEI DE CRIAR*/
         response.setContentType("application/json");
-        if (ClienteDAO.salvar(c)) {
+        PessoaFisicaDAO pfd = new PessoaFisicaDAO();
+        if (pfd.salvar(pf)) {
             String resposta = "{\"return\" : \"success\"}";
             try (PrintWriter out = response.getWriter()) {
                 out.println(resposta);

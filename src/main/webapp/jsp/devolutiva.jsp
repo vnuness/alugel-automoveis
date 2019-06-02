@@ -139,6 +139,7 @@
         var resizefunc = [];</script>
         <script>
             var isValidated = false;
+            
             $(document).ready(function () {
 
                 $('#avaliacao').select2();
@@ -228,7 +229,7 @@
             };
 
             function validarFormulario() {
-                if ($('#avaliacao').val() === 0) {
+                if ($('#avaliacao').val() === 0 || $('#avaliacao').val() == '') {
                     JOptionPane.showMessageDialog('warning', 'Selecione a avaliação do cliente');
                     return false;
                 }
