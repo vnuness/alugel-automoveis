@@ -19,18 +19,6 @@ import java.util.ArrayList;
  */
 public class TotalLocacoesPorCategoriaDAO {
 
-    private static Connection obterConexao() throws ClassNotFoundException, SQLException {
-        // 1) Declarar o driver JDBC de acordo com o Banco de dados usado
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
-        // 2) Abrir a conexão
-        Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/tades_locadora?useTimezone=true&serverTimezone=UTC",
-                "root",
-                "");
-        return conn;
-    }
-
     public static ArrayList<TotalLocacoesPorCategoria> getLocacoes(int idFilial) {
         ArrayList<TotalLocacoesPorCategoria> totalLocacoes = new ArrayList<TotalLocacoesPorCategoria>();
 
@@ -59,7 +47,7 @@ public class TotalLocacoesPorCategoriaDAO {
                     + "    GROUP BY `name`";
         }
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {

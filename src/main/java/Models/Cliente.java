@@ -85,7 +85,7 @@ public class Cliente {
 
     }
     
-    public Cliente(String cNome, String cCpfCnpj, String cCnh, int cIdCategoriaCnh, String cEmail, String cDataNascimento, String cEndereco, String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular, int cIdCategoriaCliente, int cNumero)
+    public Cliente(String cNome, String cCpfCnpj, String cCnh, int cIdCategoriaCnh, String cEmail, String cValidadeCnh, String cEndereco, String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular, int cIdCategoriaCliente, int cNumero)
     {
         this.numero = cNumero;
         this.nome = cNome;
@@ -95,6 +95,7 @@ public class Cliente {
         this.email = cEmail;
         this.endereco = cEndereco;
         this.cep = cCep;
+        this.validadeCnh = cValidadeCnh;
         this.bairro = cBairro;
         this.complemento = cComplemento;
         this.cidade = cCidade;
@@ -103,7 +104,7 @@ public class Cliente {
         this.idCategoriaCliente = cIdCategoriaCliente;
     }
     
-    public Cliente(int cId, String cNome, String cCpfCnpj, String cCnh, int cIdCategoriaCnh, String cEmail, String cDataNascimento, String cEndereco, String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular, int cIdCategoriaCliente, int cNumero)
+    public Cliente(int cId, String cNome, String cCpfCnpj, String cCnh, int cIdCategoriaCnh, String cEmail, String cValidadeCnh, String cEndereco, String cCep, String cBairro, String cComplemento, String cCidade, String cEstado, String cCelular, int cIdCategoriaCliente, int cNumero)
     {
         this.id = cId;
         this.nome = cNome;
@@ -111,7 +112,7 @@ public class Cliente {
         this.cnh = cCnh;
         this.idCategoriaCnh = cIdCategoriaCnh;
         this.email = cEmail;
-        this.dataNascimento = cDataNascimento;
+        this.validadeCnh = cValidadeCnh;
         this.endereco = cEndereco;
         this.cep = cCep;
         this.bairro = cBairro;

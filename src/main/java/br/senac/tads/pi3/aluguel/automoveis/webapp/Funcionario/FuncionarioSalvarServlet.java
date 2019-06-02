@@ -34,7 +34,7 @@ public class FuncionarioSalvarServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String matricula = request.getParameter("martricula");
+        String matricula = request.getParameter("matricula");
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");

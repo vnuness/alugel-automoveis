@@ -6,7 +6,7 @@
 package br.senac.tads.pi3.aluguel.automoveis.webapp.Funcionario;
 
 import DAO.FuncionarioDAO;
-import com.google.gson.Gson;
+import Models.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,14 +14,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author oem
  */
-@WebServlet(name = "FuncionarioListaServlet", urlPatterns = {"/lista-funcionarios"})
-public class FuncionarioListaServlet extends HttpServlet {
+@WebServlet(name = "FuncionarioEditarServlet", urlPatterns = {"/funcionario/atualizar"})
+public class FuncionarioEditarServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,15 +33,26 @@ public class FuncionarioListaServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String matricula = request.getParameter("matricula");
+        String nome = request.getParameter("nome");
+        String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
+        int idFilial = Integer.parseInt(request.getParameter("filial"));
+        int idCargo = Integer.parseInt(request.getParameter("cargo"));
+        Funcionario f = new Funcionario(id, matricula, nome, email, senha, idFilial, idCargo);
         response.setContentType("application/json");
-            int id = Integer.parseInt(request.getParameter("id"));
-            HttpSession session = request.getSession();
-            int idFilial = Integer.parseInt(session.getAttribute("idFilial").toString());
-                String json = new Gson().toJson(FuncionarioDAO.getUsuarios(id, idFilial));
-                try (PrintWriter out = response.getWriter()) {
-                    out.println(json);
-                }
-                
+        if (FuncionarioDAO.Atualizar(f)) {
+            String resposta = "{\"return\" : \"success\"}";
+            try (PrintWriter out = response.getWriter()) {
+                out.println(resposta);
+            }
+        } else {
+            String resposta = "{\"return\" : \"error\"}";
+            try (PrintWriter out = response.getWriter()) {
+                out.println(resposta);
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

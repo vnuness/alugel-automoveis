@@ -16,7 +16,9 @@ public class ListaUsuarios {
     private String nome;
     private String cargo;
     private String filial;
-
+    private int idStatus;
+    private String dataCadastro;
+    
     public String getFilial() {
         return filial;
     }
@@ -24,7 +26,14 @@ public class ListaUsuarios {
     public void setFilial(String filial) {
         this.filial = filial;
     }
-    private String dataCadastro;
+
+    public int getIdStatus() {
+        return idStatus;
+    }
+
+    public void setIdStatus(int idStatus) {
+        this.idStatus = idStatus;
+    }
 
     public int getId() {
         return id;

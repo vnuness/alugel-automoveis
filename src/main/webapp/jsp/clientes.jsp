@@ -168,18 +168,18 @@
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label class="col-form-label">Nome Completo</label>
-                                                        <input type="text" name="nome" autocomplete="off" class="form-control" placeholder="Fulano da silva">
+                                                        <input type="text" name="nome" autocomplete="off" class="form-control" required="required" placeholder="Fulano da silva">
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label class="col-form-label">E-mail</label>
-                                                        <input type="email" name="email" autocomplete="off" class="form-control" placeholder="exemplo@exemplo.com">
+                                                        <input type="email" name="email" autocomplete="off" class="form-control" required="required" placeholder="exemplo@exemplo.com">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-3">
                                                         <label class="col-form-label">CPF</label>
-                                                        <input type="text" name="cpf_cnpj" id="cpf" autocomplete="off" class="form-control" placeholder="123.456.789-00">
+                                                        <input type="text" name="cpf_cnpj" id="cpf" autocomplete="off" required="required" class="form-control" placeholder="123.456.789-00">
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label class="col-form-label">Sexo</label>
@@ -191,83 +191,83 @@
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label class="col-form-label">Data de Nascimento</label>
-                                                        <input type="text" name="nascimento" id="nascimento" autocomplete="off" class="form-control" placeholder="01/01/2000">
+                                                        <input type="text" required="required" name="nascimento" id="nascimento" autocomplete="off" class="form-control datepicker" placeholder="01/01/2000">
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label class="col-form-label">Nacionalidade</label>
-                                                        <input type="text" name="nacionalidade" autocomplete="off" class="form-control" placeholder="Brasileiro">
+                                                        <input type="text" required="required" name="nacionalidade" autocomplete="off" class="form-control" placeholder="Brasileiro">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-3">
                                                         <label class="col-form-label">Número CNH</label>
-                                                        <input type="text" name="cnh" autocomplete="off" class="form-control" placeholder="12345678901">
+                                                        <input type="text" required="required" name="cnh" autocomplete="off" class="form-control" placeholder="12345678901">
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label class="col-form-label">Validade CNH</label>
-                                                        <input type="text" name="validade_cnh" id="validade_cnh" autocomplete="off" class="form-control" placeholder="01/01/2000">
+                                                        <input type="text" required="required" name="validade_cnh" id="validade_cnh" autocomplete="off" class="form-control datepicker" placeholder="01/01/2000">
                                                     </div>
                                                     <div class="form-group col-md-3">
-                                                            <label class="col-form-label">Categoria CNH</label>
-                                                            <select name="categoria_cnh" id="categoria_cnh">
-                                                                <option value="0" selected>Selecione uma Categoria </option>
-                                                            </select>
+                                                        <label class="col-form-label">Categoria CNH</label>
+                                                        <select name="categoria_cnh" id="categoria_cnh">
+                                                            <option value="0" selected>Selecione uma Categoria </option>
+                                                        </select>
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label class="col-form-label">Celular</label>
-                                                        <input type="text" name="celular" autocomplete="off" class="form-control" placeholder="(11) 99999-8888">
+                                                        <input type="text" required="required" name="celular" autocomplete="off" class="form-control" placeholder="(11) 99999-8888">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-3">
                                                         <label class="col-form-label">Número RG</label>
-                                                        <input type="text" name="rg" autocomplete="off" class="form-control" placeholder="123456789">
+                                                        <input type="text" required="required" name="rg" autocomplete="off" class="form-control" placeholder="123456789">
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label class="col-form-label">Emissor</label>
-                                                        <input type="text" name="emissor" autocomplete="off" class="form-control" placeholder="SSP">
+                                                        <input type="text" required="required" name="emissor" autocomplete="off" class="form-control" placeholder="SSP">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label class="col-form-label">CEP</label>
-                                                            <div class="form-inline">
-                                                                    <input type="text" name="cep" autocomplete="off" class="form-control mr-sm-2" placeholder="12345-577">
-                                                                    <button type="button" class="btn btn-info waves-effect waves-light my-2 my-sm-0" id="search_cep"><i class="fa fa-search"></i></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                            <label class="col-form-label">Endereço</label>
-                                                            <input type="text" name="endereco" autocomplete="off" class="form-control">
-                                                        </div>
-                                                        <div class="form-group col-md-2">
-                                                                <label class="col-form-label">Número</label>
-                                                                <input type="text" name="numero" autocomplete="off" class="form-control">
+                                                    <div class="form-group col-md-6">
+                                                        <label class="col-form-label">CEP</label>
+                                                        <div class="form-inline">
+                                                            <input type="text" required="required" name="cep" autocomplete="off" class="form-control mr-sm-2" placeholder="12345-577">
+                                                            <button type="button" class="btn btn-info waves-effect waves-light my-2 my-sm-0" id="search_cep"><i class="fa fa-search"></i></button>
                                                         </div>
                                                     </div>
-    
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-3">
-                                                            <label class="col-form-label">Complemento</label>
-                                                            <input type="text" name="complemento" autocomplete="off" class="form-control" placeholder="Casa 90">
-                                                        </div>
-                                                        
-                                                        <div class="form-group col-md-3">
-                                                            <label class="col-form-label">Bairro</label>
-                                                            <input type="text" name="bairro" autocomplete="off" class="form-control">
-                                                        </div>
-                                                        <div class="form-group col-md-5">
-                                                            <label class="col-form-label">Cidade</label>
-                                                            <input type="text" name="cidade" autocomplete="off" class="form-control">
-                                                        </div>
-                                                        <div class="form-group col-md-1">
-                                                                <label class="col-form-label">Estado</label>
-                                                                <input type="text" name="estado" autocomplete="off" class="form-control" placeholder="SP">
-                                                        </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label class="col-form-label">Endereço</label>
+                                                        <input type="text" required="required" name="endereco" autocomplete="off" class="form-control">
                                                     </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label class="col-form-label">Número</label>
+                                                        <input type="text" required="required" name="numero" autocomplete="off" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-3">
+                                                        <label class="col-form-label">Complemento</label>
+                                                        <input type="text" name="complemento" autocomplete="off" class="form-control" placeholder="Casa 90">
+                                                    </div>
+
+                                                    <div class="form-group col-md-3">
+                                                        <label class="col-form-label">Bairro</label>
+                                                        <input type="text" required="required" name="bairro" autocomplete="off" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-5">
+                                                        <label class="col-form-label">Cidade</label>
+                                                        <input type="text" required="required" name="cidade" autocomplete="off" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-1">
+                                                        <label class="col-form-label">Estado</label>
+                                                        <input type="text" required="required" name="estado" autocomplete="off" class="form-control" placeholder="SP">
+                                                    </div>
+                                                </div>
 
                                             </div>
 
@@ -277,39 +277,39 @@
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label class="col-form-label">Nome Completo</label>
-                                                        <input type="text" name="nome_pj" autocomplete="off" class="form-control" placeholder="Fulano da silva">
+                                                        <input type="text" required="required" name="nome_pj" autocomplete="off" class="form-control" placeholder="Fulano da silva">
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label class="col-form-label">E-mail</label>
-                                                        <input type="email" name="email_pj" autocomplete="off" class="form-control" placeholder="exemplo@exemplo.com">
+                                                        <input type="email" required="required" name="email_pj" autocomplete="off" class="form-control" placeholder="exemplo@exemplo.com">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
                                                         <label class="col-form-label">CNPJ</label>
-                                                        <input type="text" name="cpf_cnpj_pj" id="cnpj" autocomplete="off" class="form-control" placeholder="86.922.470/0001-28">
+                                                        <input type="text" required="required" name="cpf_cnpj_pj" id="cnpj" autocomplete="off" class="form-control" placeholder="86.922.470/0001-28">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-3">
                                                         <label class="col-form-label">Número CNH</label>
-                                                        <input type="text" name="cnh_pj" autocomplete="off" class="form-control" placeholder="12345678901">
+                                                        <input type="text" required="required" name="cnh_pj" autocomplete="off" class="form-control" placeholder="12345678901">
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label class="col-form-label">Validade CNH</label>
-                                                        <input type="text" name="validade_cnh_pj" id="validade_cnh_pj" autocomplete="off" class="form-control" placeholder="01/01/2000">
+                                                        <input type="text" required="required" name="validade_cnh_pj" id="validade_cnh_pj" autocomplete="off" class="form-control datepicker" placeholder="01/01/2000">
                                                     </div>
                                                     <div class="form-group col-md-3">
-                                                            <label class="col-form-label">Categoria CNH</label>
-                                                            <select name="categoria_cnh" id="categoria_cnh_pj">
-                                                                <option value="0" selected>Selecione uma Categoria </option>
-                                                            </select>
+                                                        <label class="col-form-label">Categoria CNH</label>
+                                                        <select name="categoria_cnh" id="categoria_cnh_pj">
+                                                            <option value="0" selected>Selecione uma Categoria </option>
+                                                        </select>
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label class="col-form-label">Celular</label>
-                                                        <input type="text" name="celular_pj" autocomplete="off" class="form-control" placeholder="(11) 99999-8888">
+                                                        <input type="text" required="required" name="celular_pj" autocomplete="off" class="form-control" placeholder="(11) 99999-8888">
                                                     </div>
                                                 </div>
 
@@ -317,17 +317,17 @@
                                                     <div class="form-group col-md-6">
                                                         <label class="col-form-label">CEP</label>
                                                         <div class="form-inline">
-                                                                <input type="text" name="cep_pj" autocomplete="off" class="form-control mr-sm-2" placeholder="12345-577">
-                                                                <button type="button" class="btn btn-info waves-effect waves-light my-2 my-sm-0" id="search_cep_pj"><i class="fa fa-search"></i></button>
+                                                            <input type="text" required="required" name="cep_pj" autocomplete="off" class="form-control mr-sm-2" placeholder="12345-577">
+                                                            <button type="button" class="btn btn-info waves-effect waves-light my-2 my-sm-0" id="search_cep_pj"><i class="fa fa-search"></i></button>
                                                         </div>
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label class="col-form-label">Endereço</label>
-                                                        <input type="text" name="endereco_pj" autocomplete="off" class="form-control">
+                                                        <input type="text" required="required" name="endereco_pj" autocomplete="off" class="form-control">
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                            <label class="col-form-label">Número</label>
-                                                            <input type="text" name="numero_pj" autocomplete="off" class="form-control">
+                                                        <label class="col-form-label">Número</label>
+                                                        <input type="text" required="required" name="numero_pj" autocomplete="off" class="form-control">
                                                     </div>
                                                 </div>
 
@@ -336,18 +336,18 @@
                                                         <label class="col-form-label">Complemento</label>
                                                         <input type="text" name="complemento_pj" autocomplete="off" class="form-control" placeholder="Casa 90">
                                                     </div>
-                                                    
+
                                                     <div class="form-group col-md-3">
                                                         <label class="col-form-label">Bairro</label>
-                                                        <input type="text" name="bairro_pj" autocomplete="off" class="form-control">
+                                                        <input type="text" required="required" name="bairro_pj" autocomplete="off" class="form-control">
                                                     </div>
                                                     <div class="form-group col-md-5">
                                                         <label class="col-form-label">Cidade</label>
-                                                        <input type="text" name="cidade_pj" autocomplete="off" class="form-control">
+                                                        <input type="text" required="required" name="cidade_pj" autocomplete="off" class="form-control">
                                                     </div>
                                                     <div class="form-group col-md-1">
-                                                            <label class="col-form-label">Estado</label>
-                                                            <input type="text" name="estado_pj" autocomplete="off" class="form-control" placeholder="SP">
+                                                        <label class="col-form-label">Estado</label>
+                                                        <input type="text" required="required" name="estado_pj" autocomplete="off" class="form-control" placeholder="SP">
                                                     </div>
                                                 </div>
                                             </div>
@@ -358,7 +358,7 @@
                                                 Cancelar
                                             </button>
                                             <button type="button" id="enviar" class="btn btn-success waves-effect waves-light">
-                                                Cadastrar
+                                                Enviar
                                             </button>
                                         </div>
                                     </div><!-- /.modal-content -->
@@ -371,7 +371,7 @@
                 </div>
                 <!-- end content -->
 
-                
+
                 <jsp:include page="footer.jsp"/>
 
             </div>
@@ -381,25 +381,17 @@
 
 
 
-        <<script>
+        <script>
             var resizefunc = [];</script>
 
         <script>
             $(document).ready(function () {
-                
-                $("#nascimento, #validade_cnh, #validade_cnh_pj").datepicker({
-                    dateFormat: 'dd/mm/yy',
-                    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
-                    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-                    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-                    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-                    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-                    nextText: 'Próximo',
-                    prevText: 'Anterior'
+
+                $(".datepicker").datepicker({
+                    format: 'dd/mm/yyyy',
+                    language: 'pt-BR'
                 });
-                  
                 $("#cadastro-pessoa-juridica").hide();
-                
                 $('#sexo ,#categoria_cnh, #categoria_cnh_pj').select2({
                     dropdownParent: $('#cadastro')
                 });
@@ -418,7 +410,6 @@
                 popSelectBox();
                 $('input[name=categoria_cliente]').click(function () {
                     var value = $(this).val();
-
                     if (value == 1 || value == 3) {
                         $("#cadastro-pessoa-juridica").hide();
                         $("#cadastro-pessoa-fisica").show();
@@ -428,7 +419,6 @@
                     }
                 });
             });
-
             function popSelectBox()
             {
                 $.ajax({
@@ -436,16 +426,15 @@
                     type: 'GET',
                     success: function (data) {
                         console.log(data);
-                        
-                        $('#categoria_cnh').empty(); 
+                        $('#categoria_cnh').empty();
                         $('#categoria_cnh_pj').empty();
-                        $('<option>').val(0).text("Selecione uma Categoria").appendTo('#categoria_cnh'); 
+                        $('<option>').val(0).text("Selecione uma Categoria").appendTo('#categoria_cnh');
                         $('<option>').val(0).text("Selecione uma Categoria").appendTo('#categoria_cnh_pj');
-                        for (var i in data) { 
+                        for (var i in data) {
                             var options = $('<option>').val(data[i].id).text(data[i].categoria);
                             options.appendTo('#categoria_cnh');
                         }
-                        for (var i in data) { 
+                        for (var i in data) {
                             var options = $('<option>').val(data[i].id).text(data[i].categoria);
                             options.appendTo('#categoria_cnh_pj');
                         }
@@ -454,16 +443,14 @@
                         JOptionPane.showMessageDialog('error', 'Ocorreu um erro as categorias de CNH!');
                     }
                 });
-                
-                 $.ajax({
+                $.ajax({
                     url: "../cliente/sexo",
                     type: 'GET',
                     success: function (data) {
                         console.log(data);
-                        
-                        $('#sexo').empty(); 
-                        $('<option>').val(0).text("Selecione...").appendTo('#sexo'); 
-                        for (var i in data) { 
+                        $('#sexo').empty();
+                        $('<option>').val(0).text("Selecione...").appendTo('#sexo');
+                        for (var i in data) {
                             var options = $('<option>').val(data[i].id).text(data[i].sexo);
                             options.appendTo('#sexo');
                         }
@@ -474,27 +461,27 @@
                 });
             }
 
-            $('#search_cep, #search_cep_pj').click(function(){
-                let cep;
-                let tipo = $('input[name=categoria_cliente]:checked').val();
+            $('#search_cep, #search_cep_pj').click(function () {
+                var cep;
+                var tipo = $('input[name=categoria_cliente]:checked').val();
                 tipo == 2 ? cep = $('input[name=cep_pj]').unmask().val() : cep = $('input[name=cep]').unmask().val()
-                
+
                 $.ajax({
                     url: 'https://viacep.com.br/ws/' + cep + '/json/',
                     type: 'GET',
                     success: function (data) {
-                        if(data.erro == true) {
+                        if (data.erro == true) {
                             JOptionPane.showMessageDialog('warning', 'CEP não encontrado! Por favor, digite novamente ou preencha os campos manualmente.');
                             $('input[name=cep_pj]').val('');
                             $('input[name=cep]').val('');
                         }
-                        if(tipo == 1 || tipo == 3) {
+                        if (tipo == 1 || tipo == 3) {
                             $('input[name=endereco]').val(data.logradouro);
                             $('input[name=bairro]').val(data.bairro);
                             $('input[name=cidade]').val(data.localidade);
                             $('input[name=estado]').val(data.uf);
                             $('input[name=numero]').focus();
-                        } else if(tipo == 2) {
+                        } else if (tipo == 2) {
                             $('input[name=endereco_pj]').val(data.logradouro);
                             $('input[name=bairro_pj]').val(data.bairro);
                             $('input[name=cidade_pj]').val(data.localidade);
@@ -507,19 +494,17 @@
                     }
                 });
             });
-
-            
             function loadTable(id)
             {
-                
+
                 $.ajax({
                     url: "../cliente",
                     type: 'GET',
                     data: {
-                        'id': id 
+                        'id': id
                     },
                     success: function (result) {
-                        popTable(result); 
+                        popTable(result);
                         return result;
                     },
                     error: function () {
@@ -528,7 +513,7 @@
                 });
             }
 
-            
+
             function popTable(data)
             {
                 $('#tbl_clientes tr').not(':first').remove(); //Aqui eu limpo a tabela
@@ -539,21 +524,21 @@
                             '<td>' + data[i].categoria + '</td>' +
                             '<td>' + data[i].cpfCnpj + '</td>' +
                             '<td>' + data[i].email + '</td>';
-                            if(data[i].status === "Ativo") {
-                                html +='<td><span class="badge label-table badge-success">' + data[i].status +'</span></td>';
-                            } else {
-                                html +='<td><span class="badge label-table badge-danger">' + data[i].status +'</span></td>';
-                            }
+                    if (data[i].status === "Ativo") {
+                        html += '<td><span class="badge label-table badge-success">' + data[i].status + '</span></td>';
+                    } else {
+                        html += '<td><span class="badge label-table badge-danger">' + data[i].status + '</span></td>';
+                    }
 
-                            if(data[i].status === "Ativo") {
-                                html += '<td style="text-align: center;"><button onClick="edit(' + data[i].id + ')" type="button" id="editar" class="btn btn-primary btn-sm waves-effect" data-id="\' + data[i].id + \'">Editar</button>\' <button type="button" onClick="inativar(' + data[i].id + ')" data-id="' + data[i].id + '" id="excluir" class="btn btn-danger btn-sm waves-effect waves-light">Inativar</button></td>'
-                            }
-                             else {
-                                html += ' <td style="text-align: center;"><button type="button" onClick="ativar(' + data[i].id + ')" data-id="' + data[i].id + '" id="excluir" class="btn btn-success btn-sm waves-effect waves-light">Ativar</button></td>'
-                            }
+                    if (data[i].status === "Ativo") {
+                        html += '<td style="text-align: center;"><button onClick="edit(' + data[i].id + ')" type="button" id="editar" class="btn btn-primary btn-sm waves-effect" data-id="\' + data[i].id + \'">Editar</button> <button type="button" onClick="inativar(' + data[i].id + ')" data-id="' + data[i].id + '" id="excluir" class="btn btn-danger btn-sm waves-effect waves-light">Desativar</button></td>'
+                    }
+                    else {
+                        html += ' <td style="text-align: center;"><button type="button" onClick="ativar(' + data[i].id + ')" data-id="' + data[i].id + '" id="excluir" class="btn btn-success btn-sm waves-effect waves-light">Ativar</button></td>'
+                    }
 
-                            + '</tr>'; 
-                    $('#tbl_clientes tr').last().after(html); 
+                    +'</tr>';
+                    $('#tbl_clientes tr').last().after(html);
                 }
             }
             /*
@@ -580,7 +565,7 @@
                             title = 'Aguarde';
                             break;
                     }
-                    
+
                     return swal({
                         title: title,
                         text: message,
@@ -592,15 +577,15 @@
                 }
             }
 
-            
+
             function pegarDados(action, tipo)
             {
-                if (action === "salvar") { 
+                if (action === "salvar") {
                     if (tipo == '1' || tipo == '3') {
                         return {
-                            'url' : '../cliente/pf/salvar',
-                            'data' : {
-                                'tipo' : tipo,
+                            'url': '../cliente/pf/salvar',
+                            'data': {
+                                'tipo': tipo,
                                 'nome': $('input[name=nome]').val(),
                                 'email': $('input[name=email]').val(),
                                 'cpf_cnpj': $('input[name=cpf_cnpj]').unmask().val(),
@@ -615,19 +600,19 @@
                                 'emissor': $('input[name=emissor]').val(),
                                 'cep': $('input[name=cep]').val(),
                                 'endereco': $('input[name=endereco]').val(),
-                                'numero' : $('input[name=numero]').val(),
+                                'numero': $('input[name=numero]').val(),
                                 'complemento': $('input[name=complemento]').val(),
                                 'bairro': $('input[name=bairro]').val(),
                                 'cidade': $('input[name=cidade]').val(),
-                                'estado' : $('input[name=estado]').val()
+                                'estado': $('input[name=estado]').val()
                             }
-                            
+
                         }
                     } else if (tipo == '2') {
                         return {
-                            url : '../cliente/pj/salvar',
-                            data : {
-                                'tipo' : tipo,
+                            url: '../cliente/pj/salvar',
+                            data: {
+                                'tipo': tipo,
                                 'nome': $('input[name=nome_pj]').val(),
                                 'email': $('input[name=email_pj]').val(),
                                 'cpf_cnpj': $('input[name=cpf_cnpj_pj]').unmask().val(),
@@ -639,15 +624,15 @@
                                 'cep': $('input[name=cep_pj]').unmask().val(),
                                 'bairro': $('input[name=bairro_pj]').val(),
                                 'cidade': $('input[name=cidade_pj]').val(),
-                                'estado' : $('input[name=estado_pj]').val()
+                                'estado': $('input[name=estado_pj]').val()
                             }
-                            
+
                         }
 
                     }
 
                 } else if (action === "editar") {
-                    if($('input:radio[name=categoria_cliente]:checked').val() == '1' || $('input:radio[name=categoria_cliente]:checked').val() == '3') {
+                    if ($('input:radio[name=categoria_cliente]:checked').val() == '1' || $('input:radio[name=categoria_cliente]:checked').val() == '3') {
                         return {
                             'id': $('input[name=id]').val(),
                             'nome': $('input[name=nome]').val(),
@@ -661,56 +646,58 @@
                             'categoria_cnh': $('#categoria_cnh').val(),
                             'celular': $('input[name=celular]').val(),
                             'rg': $('input[name=rg]').val(),
-                            'numero' : $('input[name=numero]').val(),
+                            'numero': $('input[name=numero]').val(),
                             'emissor': $('input[name=emissor]').val(),
                             'endereco': $('input[name=endereco]').val(),
                             'complemento': $('input[name=complemento]').val(),
                             'cep': $('input[name=cep]').val(),
-                            'categoria_cliente' : $('input:radio[name=categoria_cliente]:checked').val(),
-                            'estado' : $('input[name=estado]').val(),
+                            'categoria_cliente': $('input:radio[name=categoria_cliente]:checked').val(),
+                            'estado': $('input[name=estado]').val(),
                             'bairro': $('input[name=bairro]').val(),
                             'cidade': $('input[name=cidade]').val()
                         }
                     } else {
                         return {
-                            'id' : $('input[name=id]').val(),
+                            'id': $('input[name=id]').val(),
                             'nome': $('input[name=nome_pj]').val(),
-                                'email': $('input[name=email_pj]').val(),
-                                'cpf_cnpj': $('input[name=cpf_cnpj_pj]').val(),
-                                'cnh': $('input[name=cnh_pj]').val(),
-                                'validade_cnh': moment(moment($('input[name=validade_cnh_pj]').val(), "DD/mm/YYYY")).format("YYYY-mm-DD"),
-                                'categoria_cnh': $('#categoria_cnh_pj').val(),
-                                'celular': $('input[name=celular_pj]').unmask().val(),
-                                'endereco': $('input[name=endereco_pj]').val(),
-                                'cep': $('input[name=cep_pj]').val(),
-                                'bairro': $('input[name=bairro_pj]').val(),
-                                'cidade': $('input[name=cidade_pj]').val(),
-                                'estado' : $('input[name=estado_pj]').val(),
-                                'numero' : $('input[name=numero_pj]').val()
+                            'email': $('input[name=email_pj]').val(),
+                            'cpf_cnpj': $('input[name=cpf_cnpj_pj]').unmask().val(),
+                            'cnh': $('input[name=cnh_pj]').val(),
+                            'validade_cnh': moment(moment($('input[name=validade_cnh_pj]').val(), "DD/mm/YYYY")).format("YYYY-mm-DD"),
+                            'categoria_cnh': $('#categoria_cnh_pj').val(),
+                            'celular': $('input[name=celular_pj]').unmask().val(),
+                            'endereco': $('input[name=endereco_pj]').val(),
+                            'cep': $('input[name=cep_pj]').unmask().val(),
+                            'complemento': $("input[name=complemento_pj]").unmask().val(),
+                            'categoria_cliente': $('input:radio[name=categoria_cliente]:checked').val(),
+                            'bairro': $('input[name=bairro_pj]').val(),
+                            'cidade': $('input[name=cidade_pj]').val(),
+                            'estado': $('input[name=estado_pj]').val(),
+                            'numero': $('input[name=numero_pj]').val()
                         }
                     }
                 }
 
             }
 
-            $('#enviar').click(function (e) { 
+            $('#enviar').click(function (e) {
                 e.preventDefault();
                 if ($("#enviar").hasClass("editar")) {
-                                      
-                    if($('input:radio[name=categoria_cliente]:checked').val() == '1' || $('input:radio[name=categoria_cliente]:checked').val() == '3') {
-                        if (validarFormulario()) {
+
+                    if ($('input:radio[name=categoria_cliente]:checked').val() == '1' || $('input:radio[name=categoria_cliente]:checked').val() == '3') {
+                        if (validarFormularioPf()) {
                             $.ajax({
                                 url: "../cliente/pf/atualizar",
                                 type: 'POST',
-                                data: pegarDados('editar', $('input:radio[name=categoria_cliente]:checked').val()), 
+                                data: pegarDados('editar', $('input:radio[name=categoria_cliente]:checked').val()),
                                 success: function (result) {
 
                                     if (result.return === "success") {
-                                        JOptionPane.showMessageDialog('success', 'Cliente atualizado com sucesso!'); 
-                                        limparFormulario(); 
-                                        $('#enviar').removeClass('editar'); 
-                                        $('#cadastro').modal('hide'); 
-                                        loadTable(0); 
+                                        JOptionPane.showMessageDialog('success', 'Cliente atualizado com sucesso!');
+                                        limparFormulario();
+                                        $('#enviar').removeClass('editar');
+                                        $('#cadastro').modal('hide');
+                                        loadTable(0);
                                     } else {
                                         JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao atualizar o Cliente!');
                                     }
@@ -719,21 +706,21 @@
                                     JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao atualizar o Cliente!');
                                 }
                             });
-                        } 
+                        }
                     } else {
-                        if (validarFormulario()) {
+                        if (validarFormularioPj()) {
                             $.ajax({
                                 url: "../cliente/pj/atualizar",
                                 type: 'POST',
-                                data: pegarDados('editar', $('input:radio[name=categoria_cliente]:checked').val()), 
+                                data: pegarDados('editar', $('input:radio[name=categoria_cliente]:checked').val()),
                                 success: function (result) {
 
                                     if (result.return === "success") {
-                                        JOptionPane.showMessageDialog('success', 'Cliente atualizado com sucesso!'); 
-                                        limparFormulario(); 
-                                        $('#enviar').removeClass('editar'); 
-                                        $('#cadastro').modal('hide'); 
-                                        loadTable(0); 
+                                        JOptionPane.showMessageDialog('success', 'Cliente atualizado com sucesso!');
+                                        limparFormulario();
+                                        $('#enviar').removeClass('editar');
+                                        $('#cadastro').modal('hide');
+                                        loadTable(0);
                                     } else {
                                         JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao atualizar o Cliente!');
                                     }
@@ -742,37 +729,62 @@
                                     JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao atualizar o Cliente!');
                                 }
                             });
-                        } 
+                        }
                     }
-                    
+
                 } else {
-                    if (validarFormulario()) {
-                        let dados = pegarDados('salvar', $('input[name=categoria_cliente]:checked').val());
-                        $.ajax({
-                            url: dados.url,
-                            type: 'POST',
-                            data: dados.data,
-                            success: function (result) {
-                                console.log(result.return);
-                                if (result.return == "success") {
-                                    JOptionPane.showMessageDialog('success', 'Cliente cadastrado com sucesso!');
-                                    limparFormulario();
-                                    $('#cadastro').modal('hide');
-                                    loadTable(0);
-                                } else {
-                                    JOptionPane.showMessageDialog('error', 'Cliente um erro ao cadastrar o Cliente!');
+
+                    if ($('input[name=categoria_cliente]:checked').val() == '1' || $('input[name=categoria_cliente]:checked').val() == '3') {
+                        if (validarFormularioPf()) {
+                            var dados = pegarDados('salvar', $('input[name=categoria_cliente]:checked').val());
+                            $.ajax({
+                                url: dados.url,
+                                type: 'POST',
+                                data: dados.data,
+                                success: function (result) {
+                                    console.log(result.return);
+                                    if (result.return == "success") {
+                                        JOptionPane.showMessageDialog('success', 'Cliente cadastrado com sucesso!');
+                                        limparFormulario();
+                                        $('#cadastro').modal('hide');
+                                        loadTable(0);
+                                    } else {
+                                        JOptionPane.showMessageDialog('error', 'Cliente um erro ao cadastrar o Cliente!');
+                                    }
+                                },
+                                error: function () {
+                                    JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao Cadastrar o Cliente!');
                                 }
-                            },
-                            error: function () {
-                                JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao Cadastrar o Cliente!');
-                            }
-                        });
+                            });
+                        }
+                    } else {
+                        if (validarFormularioPj()) {
+                            var dados = pegarDados('salvar', $('input[name=categoria_cliente]:checked').val());
+                            $.ajax({
+                                url: dados.url,
+                                type: 'POST',
+                                data: dados.data,
+                                success: function (result) {
+                                    console.log(result.return);
+                                    if (result.return == "success") {
+                                        JOptionPane.showMessageDialog('success', 'Cliente cadastrado com sucesso!');
+                                        limparFormulario();
+                                        $('#cadastro').modal('hide');
+                                        loadTable(0);
+                                    } else {
+                                        JOptionPane.showMessageDialog('error', 'Cliente um erro ao cadastrar o Cliente!');
+                                    }
+                                },
+                                error: function () {
+                                    JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao Cadastrar o Cliente!');
+                                }
+                            });
+                        }
                     }
                 }
             });
-            
             function edit(id) {
-                    $.ajax({
+                $.ajax({
                     url: "../cliente/get-cliente",
                     type: 'GET',
                     data: {
@@ -791,29 +803,39 @@
                         JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao carregar a Tabela!');
                     }
                 });
-
             }
-            
+
             $('#cadastro').on('hidden.bs.modal', function () {
                 limparFormulario();
             });
-            
             function inativar(id)
             {
-                $.ajax({
-                    url: "../cliente/inativar",
-                    type: 'POST',
-                    data: {
-                        'excluir': 'true',
-                        'id': id 
-                    },
-                    success: function () {
-                        JOptionPane.showMessageDialog('success', 'Cliente Desativado com sucesso!');
-                        loadTable(0);
-                    },
-                    error: function () {
-                        JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao desativar o Cliente!');
-                    }
+
+                swal({
+                    title: 'Você tem certeza que deseja desativar este cliente?',
+                    text: "",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Não',
+                    confirmButtonText: 'Sim'
+                }).then((result) = function () {
+                    $.ajax({
+                        url: "../cliente/inativar",
+                        type: 'POST',
+                        data: {
+                            'excluir': 'true',
+                            'id': id
+                        },
+                        success: function () {
+                            JOptionPane.showMessageDialog('success', 'Cliente Desativado com sucesso!');
+                            loadTable(0);
+                        },
+                        error: function () {
+                            JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao desativar o Cliente!');
+                        }
+                    });
                 });
             }
 
@@ -823,23 +845,23 @@
                     url: '../cliente/ativar',
                     type: 'POST',
                     data: {
-                        'id' : id
+                        'id': id
                     },
-                    success: function() {
+                    success: function () {
                         JOptionPane.showMessageDialog('success', 'Cliente Ativado com sucesso!');
-                        loadTable(0); // aqui carrego a tabela após a exclusão
+                        loadTable(0);
                     },
                     error: function () {
                         JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao ativar o Cliente!');
                     }
                 })
             }
-            
+
             function setFields(data)
             {
                 $('input[name=id]').val(data.id)
-                if(data.idCategoriaCliente == 1 || data.idCategoriaCliente == 3) {
-                    if(data.idCategoriaCliente == 1) {
+                if (data.idCategoriaCliente == 1 || data.idCategoriaCliente == 3) {
+                    if (data.idCategoriaCliente == 1) {
                         $("#cadastro-pessoa-juridica").hide();
                         $("#cadastro-pessoa-fisica").show();
                         $('input:radio[name=categoria_cliente]').filter('[value=1]').prop('checked', true);
@@ -865,7 +887,7 @@
                     $('input[name=estado]').val(data.estado);
                     $('input[name=bairro]').val(data.bairro);
                     $('input[name=cidade]').val(data.cidade);
-                } else if(data.idCategoriaCliente == 2) {
+                } else if (data.idCategoriaCliente == 2) {
                     $('input:radio[name=categoria_cliente]').filter('[value=2]').prop('checked', true);
                     $("#cadastro-pessoa-fisica").hide();
                     $("#cadastro-pessoa-juridica").show();
@@ -890,6 +912,171 @@
 
             function validarFormulario()
             {
+
+                return true;
+            }
+
+            function validarFormularioPf() {
+
+                if ($("input[name=nome]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo nome!');
+                    return false;
+                }
+
+                if ($("input[name=email]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo email!');
+                    return false;
+                }
+
+                if ($("input[name=cpf_cnpj]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo CPF!');
+                    return false;
+                }
+
+                if ($("#sexo").val() == 0) {
+                    JOptionPane.showMessageDialog('warning', 'Selecione um sexo!');
+                    return false;
+                }
+
+                if ($("input[name=data_nascimento]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Selecione uma data de nascimento!');
+                    return false;
+                }
+
+                if ($("input[name=nacionalidade]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo nacionalidade!');
+                    return false;
+                }
+
+                if ($("input[name=cnh]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo CNH!');
+                    return false;
+                }
+
+                if ($("input[name=validade_cnh]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Selecione uma data de validade da CNH!');
+                    return false;
+                }
+
+                if ($("#categoria_cnh").val() == 0) {
+                    JOptionPane.showMessageDialog('warning', 'Selecione uma categoria de CNH!');
+                    return false;
+                }
+
+                if ($("input[name=celular]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo celular!');
+                    return false;
+                }
+
+                if ($("input[name=rg]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo RG!');
+                    return false;
+                }
+
+                if ($("input[name=emissor]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo Emissor!');
+                    return false;
+                }
+
+                if ($("input[name=cep]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo CEP!');
+                    return false;
+                }
+
+                if ($("input[name=endereco]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo endereço!');
+                    return false;
+                }
+
+                if ($("input[name=numero]").val() == '' || !isNumber($("input[name=numero]").val())) {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo número');
+                    return false;
+                }
+
+                if ($("input[name=bairro]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo bairro!');
+                    return false;
+                }
+
+                if ($("input[name=cidade]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo cidade!');
+                    return false;
+                }
+
+                if ($("input[name=estado]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo estado!');
+                    return false;
+                }
+
+                return true;
+            }
+
+            function validarFormularioPj() {
+
+                if ($("input[name=nome_pj]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo nome!');
+                    return false;
+                }
+
+                if ($("input[name=email_pj]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo email!');
+                    return false;
+                }
+
+                if ($("input[name=cpf_cnpj_pj]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo CPF!');
+                    return false;
+                }
+
+                if ($("input[name=cnh_pj]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo CNH!');
+                    return false;
+                }
+
+                if ($("input[name=validade_cnh_pj]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Selecione uma data de validade da CNH!');
+                    return false;
+                }
+
+                if ($("#categoria_cnh_pj").val() == 0) {
+                    JOptionPane.showMessageDialog('warning', 'Selecione uma categoria de CNH!');
+                    return false;
+                }
+
+                if ($("input[name=celular_pj]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo celular!');
+                    return false;
+                }
+
+                if ($("input[name=cep_pj]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo CEP!');
+                    return false;
+                }
+
+                if ($("input[name=endereco_pj]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo endereço!');
+                    return false;
+                }
+
+                if ($("input[name=numero_pj]").val() == '' || !isNumber($("input[name=numero]").val())) {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo número');
+                    return false;
+                }
+
+                if ($("input[name=bairro_pj]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo bairro!');
+                    return false;
+                }
+
+                if ($("input[name=cidade_pj]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo cidade!');
+                    return false;
+                }
+
+                if ($("input[name=estado_pj]").val() == '') {
+                    JOptionPane.showMessageDialog('warning', 'Preencha um valor no campo estado!');
+                    return false;
+                }
 
                 return true;
             }

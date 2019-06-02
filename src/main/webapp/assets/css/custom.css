@@ -5,17 +5,17 @@
 }
 
 .modal-content {
-    border-color: #ffffff !important;
+/*    border-color: #ffffff !important;*/
     background-color: #434f5c !important;
 }
 
-#cad-veiculos input, textarea{
+#cad-veiculos input, #cad-veiculos textarea{
     border: 1px solid #ffffff !important;
 }
 
-#cpf_cnpj {
+/*#cpf_cnpj {
     border: 1px solid #ffffff !important;
-}
+}*/
 
 #enviar #cancelar {
     right: 50% !important;
@@ -25,7 +25,7 @@
     color:#555 !important;
 }
 
-.select2-container .select2-selection--single {
+#cad-veiculos .select2-container .select2-selection--single {
     border: 1px solid #ffffff !important;
 }
 

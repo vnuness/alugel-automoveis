@@ -138,6 +138,7 @@
 <script>
         var resizefunc = [];</script>
         <script>
+            var isValidated = false;
             $(document).ready(function () {
 
                 $('#avaliacao').select2();
@@ -152,6 +153,7 @@
                     },
                     success: function (data) {
                         if (data.length !== 0) {
+                            isValidated = true;
                             $('#id_cliente').val(data[0].idCliente);
                             $('#id_locacao').val(data[0].idLocacao);
                         } else {
@@ -165,9 +167,11 @@
                 });
             });
             $('#salvar').click(function () {
+                if(!isValidated) {
+                    JOptionPane.showMessageDialog('warning', 'Digite um CPF ou CNPJ válido!');
+                    return;
+                }
                 if (validarFormulario()) {
-
-
                     $.ajax({
                         'url': '../devolutiva/salvar',
                         'type': 'POST',

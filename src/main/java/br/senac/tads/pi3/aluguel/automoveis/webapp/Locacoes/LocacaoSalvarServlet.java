@@ -46,8 +46,6 @@ public class LocacaoSalvarServlet extends HttpServlet {
         String obs = request.getParameter("obs");
         Locacao loc = new Locacao();
         double valorDesconto = loc.aplicaDesconto(valor, idCategoria, qtdDias);
-        /*FIM DA COLETAGEM DE PARAMETROS*/
-        /*INSTANCIO O OBJETO PASSANDO AS VARIAVEIS POR PARAMETRO*/
         HttpSession session = request.getSession();
         Locacao l = new Locacao(idCliente, idVeiculo, valorDesconto, obs, Integer.parseInt(session.getAttribute("idFilial").toString()));
         response.setContentType("application/json");

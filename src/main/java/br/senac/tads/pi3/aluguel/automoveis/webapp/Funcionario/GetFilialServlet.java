@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,7 +35,9 @@ public class GetFilialServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json");
-        String json = new Gson().toJson(FuncionarioDAO.getFilial()); // AQUI uso uma API do Google que converte um ArrayList em JSON. Faço isso por que é melhor para tratar os dados no javascript/jquery
+        HttpSession sessao = request.getSession();
+        int idFilial = Integer.parseInt(sessao.getAttribute("idFilial").toString());
+        String json = new Gson().toJson(FuncionarioDAO.getFilial(idFilial));
         try (PrintWriter out = response.getWriter()) {
             out.println(json);
         }

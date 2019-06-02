@@ -6,7 +6,7 @@ package DAO;
  */
 import Models.CategoriaCNH;
 import Models.CategoriaCliente;
-
+import DAO.ConnectionUtil;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -20,24 +20,14 @@ import java.text.ParseException;
 
 public class ClienteDAO {
 
-    private static Connection obterConexao() throws ClassNotFoundException, SQLException {
-        // 1) Declarar o driver JDBC de acordo com o Banco de dados usado
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
-        // 2) Abrir a conexão
-        Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/tades_locadora?useTimezone=true&serverTimezone=UTC",
-                "root",
-                "");
-        return conn;
-    }
+    
 
     public static boolean salvar(Cliente c) throws ParseException {
         boolean retorno = false;
 
         Connection connection = null;
         try {
-            connection = obterConexao();
+            connection = ConnectionUtil.obterConexao();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -152,7 +142,7 @@ public class ClienteDAO {
     public static boolean Inativar(int id) {
         boolean retorno = false;
         try {
-            Connection Conexao = obterConexao();
+            Connection Conexao = ConnectionUtil.obterConexao();
 
             PreparedStatement Update = Conexao.prepareStatement(
                     "UPDATE cliente SET "
@@ -176,7 +166,7 @@ public class ClienteDAO {
     public static boolean ativar(int id) {
         boolean retorno = false;
         try {
-            Connection Conexao = obterConexao();
+            Connection Conexao = ConnectionUtil.obterConexao();
 
             PreparedStatement Update = Conexao.prepareStatement(
                     "UPDATE cliente SET "
@@ -203,24 +193,24 @@ public class ClienteDAO {
 
         if (c.getIdCategoriaCliente() == 2) {
             try {
-                Connection Conexao = obterConexao();
+                Connection Conexao = ConnectionUtil.obterConexao();
 
                 PreparedStatement Update = Conexao.prepareStatement(
                         "UPDATE cliente SET "
-                        + "nome = ?,"
-                        + "cpf_cnpj = ?,"
-                        + "cnh = ?,"
-                        + "id_categoria_cnh = ?,"
-                        + "email = ?,"
-                        + "validade_cnh = ?"
-                        + "cep = ?,"
-                        + "endereco = ?,"
-                        + "numero = ?,"
-                        + "bairro = ?,"
-                        + "complemento = ?,"
+                        + "nome = ?, "
+                        + "cpf_cnpj = ?, "
+                        + "cnh = ?, "
+                        + "id_categoria_cnh = ?, "
+                        + "email = ?, "
+                        + "validade_cnh = ?, "
+                        + "cep = ?, "
+                        + "endereco = ?, "
+                        + "numero = ?, "
+                        + "bairro = ?, "
+                        + "complemento = ?, "
                         + "cidade = ?,"
-                        + "estado = ?,"
-                        + "celular = ?)"
+                        + "estado = ?, "
+                        + "celular = ? "
                         + "WHERE id = ?");
 
                 Update.setString(1, c.getNome());
@@ -252,7 +242,7 @@ public class ClienteDAO {
             }
         } else {
             try {
-                Connection Conexao = obterConexao();
+                Connection Conexao = ConnectionUtil.obterConexao();
 
                 PreparedStatement Update = Conexao.prepareStatement(
                         "UPDATE `tades_locadora`.`cliente` "
@@ -320,7 +310,7 @@ public class ClienteDAO {
 
         String query = "SELECT * FROM categoria_cnh;";
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -344,7 +334,7 @@ public class ClienteDAO {
 
         String query = "SELECT * FROM STATUS_CLIENTE_USUARIO;";
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -367,7 +357,7 @@ public class ClienteDAO {
 
         String query = "SELECT * FROM sexo;";
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -390,7 +380,7 @@ public class ClienteDAO {
 
         String query = "SELECT * FROM CATEGORIA_CLIENTE;";
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -414,7 +404,7 @@ public class ClienteDAO {
 
         String query = "select * from cliente where id = " + id;
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -469,7 +459,7 @@ public class ClienteDAO {
             query += " where cliente.id = " + id;
         }
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -497,7 +487,7 @@ public class ClienteDAO {
         int numeroLinhas = 0;
 
         String verificaLocacao = "SELECT * FROM cliente inner join locacoes on cliente.id = locacoes.id_cliente where cliente.cpf_cnpj = '" + cpf + "' AND locacoes.id_status_locacao = 1;";
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(verificaLocacao);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -514,7 +504,7 @@ public class ClienteDAO {
 
         String query = "SELECT * FROM cliente where cpf_cnpj = '" + cpf + "';";
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {

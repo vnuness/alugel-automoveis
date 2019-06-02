@@ -7,50 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6276c597-775e-4de7-9a6c-497d6ff2c4d0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ClienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ClienteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DevolutivaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/DevolutivaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/LocacaoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/LocacaoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/LocacoesMensaisDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/LocacoesMensaisDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/LoginDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/LoginDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/RelatorioLocacoesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/RelatorioLocacoesDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TotalLocacoesPorCategoriaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TotalLocacoesPorCategoriaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UltimasLocacoesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UltimasLocacoesDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/VeiculoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/VeiculoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Devolutiva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Devolutiva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Funcionario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Locacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Locacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Veiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Veiculo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Cliente/ClientePfEditarServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Cliente/ClientePfEditarServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Cliente/ClientePfSalvarServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Cliente/ClientePfSalvarServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Cliente/ClientePjSalvarServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Cliente/ClientePjSalvarServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Devolutiva/DevolutivaSalvarServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Devolutiva/DevolutivaSalvarServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Locacoes/GetVeiculosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Locacoes/GetVeiculosServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Locacoes/LocacaoSalvarServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Locacoes/LocacaoSalvarServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Locacoes/LocacoesMensaisServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Locacoes/LocacoesMensaisServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Relatorios/TotalLocacoesPorCategoriaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Relatorios/TotalLocacoesPorCategoriaServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Relatorios/UltimasLocacoesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Relatorios/UltimasLocacoesServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Relatorios/getLocacoesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Relatorios/getLocacoesServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Veiculos/VeiculoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Veiculos/VeiculoServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/login/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/login/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/clientes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/clientes.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/dashboard.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/default-view.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/default-view.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/devolutiva.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/devolutiva.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/funcionarios.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/funcionarios.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/imports.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/imports.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/left-menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/left-menu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/locacoes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/locacoes.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/navbar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/relatorio-locacoes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/relatorio-locacoes.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/veiculos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/veiculos.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Cliente.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -68,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/clientes.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="853" column="71" selection-start-line="853" selection-start-column="71" selection-end-line="853" selection-end-column="71" />
+            <state relative-caret-position="16218">
+              <caret line="901" column="52" selection-start-line="901" selection-start-column="52" selection-end-line="901" selection-end-column="52" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
@@ -81,8 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/left-menu.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="69" column="74" selection-start-line="69" selection-start-column="74" selection-end-line="69" selection-end-column="74" />
+            <state relative-caret-position="545">
+              <caret line="65" column="25" lean-forward="true" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -99,20 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Cliente/ClienteServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2934">
-              <caret line="183" column="16" selection-start-line="183" selection-start-column="16" selection-end-line="185" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Cliente/ClientePfEditarServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="36" column="52" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+            <state relative-caret-position="3276">
+              <caret line="182" column="16" selection-start-line="182" selection-start-column="16" selection-end-line="184" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/DAO/ClienteDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3780">
-              <caret line="223" selection-start-line="223" selection-end-line="223" />
+            <state relative-caret-position="4212">
+              <caret line="246" selection-start-line="246" selection-end-line="246" />
             </state>
           </provider>
         </entry>
@@ -132,8 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Models/Cliente.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+            <state relative-caret-position="540">
+              <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -186,6 +131,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -238,7 +184,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -364,16 +309,17 @@
       <workItem from="1558896752789" duration="9248000" />
       <workItem from="1558981701937" duration="4819000" />
       <workItem from="1559097674597" duration="295000" />
+      <workItem from="1559411008889" duration="12000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19336000" />
+    <option name="totallyTimeSpent" value="19348000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1080" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29572192" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29946524" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -437,8 +383,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/clientes.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="853" column="71" selection-start-line="853" selection-start-column="71" selection-end-line="853" selection-end-column="71" />
+        <state relative-caret-position="16218">
+          <caret line="901" column="52" selection-start-line="901" selection-start-column="52" selection-end-line="901" selection-end-column="52" />
           <folding>
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
@@ -455,8 +401,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Cliente/ClienteServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2934">
-          <caret line="183" column="16" selection-start-line="183" selection-start-column="16" selection-end-line="185" selection-end-column="17" />
+        <state relative-caret-position="3276">
+          <caret line="182" column="16" selection-start-line="182" selection-start-column="16" selection-end-line="184" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -465,7 +411,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/senac/tads/pi3/aluguel/automoveis/webapp/Cliente/ClientePfEditarServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
+        <state relative-caret-position="648">
           <caret line="36" column="52" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -475,22 +421,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/DAO/ClienteDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3780">
-          <caret line="223" selection-start-line="223" selection-end-line="223" />
+        <state relative-caret-position="4212">
+          <caret line="246" selection-start-line="246" selection-end-line="246" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Models/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+        <state relative-caret-position="540">
+          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/left-menu.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="69" column="74" selection-start-line="69" selection-start-column="74" selection-end-line="69" selection-end-column="74" />
+        <state relative-caret-position="545">
+          <caret line="65" column="25" lean-forward="true" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
         </state>
       </provider>
     </entry>

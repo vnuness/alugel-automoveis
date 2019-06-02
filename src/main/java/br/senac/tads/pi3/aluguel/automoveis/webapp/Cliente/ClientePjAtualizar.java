@@ -5,6 +5,8 @@
  */
 package br.senac.tads.pi3.aluguel.automoveis.webapp.Cliente;
 
+import DAO.ClienteDAO;
+import Models.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -31,43 +33,38 @@ public class ClientePjAtualizar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            
-/*            int cId, 
-            String cNome,
-            String cCpfCnpj,
-            String cCnh,
-            int cIdCategoriaCnh,
-            String cEmail,
-            String cDataNascimento,
-            String cEndereco,
-            String cCep,
-            String cBairro,
-            String cComplemento,
-            String cCidade,
-            String cEstado,
-            String cCelular,
-            int cIdCategoriaCliente
-*/
-            int id = Integer.parseInt(request.getParameter("id"));
-            String nome = request.getParameter("nome");
-            String cpf = request.getParameter("cpf_cnpj");
-            String cnh = request.getParameter("cnh");
-            int idCategoriaCnh = Integer.parseInt(request.getParameter("categoria_cnh"));
-            String email = request.getParameter("email");
-            String endereco = request.getParameter("endereco");
-            String cep = request.getParameter("cep");
-            String bairro = request.getParameter("bairro");
-            String complemento = request.getParameter("complemento");
-            String cidade = request.getParameter("cidade");
-            String estado = request.getParameter("estado");
-            String celular = request.getParameter("celular");
-            int idStatus = 1;
-            int idCategoriaCliente = Integer.parseInt(request.getParameter("categoria_cliente"));
-            String validadeCnh = request.getParameter("validade_cnh");
-            int numero = Integer.parseInt(request.getParameter("numero"));
 
+        int id = Integer.parseInt(request.getParameter("id"));
+        String nome = request.getParameter("nome");
+        String cnpj = request.getParameter("cpf_cnpj");
+        String cnh = request.getParameter("cnh");
+        int idCategoriaCnh = Integer.parseInt(request.getParameter("categoria_cnh"));
+        String email = request.getParameter("email");
+        String validadeCnh = request.getParameter("validade_cnh");
+        String endereco = request.getParameter("endereco");
+        String cep = request.getParameter("cep");
+        String bairro = request.getParameter("bairro");
+        String complemento = request.getParameter("complemento");
+        String cidade = request.getParameter("cidade");
+        String estado = request.getParameter("estado");
+        String celular = request.getParameter("celular");
+        int idCategoriaCliente = Integer.parseInt(request.getParameter("categoria_cliente"));
+        int numero = Integer.parseInt(request.getParameter("numero"));
+
+        Cliente c = new Cliente(id, nome, cnpj, cnh, idCategoriaCnh, email, validadeCnh, endereco, cep, bairro, complemento, cidade, estado, celular, idCategoriaCliente, numero);
+
+        response.setContentType("application/json");
+        
+        if (ClienteDAO.atualizar(c)) {
+            String resposta = "{\"return\" : \"success\"}";
+            try (PrintWriter out = response.getWriter()) {
+                out.println(resposta);
+            }
+        } else {
+            String resposta = "{\"return\" : \"error\"}";
+            try (PrintWriter out = response.getWriter()) {
+                out.println(resposta);
+            }
         }
     }
 

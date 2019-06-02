@@ -28,6 +28,18 @@ public class Funcionario {
         this.idFilial = fIdFilial;
         this.idCargo = fIdCargo;
     }
+
+    public Funcionario(int id, String matricula, String nome, String email, String senha, int idFilial, int idCargo) {
+        this.id = id;
+        this.matricula = matricula;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.idFilial = idFilial;
+        this.idCargo = idCargo;
+    }
+    
+    
     
     public Funcionario() {
         

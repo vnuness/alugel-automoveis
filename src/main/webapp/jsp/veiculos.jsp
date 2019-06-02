@@ -126,49 +126,49 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="form-group row" >
-                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Modelo: <span class="required">*</span></label>
+                                                <label for="modelo" class="col-md-3 col-form-label"> Modelo: <span class="required">*</span></label>
 
-                                                <div class="input-daterange input-group col-md-9" id="daterangepicker">
+                                                <div class="input-group col-md-9" id="daterangepicker">
                                                     <input class="form-control input-daterange-timepicker" name="modelo" required="required" type="text" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Montadora: <span class="required">*</span></label>
+                                                <label for="montadora" class="col-md-3 col-form-label"> Montadora: <span class="required">*</span></label>
 
-                                                <div class="input-daterange input-group col-md-9" id="daterangepicker">
+                                                <div class="input-group col-md-9" id="daterangepicker">
                                                     <input class="form-control input-daterange-timepicker" name="montadora" required="required" type="text" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Ano: <span class="required">*</span></label>
+                                                <label for="ano" class="col-md-3 col-form-label"> Ano: <span class="required">*</span></label>
 
-                                                <div class="input-daterange input-group col-md-9" id="daterangepicker">
+                                                <div class="input-group col-md-9" id="daterangepicker">
                                                     <input class="form-control input-daterange-timepicker" name="ano" required="required" type="text" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row" >
-                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Placa: <span class="required">*</span></label>
+                                                <label for="placa" class="col-md-3 col-form-label"> Placa: <span class="required">*</span></label>
 
-                                                <div class="input-daterange input-group col-md-9" id="daterangepicker">
+                                                <div class="input-group col-md-9" id="daterangepicker">
                                                     <input class="form-control input-daterange-timepicker" name="placa" required="required" type="text" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Renavam: <span class="required">*</span></label>
+                                                <label for="renavam" class="col-md-3 col-form-label"> Renavam: <span class="required">*</span></label>
 
-                                                <div class="input-daterange input-group col-md-9" id="daterangepicker">
+                                                <div class="input-group col-md-9" id="daterangepicker">
                                                     <input class="form-control input-daterange-timepicker" required="required" name="renavam" type="text" autocomplete="off">
                                                 </div>
                                             </div>
-                                            
-                                            <div class="form-group row">
-                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Valor Diária <span class="required">*</span></label>
 
-                                                <div class="input-daterange input-group col-md-9" id="daterangepicker">
+                                            <div class="form-group row">
+                                                <label for="valor" class="col-md-3 col-form-label"> Valor Diária <span class="required">*</span></label>
+
+                                                <div class="input-group col-md-9" id="daterangepicker">
                                                     <input class="form-control input-daterange-timepicker" required="required" name="valor" type="text" autocomplete="off">
                                                 </div>
                                             </div>
@@ -204,9 +204,9 @@
                                             </div>
 
                                             <div class="form-group row">
-                                                <label for="inputEmail3" class="col-md-3 col-form-label"> Acessórios: <span class="required"></span></label>
+                                                <label for="acessorios" class="col-md-3 col-form-label"> Acessórios: <span class="required"></span></label>
 
-                                                <div class="input-daterange input-group col-md-9">
+                                                <div class="input-group col-md-9">
                                                     <textarea  id="acessorios" placeholder="Digite os acessórios do veículo. Ex: Wifi, Entrada USB etc" class="form-control" rows="4" cols="20"></textarea>
                                                 </div>
                                             </div>
@@ -243,31 +243,27 @@
 
         <script>
             $(document).ready(function () {
-                //Tudo o que estiver aqui dentro, é carregado ao iniciar a página. É como a função "InitComponents" do JAVA SWING
+
                 $('#combustivel, #cambio, #status').select2({
                     dropdownParent: $('#cadastro')
                 });
                 $('input[name=placa]').mask('AAA-0000');
                 loadTable(0);
                 popSelectBox();
-                
-                
+
+
             });
-            
-            
-            
-            //Essa função é a responsável por carregar a tabela com os dados do Banco de Dados
+
             function loadTable(id)
             {
-                //Aqui faço uma requisição AJAX para pegar todos os registros.
                 $.ajax({
                     url: "../veiculos",
                     type: 'GET',
                     data: {
-                        'id': id //aqui passo um ID que veio por parametro na funcao. Se o id for ZERO, trará todos os registros. Caso o ID seja outro, trará somente os dados daquele id especifico.
+                        'id': id
                     },
                     success: function (result) {
-                        popTable(result); // Aqui chamo uma função que preenche a tabela com os dados. passo por parâmetro os dados que vieram da consulta em formato JSON.
+                        popTable(result);
                         return result;
                     },
                     error: function () {
@@ -276,12 +272,11 @@
                 });
             }
 
-            //Essa função preenche a tabela com os dados que são passados por parâmetro em formato JSON
             function popTable(data)
             {
-                $('#tbl_veiculos tr').not(':first').remove(); //Aqui eu limpo a tabela
-                var html = ''; // Aqui declaro a variável que receberá o conteúdo HTML
-                for (var i in data) { // aqui faço um FOREACH, para a minha lista de dados. Cada linha de dado, preencho uma linha na tabela
+                $('#tbl_veiculos tr').not(':first').remove();
+                var html = '';
+                for (var i in data) {
                     html = '<tr><td>' + data[i].id + '</td>' +
                             '<td>' + data[i].modelo + '</td>' +
                             '<td>' + data[i].montadora + '</td>' +
@@ -294,8 +289,8 @@
                             '<td>' + data[i].status + '</td>' +
                             '<td>' + data[i].valor + '</td>' +
                             '<td><button onClick="edit(' + data[i].id + ')" type="button" id="editar" class="btn btn-primary btn-sm waves-effect" data-id="' + data[i].id + '">Editar</button> <button type="button" onClick="remove(' + data[i].id + ')" data-id="' + data[i].id + '" id="excluir" class="btn btn-danger btn-sm waves-effect waves-light">Inativar</button></td>'
-                            + '</tr>'; // Aqui crio os dois botões de ação. Repare que há o parâmetro onClick. Dentro do onClick, chamo uma função e passo um ID. Ou seja, qualquer ação do botão, irá referenciar o ID (veiculo) de sua respectiva linha
-                    $('#tbl_veiculos tr').last().after(html); // AQUI insiro o registro na última linha da tabela
+                            + '</tr>';
+                    $('#tbl_veiculos tr').last().after(html);
                 }
             }
             /*
@@ -303,16 +298,13 @@
              * @type type
              * success, question, warning, error
              */
-            //Aqui é um Objeto que dentro possui um método. Criei dessa forma para ficar parecido com o que usávamos no JAVA SWING
-            //É necessário passar dois parametros para a funcao. Type e Message. Type definirá o tipo do POP UP. e Message, definirá a Mensagem que será exibida no PopUP
-            let me = this;
             $('#cadastro').on('hidden.bs.modal', function (e) {
-                if($("#enviar").hasClass("editar")) {
+                if ($("#enviar").hasClass("editar")) {
                     $("#enviar").removeClass("editar");
-                    me.limparFormulario();
+                    limparFormulario();
                 }
             })
-    
+
             JOptionPane = {
                 showMessageDialog: function (type, message) {
                     var title;
@@ -340,25 +332,24 @@
                         confirmButtonText: 'OK!'
                     })
                 }
-            }
-            
-            //Essa função é responsável por pegar dados quando formos atualizar ou cadastrar.
+            };
+
             function pegarDados(action)
             {
-                if (action === "salvar") { // se a ação for salvar, não passo ID
+                if (action === "salvar") {
                     return {
                         'modelo': $('input[name=modelo]').val(),
                         'montadora': $('input[name=montadora]').val(),
                         'ano': $('input[name=ano]').val(),
                         'placa': $('input[name=placa]').val(),
                         'renavam': $('input[name=renavam]').val(),
-                        'valor' : $('input[name=valor]').val(),
+                        'valor': $('input[name=valor]').val(),
                         'combustivel': $('#combustivel').val(),
                         'cambio': $('#cambio').val(),
-                        'status' : $('#status').val(),
+                        'status': $('#status').val(),
                         'acessorios': $('#acessorios').val()
                     }
-                } else if (action === "editar") { // se a ação for Editar, passo o ID para editar somente aquele ID.
+                } else if (action === "editar") {
                     return {
                         'id': $('input[name=id]').val(),
                         'modelo': $('input[name=modelo]').val(),
@@ -366,32 +357,31 @@
                         'ano': $('input[name=ano]').val(),
                         'placa': $('input[name=placa]').val(),
                         'renavam': $('input[name=renavam]').val(),
-                        'valor' : $('input[name=valor]').val(),
+                        'valor': $('input[name=valor]').val(),
                         'combustivel': $('#combustivel').val(),
                         'cambio': $('#cambio').val(),
-                        'status' : $('#status').val(),
+                        'status': $('#status').val(),
                         'acessorios': $('#acessorios').val()
                     }
                 }
 
             }
 
-            $('#cad-veiculos').submit(function (e) { // AQUI criei uma função para quando o usuário preencher o formulário de cadastro (ou edição)
+            $('#cad-veiculos').submit(function (e) {
                 e.preventDefault();
-                if ($("#enviar").hasClass("editar")) { //AQUI eu verifico se o botão Enviar, possui a classe "editar" Caso sim, o usuário esta tentando editar um registro
+                if ($("#enviar").hasClass("editar")) {
                     if (validarFormulario()) {
                         $.ajax({
                             url: "veiculos",
                             type: 'POST',
-                            data: pegarDados('editar'), // aqui passo por parametro a ação que estou realizando. Ou seja, estou passando o ID
+                            data: pegarDados('editar'),
                             success: function (result) {
-                                //sempre que cadastramos ou editamos, o SERVLET nos retorna sucesso ou erro. Aqui verifico se o retorno foi sucesso
                                 if (result.return === "success") {
-                                    JOptionPane.showMessageDialog('success', 'Produto atualizado com sucesso!'); // Exibo mensagem de sucesso
-                                    limparFormulario(); // Limpo o Formulário
-                                    $('#enviar').removeClass('editar'); // Aqui, removo a classe editar. Para que o Botão volte a sua caracteristica padrão, que é cadastrar.
-                                    $('#cadastro').modal('hide'); // Aqui oculto o formulário de cadastro
-                                    loadTable(0); // Carrego a tabela novamente com todos os registros
+                                    JOptionPane.showMessageDialog('success', 'Produto atualizado com sucesso!');
+                                    limparFormulario();
+                                    $('#enviar').removeClass('editar');
+                                    $('#cadastro').modal('hide');
+                                    loadTable(0);
                                 } else {
                                     JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao atualizar o Produto!');
                                 }
@@ -425,7 +415,7 @@
                     }
                 }
             });
-            //Esta função é responsável por Carregar o formulário com os dados do item selecionado, para ser editado. Ela é acionada ao clicar no botao editar
+
             function edit(id) {
                 $.ajax({
                     url: "../veiculos",
@@ -434,12 +424,11 @@
                         'id': id
                     },
                     success: function (result) {
-                        //Aqui faço um for each com o que veio do Servlet
                         for (var i in result) {
-                            setFields(result[i]); // passo os itens do registro por parametro para essa funcao
+                            setFields(result[i]);
                         }
-                        $('#enviar').addClass("editar"); // aqui adiciono a classe editar no botao, para que o SERVLET entenda que estou editando
-                        $('#cadastro').modal('show'); // aqui exibo o pop up de cadastro com os campos preenchidos
+                        $('#enviar').addClass("editar");
+                        $('#cadastro').modal('show');
                     },
                     error: function () {
                         JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao carregar a Tabela!');
@@ -447,42 +436,42 @@
                 });
 
             }
-            //Essa função exclui o produto. É acionada ao clicar sobre o botão excluir
+
             function remove(id)
             {
-                    swal({
-                            title: 'Você tem certeza que deseja inativar este veículo?',
-                            text: "Você não poderá reverter isso!",
-                            type: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            cancelButtonText: 'Não',
-                            confirmButtonText: 'Sim'
-                        }).then((result) => {
-                            $.ajax({
-                                    url: "veiculos",
-                                    type: 'POST',
-                                    data: {
-                                        'excluir': 'true',
-                                        'id': id // aqui passo os parametros para o Servlet. 
-                                    },
-                                    success: function () {
-                                        swal(
-                                            'Inativado!',
-                                            'Veículo inativado com sucesso!.',
-                                            'success'
-                                        )
-                                        loadTable(0); // aqui carrego a tabela após a exclusão
-                                    },
-                                    error: function () {
-                                        JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao excluir o Produto!');
-                                    }
-                                });
-                        })
-                
+                swal({
+                    title: 'Você tem certeza que deseja inativar este veículo?',
+                    text: "",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Não',
+                    confirmButtonText: 'Sim'
+                }).then((result) = function () {
+                    $.ajax({
+                        url: "../veiculos",
+                        type: 'POST',
+                        data: {
+                            'excluir': 'true',
+                            'id': id
+                        },
+                        success: function () {
+                            swal(
+                                    'Inativado!',
+                                    'Veículo inativado com sucesso!.',
+                                    'success'
+                                    )
+                            loadTable(0);
+                        },
+                        error: function () {
+                            JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao excluir o Produto!');
+                        }
+                    });
+                });
+
             }
-            //Nessa função, seto o valor dos campos do formulario com o registro que foi passado por parametro. Graças a essa funcão, que os campos estão preenchidos quando o usuario vai editar
+
             function setFields(data)
             {
                 $('input[name=id]').val(data.id);
@@ -496,9 +485,7 @@
                 $('#cambio').val(data.cambio).trigger('change');
                 $('#acessorios').val(data.acessorio);
             }
-            
-            //Essa função é responsável por preencher com COMBOBOX com os registros do banco de dados.
-            //OU SEJA, os comboBOX não estão com opções SETADAS no HTML. Essas opções vem do banco de dados. LOGO, para adicionar uma nova opção, basta adicionar um registro no banco, na tabala referente ao combo
+
             function popSelectBox()
             {
                 $.ajax({
@@ -508,10 +495,9 @@
                         'getStatus': true
                     },
                     success: function (data) {
-                        //aqui utilizo o Jquery para preencher o select com as opcoes
-                        $('#status').empty(); // aqui deixo o select Vazio
-                        $('<option>').val(0).text("Selecione o Status do Veículo").appendTo('#status'); // aqui defino a primeira opção para orientar o usuario
-                        for (var i in data) { // aqui faço um for each com todas as opções. Para cada opção, adiciono uma opção no combo
+                        $('#status').empty();
+                        $('<option>').val(0).text("Selecione o Status do Veículo").appendTo('#status');
+                        for (var i in data) {
                             var options = $('<option>').val(data[i].id).text(data[i].status);
                             options.appendTo('#status');
                         }
@@ -520,7 +506,7 @@
                         JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao carregar os Status dos Veículos!');
                     }
                 });
-                
+
                 $.ajax({
                     url: "../veiculos",
                     type: 'GET',
@@ -539,7 +525,7 @@
                         JOptionPane.showMessageDialog('error', 'Ocorreu um erro ao carregar os tipos de Combustíveis dos Veículos!');
                     }
                 });
-                
+
                 $.ajax({
                     url: "../veiculos",
                     type: 'GET',
@@ -560,8 +546,6 @@
                 });
             }
 
-            //Essa função valida o formulário.
-            //Repare que ela é bem parecida com a forma que usamos no JAVA SWING
             function validarFormulario()
             {
                 if (!isNumber($("input[name='ano']").val())) {
@@ -588,7 +572,7 @@
 
                 return true;
             }
-            //Essa função limpa o formulário. Define os valores dos campos como vazio
+
             function limparFormulario()
             {
                 $('input[name=modelo]').val('');
@@ -601,10 +585,10 @@
                 $('#cambio').val('0').trigger('change');
                 $('#acessorios').val('');
             }
-            //Essa função verifica se um valor é numerico
+
             function isNumber(n)
             {
-                //OBS para o grupo: parseInt() não é uma maneira correta de verificar se um número é inteiro em JavaScript, por isso, a validação é feita como abaixo
+
                 return !isNaN(parseFloat(n)) && isFinite(n);
             }
 

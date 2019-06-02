@@ -14,7 +14,6 @@ import Models.CombustivelVeiculo;
 import Models.ListaVeiculos;
 import Models.StatusVeiculo;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,24 +24,12 @@ import Models.Veiculo;
 
 public class VeiculoDAO {
 
-    private static Connection obterConexao() throws ClassNotFoundException, SQLException {
-        // 1) Declarar o driver JDBC de acordo com o Banco de dados usado
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
-        // 2) Abrir a conexão
-        Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/tades_locadora?useTimezone=true&serverTimezone=UTC",
-                "root",
-                "");
-        return conn;
-    }
-
     public static boolean Salvar(Veiculo v) {
         boolean retorno = false;
 
         Connection connection = null;
         try {
-            connection = obterConexao();
+            connection = ConnectionUtil.obterConexao();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -94,7 +81,7 @@ public class VeiculoDAO {
         boolean retorno = false;
         System.out.println(v);
         try {
-            Connection Conexao = obterConexao();
+            Connection Conexao = ConnectionUtil.obterConexao();
 
             PreparedStatement Update = Conexao.prepareStatement(
                     "UPDATE veiculo SET modelo = ? , "
@@ -137,7 +124,7 @@ public class VeiculoDAO {
         boolean retorno = false;
         try {
             System.out.println(id);
-            Connection Conexao = obterConexao();
+            Connection Conexao = ConnectionUtil.obterConexao();
 
             PreparedStatement Update = Conexao.prepareStatement(
                     "DELETE FROM veiculo WHERE ID = " + id);
@@ -159,7 +146,7 @@ public class VeiculoDAO {
     public static boolean Inativar(int id) {
         boolean retorno = false;
         try {
-            Connection Conexao = obterConexao();
+            Connection Conexao = ConnectionUtil.obterConexao();
 
             PreparedStatement Update = Conexao.prepareStatement(
                     "UPDATE veiculo SET id_status_atividade = 2 "
@@ -187,7 +174,7 @@ public class VeiculoDAO {
 
         String query = "SELECT * FROM status_veiculo;";
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -210,7 +197,7 @@ public class VeiculoDAO {
 
         String query = "SELECT * FROM combustivel;";
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -233,7 +220,7 @@ public class VeiculoDAO {
 
         String query = "SELECT * FROM cambio;";
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -276,7 +263,7 @@ public class VeiculoDAO {
                     + " WHERE id_status_atividade = 1 AND id_filial = " + idFilial;
         }
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {

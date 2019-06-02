@@ -19,24 +19,12 @@ import Models.Filial;
  */
 public class FuncionarioDAO {
 
-    private static Connection obterConexao() throws ClassNotFoundException, SQLException {
-        // 1) Declarar o driver JDBC de acordo com o Banco de dados usado
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
-        // 2) Abrir a conexão
-        Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/tades_locadora?useTimezone=true&serverTimezone=UTC",
-                "root",
-                "");
-        return conn;
-    }
-
     public static boolean Salvar(Funcionario f) {
         boolean retorno = false;
 
         Connection connection = null;
         try {
-            connection = obterConexao();
+            connection = ConnectionUtil.obterConexao();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -52,7 +40,7 @@ public class FuncionarioDAO {
                     + "id_cargo,"
                     + "nome,"
                     + "email)"
-                    + "VALUES (?, ?, ?, ?, ?, ?)"
+                    + "VALUES (MD5(?), ?, ?, ?, ?, ?)"
             );
             Create.setString(1, f.getSenha());
             Create.setString(2, f.getMatricula());
@@ -73,31 +61,51 @@ public class FuncionarioDAO {
         return retorno;
     }
 
-    public static ArrayList<ListaUsuarios> getUsuarios(int id) {
+    public static ArrayList<ListaUsuarios> getUsuarios(int id, int idFilial) {
         ArrayList<ListaUsuarios> listaClientes = new ArrayList<ListaUsuarios>();
 
-        String query = "SELECT "
+        String query;
+        if(idFilial != 4) {
+            query = "SELECT "
                 + "usuarios.id, "
                 + "usuarios.matricula, "
                 + "usuarios.email, "
                 + "usuarios.nome, "
                 + "cargo.cargo, "
+                + "usuarios.id_status, "
                 + "filial.filial, "
                 + "usuarios.data_cadastro "
                 + " FROM tades_locadora.usuarios "
                 + "INNER JOIN filial on filial.id = usuarios.id_filial "
                 + "INNER JOIN cargo on cargo.id = usuarios.id_cargo "
-                + "WHERE usuarios.id_status = 1";
+                + "WHERE id_filial = " + idFilial;
+        } else {
+            query = "SELECT "
+                + "usuarios.id, "
+                + "usuarios.matricula, "
+                + "usuarios.email, "
+                + "usuarios.nome, "
+                + "cargo.cargo, "
+                + "usuarios.id_status, "
+                + "filial.filial, "
+                + "usuarios.data_cadastro "
+                + " FROM tades_locadora.usuarios "
+                + "INNER JOIN filial on filial.id = usuarios.id_filial "
+                + "INNER JOIN cargo on cargo.id = usuarios.id_cargo ";
+        }
         if (id != 0) {
             query = "SELECT id, matricula, email, senha, nome, id_cargo as cargo, id_filial as filial, data_cadastro FROM usuarios where id = " + id;
         }
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 ListaUsuarios lista = new ListaUsuarios();
                 lista.setId(rs.getInt("id"));
+                if(id == 0) {
+                    lista.setIdStatus(rs.getInt("id_status"));
+                }
                 lista.setMatricula(rs.getString("matricula"));
                 lista.setEmail(rs.getString("email"));
                 lista.setNome(rs.getString("nome"));
@@ -120,17 +128,17 @@ public class FuncionarioDAO {
 
         boolean retorno = false;
         try {
-            Connection Conexao = obterConexao();
+            Connection Conexao = ConnectionUtil.obterConexao();
 
             PreparedStatement Update = Conexao.prepareStatement(
-                    "UPDATE tades_locadora.funcionario SET "
-                    + "senha = ?, "
+                    "UPDATE tades_locadora.usuarios SET "
+                    + "senha = MD5(?), "
                     + "matricula = ?, "
                     + "id_filial = ?,"
                     + "id_cargo = ?,"
-                    + "nome = ? "
+                    + "nome = ?, "
                     + "email = ? "
-                    + "WHERE ID = " + f.getId());
+                    + "WHERE id = " + f.getId());
 
             Update.setString(1, f.getSenha());
             Update.setString(2, f.getMatricula());
@@ -159,7 +167,7 @@ public class FuncionarioDAO {
 
         String query = "SELECT * FROM cargo;";
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -177,12 +185,17 @@ public class FuncionarioDAO {
         return listaCargo;
     }
     
-    public static ArrayList<Filial> getFilial() {
+    public static ArrayList<Filial> getFilial(int idFilial) {
         ArrayList<Filial> listaFilial = new ArrayList<Filial>();
 
-        String query = "SELECT * FROM filial;";
+        String query;
+        if(idFilial != 4) {
+            query = "SELECT * FROM filial where id = " + idFilial;
+        } else {
+            query = "SELECT * FROM filial";
+        }
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -204,10 +217,34 @@ public class FuncionarioDAO {
         boolean retorno = false;
         try {
             System.out.println(id);
-            Connection Conexao = obterConexao();
+            Connection Conexao = ConnectionUtil.obterConexao();
 
             PreparedStatement Update = Conexao.prepareStatement(
                     "UPDATE usuarios SET id_status = 2 "
+                    + "WHERE id = ?");
+            
+            Update.setInt(1, id);
+            int linhasAfetadas = Update.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                retorno = true;
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
+    }
+    
+    public boolean ativar(int id) {
+        boolean retorno = false;
+        try {
+            Connection Conexao = ConnectionUtil.obterConexao();
+
+            PreparedStatement Update = Conexao.prepareStatement(
+                    "UPDATE usuarios SET id_status = 1 "
                     + "WHERE id = ?");
             
             Update.setInt(1, id);

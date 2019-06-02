@@ -19,18 +19,6 @@ import java.util.ArrayList;
  */
 public class LocacoesMensaisDAO {
 
-    private static Connection obterConexao() throws ClassNotFoundException, SQLException {
-        // 1) Declarar o driver JDBC de acordo com o Banco de dados usado
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
-        // 2) Abrir a conexão
-        Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/tades_locadora?useTimezone=true&serverTimezone=UTC",
-                "root",
-                "");
-        return conn;
-    }
-
     public static ArrayList<LocacoesMensais> getLocacoes(int idFilial) {
         ArrayList<LocacoesMensais> avaliacao = new ArrayList<LocacoesMensais>();
         String query;
@@ -59,7 +47,7 @@ public class LocacoesMensaisDAO {
                     + "    GROUP BY DAYOFMONTH(`locacoes`.`data_locacao`)";
         }
 
-        try (Connection conn = obterConexao();
+        try (Connection conn = ConnectionUtil.obterConexao();
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
