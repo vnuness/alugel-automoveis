@@ -6,18 +6,18 @@
             <ul>
                 <li class="menu-title">Home</li>
 
-                    <li>
-                        <a href="home" class="waves-effect waves-primary"><i
-                                class="ti-home"></i><span> Home </span></a>
-                    </li>
-                <c:if test="${sessionScope.idCargo != 2}">
+                <li>
+                    <a href="home" class="waves-effect waves-primary"><i
+                            class="ti-home"></i><span> Home </span></a>
+                </li>
+                <c:if test="${sessionScope.idCargo != 2 && sessionScope.idCargo != 4}">
                     <li class="menu-title">Dashboard</li>
 
                     <li>
                         <a href="dashboard" class="waves-effect waves-primary"><i
                                 class="ti-stats-up"></i><span> Dashboard </span></a>
                     </li>
-                    
+
                     <li class="menu-title">Relatórios</li>
 
                     <li>
@@ -27,18 +27,18 @@
                                 class="ti-receipt"></i><span> Locações </span></a>
                     </li>
 
-                    <c:if test="${sessionScope.idCargo != 3}">
+                </c:if>
 
-                        <li class="menu-title">Credenciais</li>
+                <c:if test="${sessionScope.idCargo == 4}">
 
-                        <li>
+                    <li class="menu-title">Credenciais</li>
 
-                        <li>
-                            <a href="funcionarios" class="waves-effect waves-primary"><i
-                                    class="mdi mdi-account-multiple"></i><span> Usuários </span></a>
-                        </li>
+                    <li>
 
-                    </c:if>
+                    <li>
+                        <a href="funcionarios" class="waves-effect waves-primary"><i
+                                class="mdi mdi-account-multiple"></i><span> Usuários </span></a>
+                    </li>
 
                 </c:if>
 
@@ -64,7 +64,7 @@
                         <a href="locacoes" class="waves-effect waves-primary"><i
                                 class="ti-money"></i><span>Realizar Locação</span></a>
                     </li>
-                    
+
                     <li>
                         <a href="devolutivas" class="waves-effect waves-primary"><i
                                 class="ti-back-left"></i><span> Devolutivas </span></a>

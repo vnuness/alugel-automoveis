@@ -77,13 +77,21 @@ public class AutorizacaoFilter implements Filter {
             return true;
         } else if(idCargo == 1 && paginaAcessada.endsWith("/jsp/locacoes")) {
             return true;
-        } else if(idCargo == 1 && paginaAcessada.endsWith("/jsp/funcionarios")) {
+        } else if(idCargo == 4 && paginaAcessada.endsWith("/jsp/funcionarios")) {
             return true;
         } else if(idCargo == 1 && paginaAcessada.endsWith("/jsp/relatorios")) {
             return true;
         } else if(idCargo == 3 && paginaAcessada.endsWith("/jsp/dashboard")) {
             return true;
         } else if(idCargo == 3 && paginaAcessada.endsWith("/jsp/relatorios")) {
+            return true;
+        } else if(idCargo == 4 && paginaAcessada.endsWith("/jsp/veiculos")) {
+            return true;
+        } else if(idCargo == 4 && paginaAcessada.endsWith("/jsp/locacoes")) {
+            return true;
+        } else if(idCargo == 4 && paginaAcessada.endsWith("/jsp/clientes")) {
+            return true;
+        } else if(idCargo == 4 && paginaAcessada.endsWith("/jsp/devolutivas")) {
             return true;
         }
 
