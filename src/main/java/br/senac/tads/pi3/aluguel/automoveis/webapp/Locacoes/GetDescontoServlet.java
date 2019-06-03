@@ -5,7 +5,6 @@
  */
 package br.senac.tads.pi3.aluguel.automoveis.webapp.Locacoes;
 
-import DAO.LocacaoDAO;
 import Models.MotoristaAplicativo;
 import Models.PessoaFisica;
 import java.io.IOException;

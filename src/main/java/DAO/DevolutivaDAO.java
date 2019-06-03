@@ -5,12 +5,9 @@
  */
 package DAO;
 
-import Models.Cliente;
 import Models.Devolutiva;
 import Models.LocacaoPorCliente;
 import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class DevolutivaDAO {
 
-    public static boolean Salvar(Devolutiva d) {
+    public static boolean salvar(Devolutiva d) {
         boolean retorno = false;
 
         Connection connection = null;

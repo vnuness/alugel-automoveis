@@ -8,7 +8,6 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
 import java.sql.SQLException;
 
 
@@ -25,7 +24,7 @@ public class ConnectionUtil {
         Connection conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/tades_locadora?useTimezone=true&serverTimezone=UTC",
                 "root",
-                "");
+                "TeamGates123");
         return conn;
     }
 }

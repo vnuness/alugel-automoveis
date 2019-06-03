@@ -42,7 +42,7 @@ public class FuncionarioEditarServlet extends HttpServlet {
         int idCargo = Integer.parseInt(request.getParameter("cargo"));
         Funcionario f = new Funcionario(id, matricula, nome, email, senha, idFilial, idCargo);
         response.setContentType("application/json");
-        if (FuncionarioDAO.Atualizar(f)) {
+        if (FuncionarioDAO.atualizar(f)) {
             String resposta = "{\"return\" : \"success\"}";
             try (PrintWriter out = response.getWriter()) {
                 out.println(resposta);

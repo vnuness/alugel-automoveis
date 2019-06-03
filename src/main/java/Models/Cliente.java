@@ -1,68 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Models;
 
 /**
  *
- * @author RaphaelOrlandi
+ * @author oem
  */
-public class Cliente {
+public abstract class Cliente {
 
-    private int id;
-    private String nome;
-    private String cpfCnpj;
-    private int idsexo;
-    private String cnh;
-    private int idCategoriaCnh;
-    private String rg;
-    private String validadeCnh;
-    private String email;
-    private String nacionalidade;
-    private String dataNascimento;
-    private String endereco;
-    private String cep;
-    private String bairro;
-    private String complemento;
-    private int numero;
-    private String cidade;
-    private String estado;
-    private String celular;
-    private int status;
-    private int idCategoriaCliente;
-
-    public Cliente() {
-
-    }
-    
-    public String getCpfCnpj() {
-        return cpfCnpj;
-    }
-
-    public void setCpfCnpj(String cpfCnpj) {
-        this.cpfCnpj = cpfCnpj;
-    }
-
-    public int getIdCategoriaCnh() {
-        return idCategoriaCnh;
-    }
-
-    public void setIdCategoriaCnh(int idCategoriaCnh) {
-        this.idCategoriaCnh = idCategoriaCnh;
-    }
-
-    public String getValidadeCnh() {
-        return validadeCnh;
-    }
-
-    public void setValidadeCnh(String validadeCnh) {
-        this.validadeCnh = validadeCnh;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
+    protected int id;
+    protected String nome;
+    protected String cnh;
+    protected int idCategoriaCnh;
+    protected String validadeCnh;
+    protected String email;
+    protected String endereco;
+    protected String cep;
+    protected String bairro;
+    protected String complemento;
+    protected int numero;
+    protected String cidade;
+    protected String estado;
+    protected String celular;
+    protected int status;
+    protected int idCategoriaCliente;
 
     public int getIdCategoriaCliente() {
         return idCategoriaCliente;
@@ -70,14 +34,6 @@ public class Cliente {
 
     public void setIdCategoriaCliente(int idCategoriaCliente) {
         this.idCategoriaCliente = idCategoriaCliente;
-    }
-    
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
     }
 
     public int getId() {
@@ -96,14 +52,6 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public int getIdsexo() {
-        return idsexo;
-    }
-
-    public void setIdsexo(int idSexo) {
-        this.idsexo = idSexo;
-    }
-
     public String getCnh() {
         return cnh;
     }
@@ -112,20 +60,20 @@ public class Cliente {
         this.cnh = cnh;
     }
 
-    public int getIdcategoriacnh() {
+    public int getIdCategoriaCnh() {
         return idCategoriaCnh;
     }
 
-    public void setIdcategoriacnh(int idcategoriacnh) {
-        this.idCategoriaCnh = idcategoriacnh;
+    public void setIdCategoriaCnh(int idCategoriaCnh) {
+        this.idCategoriaCnh = idCategoriaCnh;
     }
 
-    public String getRg() {
-        return rg;
+    public String getValidadeCnh() {
+        return validadeCnh;
     }
 
-    public void setRg(String rg) {
-        this.rg = rg;
+    public void setValidadeCnh(String validadeCnh) {
+        this.validadeCnh = validadeCnh;
     }
 
     public String getEmail() {
@@ -134,22 +82,6 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getNacionalidade() {
-        return nacionalidade;
-    }
-
-    public void setNacionalidade(String nacionalidade) {
-        this.nacionalidade = nacionalidade;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
     }
 
     public String getEndereco() {
@@ -184,6 +116,14 @@ public class Cliente {
         this.complemento = complemento;
     }
 
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
     public String getCidade() {
         return cidade;
     }
@@ -207,6 +147,25 @@ public class Cliente {
     public void setCelular(String celular) {
         this.celular = celular;
     }
-    
-    
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public double aplicaDesconto(double valor, int qtdDias) {
+        double desconto;
+        double valorAtualizado;
+        if (qtdDias >= 7) {
+            desconto = (valor * 10) / 100;
+            valorAtualizado = valor - desconto;
+        } else {
+            valorAtualizado = valor;
+        }
+
+        return valorAtualizado;
+    }
 }

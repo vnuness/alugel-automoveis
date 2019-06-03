@@ -6,7 +6,6 @@
 package br.senac.tads.pi3.aluguel.automoveis.webapp.Devolutiva;
 
 import DAO.RelatorioLocacoesDAO;
-import Models.RelatorioLocacao;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;

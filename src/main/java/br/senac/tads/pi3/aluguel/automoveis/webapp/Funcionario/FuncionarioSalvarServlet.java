@@ -42,7 +42,7 @@ public class FuncionarioSalvarServlet extends HttpServlet {
         int idCargo = Integer.parseInt(request.getParameter("cargo"));
         Funcionario f = new Funcionario(matricula, nome, email, senha, idFilial, idCargo);
         response.setContentType("application/json");
-        if (FuncionarioDAO.Salvar(f)) {
+        if (FuncionarioDAO.salvar(f)) {
             String resposta = "{\"return\" : \"success\"}";
             try (PrintWriter out = response.getWriter()) {
                 out.println(resposta);

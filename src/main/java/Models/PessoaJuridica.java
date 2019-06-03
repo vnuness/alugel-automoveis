@@ -9,7 +9,7 @@ package Models;
  *
  * @author oem
  */
-public class PessoaJuridica extends Clientea {
+public class PessoaJuridica extends Cliente {
     private String cnpj;
     
     

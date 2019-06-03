@@ -5,10 +5,6 @@
  */
 package Models;
 
-/**
- *
- * @author oem
- */
 public class Avaliacao {
     
     private int id;

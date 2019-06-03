@@ -1,7 +1,6 @@
 package DAO;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +18,7 @@ import Models.Filial;
  */
 public class FuncionarioDAO {
 
-    public static boolean Salvar(Funcionario f) {
+    public static boolean salvar(Funcionario f) {
         boolean retorno = false;
 
         Connection connection = null;
@@ -124,7 +123,7 @@ public class FuncionarioDAO {
         return listaClientes;
     }
 
-    public static boolean Atualizar(Funcionario f) {
+    public static boolean atualizar(Funcionario f) {
 
         boolean retorno = false;
         try {
@@ -213,7 +212,7 @@ public class FuncionarioDAO {
         return listaFilial;
     }
 
-    public static boolean Desativar(int id) {
+    public static boolean desativar(int id) {
         boolean retorno = false;
         try {
             System.out.println(id);

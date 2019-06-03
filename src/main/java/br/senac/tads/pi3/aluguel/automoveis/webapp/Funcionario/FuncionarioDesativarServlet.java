@@ -35,7 +35,7 @@ public class FuncionarioDesativarServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
 
         response.setContentType("application/json");
-        if (FuncionarioDAO.Desativar(id)) {
+        if (FuncionarioDAO.desativar(id)) {
             String resposta = "{\"return\" : \"success\"}";
             try (PrintWriter out = response.getWriter()) {
                 out.println(resposta);

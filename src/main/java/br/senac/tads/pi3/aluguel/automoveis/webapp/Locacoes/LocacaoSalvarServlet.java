@@ -13,8 +13,6 @@ package br.senac.tads.pi3.aluguel.automoveis.webapp.Locacoes;
 import br.senac.tads.pi3.aluguel.automoveis.webapp.Cliente.ClientePfSalvarServlet;
 import DAO.LocacaoDAO;
 import Models.Locacao;
-import Models.MotoristaAplicativo;
-import Models.PessoaFisica;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -46,7 +44,7 @@ public class LocacaoSalvarServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Locacao l = new Locacao(idCliente, idVeiculo, valor, obs, Integer.parseInt(session.getAttribute("idFilial").toString()));
         response.setContentType("application/json");
-        if (LocacaoDAO.Salvar(l)) {
+        if (LocacaoDAO.salvar(l)) {
             String resposta = "{\"return\" : \"success\"}";
             try (PrintWriter out = response.getWriter()) {
                 out.println(resposta);

@@ -5,10 +5,6 @@
  */
 package Models;
 
-/**
- *
- * @author oem
- */
 public class Cargo {
     private int id;
     private String cargo;

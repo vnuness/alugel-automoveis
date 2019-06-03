@@ -5,10 +5,6 @@
  */
 package Models;
 
-/**
- *
- * @author rapha
- */
 public class CategoriaCNH {
     
     private int id;

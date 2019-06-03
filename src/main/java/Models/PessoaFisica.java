@@ -9,7 +9,7 @@ package Models;
  *
  * @author oem
  */
-public class PessoaFisica extends Clientea {
+public class PessoaFisica extends Cliente {
     protected String cpf;
     protected int idSexo;
     protected String rg;

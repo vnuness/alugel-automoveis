@@ -9,7 +9,6 @@ import DAO.DevolutivaDAO;
 import Models.Devolutiva;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.enterprise.context.SessionScoped;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +45,7 @@ public class DevolutivaSalvarServlet extends HttpServlet {
 
         Devolutiva devolutiva = new Devolutiva(idCliente, idAvaliacao, idTipoDevolutiva, idLocacao, observacao, Integer.parseInt(sessao.getAttribute("idFilial").toString()));
 
-        if (DevolutivaDAO.Salvar(devolutiva)) { // Aqui chamo o metodo inativar da DAO, passando o ID por parametro
+        if (DevolutivaDAO.salvar(devolutiva)) { // Aqui chamo o metodo inativar da DAO, passando o ID por parametro
             String resposta = "{\"return\" : \"success\"}"; //Aqui defino o que será retornado para a view em caso de sucesso
             try (PrintWriter out = response.getWriter()) {
                 out.println(resposta);

@@ -6,13 +6,10 @@
 package br.senac.tads.pi3.aluguel.automoveis.webapp.login;
 
 import DAO.LoginDAO;
-import Models.Funcionario;
 import Models.Login;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;

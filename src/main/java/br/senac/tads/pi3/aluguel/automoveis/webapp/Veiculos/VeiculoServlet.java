@@ -38,7 +38,7 @@ public class VeiculoServlet extends HttpServlet {
             if (request.getParameter("excluir") != null) { // Aqui verifico se o parametro EXCLUIR veio na requisição. Caso sim, o usuário está tentando excluir o veiculo.
                 response.setContentType("application/json"); //aqui defino que o tipo de retorno deve ser JSON, para conseguirmos capturar a mensagem na view
                 int id = Integer.parseInt(request.getParameter("id")); //Aqui defino o ID com o que veio na requisição
-                if (VeiculoDAO.Inativar(id)) { // Aqui chamo o metodo excluir da DAO, passando o ID por parametro
+                if (VeiculoDAO.inativar(id)) { // Aqui chamo o metodo excluir da DAO, passando o ID por parametro
                     String resposta = "{\"return\" : \"success\"}"; //Aqui defino o que será retornado para a view em caso de sucesso
                     try (PrintWriter out = response.getWriter()) {
                         out.println(resposta);
@@ -61,10 +61,10 @@ public class VeiculoServlet extends HttpServlet {
             int status = Integer.parseInt(request.getParameter("status"));
             String acessorios = request.getParameter("acessorios");
             response.setContentType("application/json");
-            //Nas linhas acima defini as variaveis com os parametros que vieram na requisicao
-            if (request.getParameter("id") == null) { // aqui pergunto se veio ID na requisição. Caso não tenha vindo (igual a null) o usuário está tentando cadastrar um veiculo
-                Veiculo v = new Veiculo(modelo, montadora, ano, placa, renavam, valor, combustivel, cambio, status, acessorios, idFilial); // Então instancio um objeto da model para cadastrar (sem id)
-                if (VeiculoDAO.Salvar(v)) {
+            
+            if (request.getParameter("id") == null) { 
+                Veiculo v = new Veiculo(modelo, montadora, ano, placa, renavam, valor, combustivel, cambio, status, acessorios, idFilial); 
+                if (VeiculoDAO.salvar(v)) {
                     String resposta = "{\"return\" : \"success\"}";
                     try (PrintWriter out = response.getWriter()) {
                         out.println(resposta);
@@ -75,10 +75,10 @@ public class VeiculoServlet extends HttpServlet {
                         out.println(resposta);
                     }
                 }
-            } else { // Caso caia no ELSE, significa que o usuario está tentando EDITAR. Ou sejam veio ID na requisição
+            } else {
                 int id = Integer.parseInt(request.getParameter("id"));
                 Veiculo v = new Veiculo(id, modelo, montadora, ano, placa, renavam, valor, combustivel, cambio, status, acessorios);
-                if (VeiculoDAO.Atualizar(v)) {
+                if (VeiculoDAO.atualizar(v)) {
                     String resposta = "{\"return\" : \"success\"}";
                     try (PrintWriter out = response.getWriter()) {
                         out.println(resposta);
@@ -91,10 +91,10 @@ public class VeiculoServlet extends HttpServlet {
                 }
             }
 
-        } else { // ESSE ELSE diz que o tipo de requisição foi GET. A requisição GET foi utilizada maioritariamente para buscar registros no banco de dados
+        } else { 
             response.setContentType("application/json");
-            if (request.getParameter("getStatus") != null) { //se Veio status na requisição, significa que estou pedindo os registros da tabela status no banco de DAdos, ou seja, estou querendo preencher meus combobox na view. O mesmo serve para os IFs abaixo*
-                String json = new Gson().toJson(VeiculoDAO.getStatus()); // AQUI uso uma API do Google que converte um ArrayList em JSON. Faço isso por que é melhor para tratar os dados no javascript/jquery
+            if (request.getParameter("getStatus") != null) { 
+                String json = new Gson().toJson(VeiculoDAO.getStatus()); 
                 try (PrintWriter out = response.getWriter()) {
                     out.println(json);
                 }
@@ -110,8 +110,8 @@ public class VeiculoServlet extends HttpServlet {
                 }
             }
             else {
-                int id = Integer.parseInt(request.getParameter("id")); // nesse else, estou buscando os registros para preencher a tabela
-                String json = new Gson().toJson(VeiculoDAO.getVeiculos(id, idFilial));// AQUI uso uma API do Google que converte um ArrayList em JSON. Faço isso por que é melhor para tratar os dados no javascript/jquery
+                int id = Integer.parseInt(request.getParameter("id")); 
+                String json = new Gson().toJson(VeiculoDAO.getVeiculos(id, idFilial));
                 try (PrintWriter out = response.getWriter()) {
                     out.println(json);
                 }

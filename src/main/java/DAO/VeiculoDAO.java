@@ -5,10 +5,6 @@
  */
 package DAO;
 
-/**
- *
- * @author vsilva
- */
 import Models.CambioVeiculo;
 import Models.CombustivelVeiculo;
 import Models.ListaVeiculos;
@@ -24,7 +20,7 @@ import Models.Veiculo;
 
 public class VeiculoDAO {
 
-    public static boolean Salvar(Veiculo v) {
+    public static boolean salvar(Veiculo v) {
         boolean retorno = false;
 
         Connection connection = null;
@@ -76,7 +72,7 @@ public class VeiculoDAO {
         return retorno;
     }
 
-    public static boolean Atualizar(Veiculo v) {
+    public static boolean atualizar(Veiculo v) {
 
         boolean retorno = false;
         System.out.println(v);
@@ -120,30 +116,7 @@ public class VeiculoDAO {
 
     }
 
-    public static boolean Excluir(int id) {
-        boolean retorno = false;
-        try {
-            System.out.println(id);
-            Connection Conexao = ConnectionUtil.obterConexao();
-
-            PreparedStatement Update = Conexao.prepareStatement(
-                    "DELETE FROM veiculo WHERE ID = " + id);
-
-            int linhasAfetadas = Update.executeUpdate();
-
-            if (linhasAfetadas > 0) {
-                retorno = true;
-            }
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return retorno;
-    }
-
-    public static boolean Inativar(int id) {
+    public static boolean inativar(int id) {
         boolean retorno = false;
         try {
             Connection Conexao = ConnectionUtil.obterConexao();

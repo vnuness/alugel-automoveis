@@ -5,9 +5,7 @@
  */
 package br.senac.tads.pi3.aluguel.automoveis.webapp.Cliente;
 
-import DAO.ClienteDAO;
 import DAO.PessoaJuridicaDAO;
-import Models.Cliente;
 import Models.PessoaJuridica;
 import java.io.IOException;
 import java.io.PrintWriter;

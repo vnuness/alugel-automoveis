@@ -12,12 +12,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import Models.ListaCliente;
 import Models.Sexo;
-import Models.Cliente;
+import Models.ClienteOld;
 import Models.StatusClienteUsuario;
 
 public class ClienteDAO {
     
-    public static boolean Inativar(int id) {
+    public static boolean inativar(int id) {
         boolean retorno = false;
         try {
             Connection Conexao = ConnectionUtil.obterConexao();
@@ -157,8 +157,8 @@ public class ClienteDAO {
         return ListaCategoriaCliente;
     }
 
-    public static ArrayList<Cliente> getClienteById(int id) {
-        ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
+    public static ArrayList<ClienteOld> getClienteById(int id) {
+        ArrayList<ClienteOld> listaCliente = new ArrayList<ClienteOld>();
 
         String query = "select * from cliente where id = " + id;
 
@@ -166,7 +166,7 @@ public class ClienteDAO {
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-                Cliente c = new Cliente();
+                ClienteOld c = new ClienteOld();
                 c.setId(rs.getInt("id"));
                 c.setNome(rs.getString("nome"));
                 c.setCpfCnpj(rs.getString("cpf_cnpj"));
@@ -240,8 +240,8 @@ public class ClienteDAO {
         return listaClientes;
     }
 
-    public static ArrayList<Cliente> getClienteCpf(String cpf) {
-        ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
+    public static ArrayList<ClienteOld> getClienteCpf(String cpf) {
+        ArrayList<ClienteOld> listaCliente = new ArrayList<ClienteOld>();
         int numeroLinhas = 0;
 
         String verificaLocacao = "SELECT * FROM cliente inner join locacoes on cliente.id = locacoes.id_cliente where cliente.cpf_cnpj = '" + cpf + "' AND locacoes.id_status_locacao = 1;";
@@ -266,7 +266,7 @@ public class ClienteDAO {
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-                Cliente cliente = new Cliente();
+                ClienteOld cliente = new ClienteOld();
                 cliente.setId(rs.getInt("id"));
                 cliente.setIdCategoriaCliente(rs.getInt("id_categoria_cliente"));
                 cliente.setNome(rs.getString("nome"));
