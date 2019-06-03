@@ -126,7 +126,6 @@
                                                 <label class="col-md-3 col-form-label"> Tipo de pessoa: <span class="required">*</span></label>
 
                                                 <div class="col-md-3 form-group row col-form-label">
-                                                    <div class="col-12">
                                                         <div class="radio radio-primary">
                                                             <input name="categoria_cliente" id="radio-pessoa-fisica" checked="checked" value="1" type="radio">
                                                             <label for="radio-pessoa-fisica">
@@ -134,10 +133,8 @@
                                                             </label>
                                                         </div>
 
-                                                    </div>
                                                 </div>
                                                 <div class="col-md-3 form-group row col-form-label">
-                                                    <div class="col-12">
                                                         <div class="radio radio-primary">
                                                             <input name="categoria_cliente" id="radio-pessoa-juridica" value="2" type="radio">
                                                             <label for="radio-pessoa-juridica">
@@ -145,10 +142,8 @@
                                                             </label>
                                                         </div>
 
-                                                    </div>
                                                 </div>
                                                 <div class="col-md-3 form-group row col-form-label">
-                                                    <div class="col-12">
                                                         <div class="radio radio-primary">
                                                             <input name="categoria_cliente" id="radio-motorista-app" value="3" type="radio">
                                                             <label for="radio-motorista-app">
@@ -156,7 +151,6 @@
                                                             </label>
                                                         </div>
 
-                                                    </div>
                                                 </div>
                                             </div>
 
