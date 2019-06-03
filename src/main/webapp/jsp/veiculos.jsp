@@ -372,7 +372,7 @@
                 if ($("#enviar").hasClass("editar")) {
                     if (validarFormulario()) {
                         $.ajax({
-                            url: "veiculos",
+                            url: "../veiculos",
                             type: 'POST',
                             data: pegarDados('editar'),
                             success: function (result) {
@@ -480,6 +480,7 @@
                 $('input[name=ano]').val(data.ano);
                 $('input[name=placa]').val(data.placa);
                 $('input[name=renavam]').val(data.renavam);
+                $('input[name=valor]').val(data.valor);
                 $('#status').val(data.status).trigger('change');
                 $('#combustivel').val(data.combustivel).trigger('change');
                 $('#cambio').val(data.cambio).trigger('change');
@@ -580,6 +581,7 @@
                 $('input[name=ano]').val('');
                 $('input[name=placa]').val('');
                 $('input[name=renavam]').val('');
+                $('input[name=valor]').val('');
                 $('#status').val('0').trigger('change');
                 $('#combustivel').val('0').trigger('change');
                 $('#cambio').val('0').trigger('change');

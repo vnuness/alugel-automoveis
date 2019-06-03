@@ -85,6 +85,7 @@ public class VeiculoDAO {
                     + "ano = ? , "
                     + "placa = ? , "
                     + "renavam = ? , "
+                    + "valor_diaria = ? , "
                     + "id_combustivel = ? ,"
                     + "id_cambio = ? , "
                     + "id_status = ? , "
@@ -96,10 +97,11 @@ public class VeiculoDAO {
             Update.setInt(3, v.getAno());
             Update.setString(4, v.getPlaca());
             Update.setString(5, v.getRenavam());
-            Update.setInt(6, v.getIdCombustivel());
-            Update.setInt(7, v.getIdCambio());
-            Update.setInt(8, v.getIdStatus());
-            Update.setString(9, v.getAcessorio());
+            Update.setDouble(6, v.getValor());
+            Update.setInt(7, v.getIdCombustivel());
+            Update.setInt(8, v.getIdCambio());
+            Update.setInt(9, v.getIdStatus());
+            Update.setString(10, v.getAcessorio());
             int linhasAfetadas = Update.executeUpdate();
 
             if (linhasAfetadas > 0) {
